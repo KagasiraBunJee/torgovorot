@@ -1,0 +1,20 @@
+{% include 'TorgovorotTorgBundle:Admin:admin_header.html.twig' %}
+{{ form_start(form) }}
+                Название :<br>
+                {{ form_widget( form.title, { 'label': 'Название:', 'value' : item.title} ) }}<br><br>
+
+                {% if item.undeleted != 1 %}
+
+                    Описание :<br>
+                    {{ form_widget( form.content, { 'label': 'Описание:', 'value' : item.content, attr : {'style' : 'height:150px;width:800px;' } } ) }}<br>
+
+                    ЧПУ :<br>
+                    {{ form_widget( form.chpu, { 'label': 'ЧПУ:', 'value' : item.chpu} ) }}<br><br>
+                {% endif %}
+                {{ form_row( form.top_menu ) }}<br>
+                {{ form_row( form.bot_menu ) }}<br>
+                {{ form_row( form.idd, {'value' : item.id} ) }}<br>
+{{ form_row( form.save ) }}
+{{ form_rest(form) }}
+</form>
+{% include 'TorgovorotTorgBundle:Admin:admin_bottom.html.twig' %}

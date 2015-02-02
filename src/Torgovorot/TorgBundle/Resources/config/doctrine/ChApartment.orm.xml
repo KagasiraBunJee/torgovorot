@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Torgovorot\TorgBundle\Entity\ChApartment" table="ch_apartment">
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="rooms" type="integer" column="rooms" nullable="true"/>
+    <field name="livingSquare" type="float" column="living_square" precision="10" scale="0" nullable="true"/>
+    <field name="generalSquare" type="float" column="general_square" precision="10" scale="0" nullable="true"/>
+    <field name="floor" type="integer" column="floor" nullable="true"/>
+    <field name="floorCount" type="integer" column="floor_count" nullable="true"/>
+    <field name="balcony" type="integer" column="balcony" nullable="true"/>
+    <field name="refregirator" type="integer" column="refregirator" nullable="true"/>
+    <field name="tv" type="integer" column="tv" nullable="true"/>
+    <field name="phone" type="integer" column="phone" nullable="true"/>
+    <field name="conditiononeer" type="integer" column="conditiononeer" nullable="true"/>
+    <field name="dishwasher" type="integer" column="dishwasher" nullable="true"/>
+    <field name="washingmachine" type="integer" column="washingmachine" nullable="true"/>
+    <field name="boiler" type="integer" column="boiler" nullable="true"/>
+    <field name="bathType" type="integer" column="bath_type" nullable="true"/>
+    <field name="houseType" type="integer" column="house_type" nullable="true"/>
+    <field name="videoId" type="integer" column="video_id" nullable="true"/>
+    <field name="rtype" type="integer" column="rtype" nullable="true"/>
+  </entity>
+</doctrine-mapping>

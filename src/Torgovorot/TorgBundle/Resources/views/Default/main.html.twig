@@ -1,0 +1,248 @@
+{% include 'TorgovorotTorgBundle:Default:header.html.twig' with {'index':'main'} %}
+
+    <div class="main withSearch">
+        <a href="#" class="banner1">
+            {{ getbanner(1,"random",0, 960, 60,"",1)|raw }}
+        </a>
+        
+        
+        <div class="main-left">
+            <div class="main-left-left">
+                <div class="gray-list">
+                    <div class="title">
+                        <a href="{{ path('work_page') }}">Работа</a>
+                    </div>
+                    <div class="abs-top-right">
+                        <a href="{{ path('addAdvert', {param:2}) }}">Добавить вакансию</a> | <a href="{{ path('addAdvert', {param:3}) }}">Добавить резюме</a>
+                    </div>
+                    <ul>
+                        {{ cats(2,6)|raw }}
+                        
+                    </ul>
+                    <ul>
+                        {{ cats(3,8)|raw }}
+                    </ul>
+                    
+                </div>
+                <a class="banner" href="#">
+                        {{ getbanner(1,"random",3, 350, 78, "" , 5)|raw }}
+                </a>
+                <div class="vip top-border">
+                    <div class="title">
+                        Недвижимость <img src="{{ asset('uploads/vip.png') }}" alt=""/>
+                    </div>
+                    <div class="abs-top-right">
+                        <a href="{{ path("realy_list", { "cat_id" : "2" }) }}">Квартиры</a> | <a href="{{ path("selectAdvert") }}">Добавить</a>
+                    </div>
+                    <div>
+                        {{ getRecommended(1,"random", 2, "div")|raw }}
+                    </div>
+                </div>
+                {% if getRecommended(1,"random", 2, "div")|raw != "Нет записей"  %}
+                <div class="vip top-border">
+                    <div class="title">
+                        Недвижимость <img src="{{ asset('uploads/vip.png') }}" alt=""/>
+                    </div>
+                    <div class="abs-top-right">
+                        <a href="{{ path("realy_list", { "cat_id" : "3" }) }}">Дома</a> | <a href="{{ path("realy_list", { "cat_id" : "5" }) }}">Гаражи</a> | <a href="{{ path("selectAdvert") }}">Добавьте</a>
+                    </div>
+                    <div>
+                        {{ getRecommended(1,"random", 2, "div")|raw }}
+                    </div>
+                </div>
+                {% endif %}
+                <div class="vip top-border">
+                <div class="title">
+                        Объявления
+                </div>
+                <ul class="advert">
+                <li>
+                    <div class="tdd-img">
+                        <img width="61px" src="{{ asset('uploads/photo/rabota.jpg') }}" alt=""/>
+                    </div>
+                    <div class="tdd-text">
+                        <a href="{{ path("work_page") }}">
+                                    <span>
+                                         Работа
+                                    </span>
+                            
+                        </a>
+
+                        <p>
+                            <a href="{{ path("vacances") }}">Вакансии</a> <a href="{{ path("resumes") }}">Резюме</a>
+                            
+                        </p>
+                    </div>
+                </li>
+                <li>
+                    <div class="tdd-img">
+                        <img width="61px" src="{{ asset('uploads/photo/ned.jpg') }}" alt=""/>
+                    </div>
+                    <div class="tdd-text">
+                        <a href="{{ path("realty_list_all") }}">
+                                    <span>
+                                        Недвижимость
+                                    </span>
+                            
+                        </a>
+
+                        <p>
+                            <a href="{{ path("realy_list", { "cat_id" : "2" }) }}">Квартиры</a> <a href="{{ path("realy_list", { "cat_id" : "3" }) }}">Дома</a>
+                            <a href="{{ path("realy_list", { "cat_id" : "1" }) }}">Комнаты</a> <a href="{{ path("realy_list", { "cat_id" : "4" }) }}">Коммерческая недвижимость</a> <a href="{{ path("realy_list", { "cat_id" : "5" }) }}">Гараж</a>
+                            
+                        </p>
+                    </div>
+                </li>
+                <li>
+                    <div class="tdd-img">
+                        <img width="61px" src="{{ asset('uploads/photo/afisha.gif') }}" alt=""/>
+                    </div>
+                    <div class="tdd-text">
+                        <a href="{{ path("events_all") }}">
+                                    <span>
+                                        Афиша
+                                    </span>
+                            
+                        </a>
+                    </div>
+                </li>
+                <li>
+                    <div class="tdd-img">
+                        <img width="61px" src="{{ asset('uploads/photo/skidki.jpg') }}" alt=""/>
+                    </div>
+                    <div class="tdd-text">
+                        <a href="{{ path("discounts_all") }}">
+                                    <span>
+                                        Скидки
+                                    </span>
+                            
+                        </a>
+                    </div>
+                </li>
+                <li>
+                    <div class="tdd-img">
+                        <img width="61px" src="{{ asset('uploads/photo/tovari.jpg') }}" alt=""/>
+                    </div>
+                    <div class="tdd-text">
+                        <a href="{{ path("goods_all") }}">
+                            <span>
+                                Товары
+                            </span>
+                        </a>
+                    </div>
+                </li>
+            </ul>
+            {{ getbanner(1,"random",2, 352, 200, "" , 3)|raw }}
+            
+            </div>
+            <div class="vip top-border">
+                <div class="title"> Товары </div>
+                <div class="abs-top-right">
+                    <a href="#">Телефоны</a>
+                    |
+                    <a href="#">Шины</a>
+                    |
+                    <a href="#">Все магазины</a>
+                </div>
+                <div>
+                    {{ getRecommended(4,"random", 2, "div_noinfo" , 1 , 1, 1)|raw }}
+                </div>
+                <div>
+                    {{ getRecommended(4,"random", 2, "div_noinfo" , 1 , 1, 1)|raw }}
+                </div>
+                <div>
+                    {{ getRecommended(4,"random", 2, "div_noinfo" , 1 , 1, 1)|raw }}
+                </div>
+            </div>
+            </div>
+            <div class="main-left-right">
+                <div class="vip">
+                    <div class="title">
+                        Недвижимость
+                    </div>
+                    {#<div class="abs-top-right">
+                        <div class="select-list">
+                            <a href="#"><span>Все объявления</span></a>
+                            <ul>
+                                <li><a href="#">Не все объявления</a></li>
+                                <li><a href="#">Не все объявления</a></li>
+                                <li><a href="#">Не все объявления</a></li>
+                                <li><a href="#">Не все объявления</a></li>
+                            </ul>
+                        </div>
+                    </div>#}
+                    <div>
+                        {{ getRecommended(1,"random", 2, "div" , 1 , 1, 1)|raw }}
+                    </div>
+                    <div>
+                        {{ getRecommended(1,"random", 2, "div" , 1 , 1, 1)|raw }}
+                    </div>
+                    {{ getbanner(1,"random",5, 414, 79, 'bn', 2)|raw }}
+                </div>
+
+
+                <div class="vip">
+                    
+                    <div>
+                        {{ getRecommended(4,"random", 2, "div" , 1 , 1, 1)|raw }}
+                    </div>
+                    <div>
+                        {{ getRecommended(4,"random", 2, "div" , 1 , 1, 1)|raw }}
+                    </div>
+
+                </div>
+                    
+                <div class="vip" style="margin-top: 20px">
+                    <div class="title"> Спецпредложения </div>
+                    
+                    <div>
+                        {{ getRecommended(4,"random", 2, "div_opis" , 1 , 1, 1 , 0, 1)|raw }}
+                    </div>
+                    <div>
+                        {{ getRecommended(4,"random", 2, "div_opis" , 1 , 1, 1 , 0, 1)|raw }}
+                    </div>
+                    <div>
+                        {{ getRecommended(4,"random", 2, "div_opis" , 1 , 1, 1 , 0, 1)|raw }}
+                    </div>
+                    <div>
+                        {{ getRecommended(4,"random", 2, "div_opis" , 1 , 1, 1 , 0, 1)|raw }}
+                    </div>
+                    
+                </div>
+                {{ getbanner(1,"random",6, 414, 79, 'bn', 2)|raw }}
+                <div class="vip">
+                    <div class="title">
+                        Скидки
+                    </div>
+                    <div>
+                        {{ getRecommended(6,"random", 2, "div" , 1 , 1, 1)|raw }}
+                    </div>
+                    <div>
+                        {{ getRecommended(6,"random", 2, "div" , 1 , 1, 1)|raw }}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="main-right">
+            <div class="shadow">
+                <img src="{{ asset('uploads/shadow.png') }}" alt=""/>
+            </div>
+            <div class="title">
+                Афиша
+            </div>
+            {{ getRecommended(5,"random", 3, "div" , 1 , 1, 1)|raw }}
+
+            <div class="title">
+                Рекомендуем
+            </div>
+            {{ getRecommended(5,"random", 3, "div" , 1 , 1, 1 , 1)|raw }}
+
+        </div>
+    </div>
+        
+        
+        
+    </div>
+
+{% include 'TorgovorotTorgBundle:Default:bottom.html.twig' %}

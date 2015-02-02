@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Torgovorot\TorgBundle\Entity\AdsResume" table="ads_resume">
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="ownerId" type="integer" column="owner_id" nullable="true"/>
+    <field name="fio" type="string" column="fio" length="255" nullable="true"/>
+    <field name="position" type="string" column="position" length="255" nullable="true"/>
+    <field name="birthDate" type="date" column="birth_date" nullable="true"/>
+    <field name="sex" type="string" column="sex" length="255" nullable="true"/>
+    <field name="family" type="string" column="family" length="255" nullable="true"/>
+    <field name="driver" type="integer" column="driver" nullable="true"/>
+    <field name="children" type="integer" column="children" nullable="true"/>
+    <field name="jobsIds" type="string" column="jobs_ids" length="255" nullable="true"/>
+    <field name="timetable" type="string" column="timetable" length="255" nullable="true"/>
+    <field name="education" type="string" column="education" length="255" nullable="true"/>
+    <field name="startStudy" type="date" column="start_study" nullable="true"/>
+    <field name="endStudy" type="date" column="end_study" nullable="true"/>
+    <field name="isStudy" type="integer" column="is_study" nullable="true"/>
+    <field name="skills" type="text" column="skills" nullable="true"/>
+    <field name="aboutMe" type="text" column="about_me" nullable="true"/>
+    <field name="contacts" type="text" column="contacts" nullable="true"/>
+    <field name="time" type="datetime" column="time" nullable="true"/>
+    <field name="days" type="integer" column="days" nullable="true"/>
+    <field name="experience" type="integer" column="experience" nullable="true"/>
+    <field name="emergency" type="integer" column="emergency" nullable="true"/>
+    <field name="premium" type="integer" column="premium" nullable="true"/>
+    <field name="vip" type="integer" column="vip" nullable="true"/>
+    <field name="views" type="integer" column="views" nullable="true"/>
+    <field name="special" type="integer" column="special" nullable="true"/>
+    <field name="adsState" type="integer" column="ads_state" nullable="true"/>
+    <field name="town" type="string" column="town" length="255" nullable="true"/>
+    <field name="addrId" type="string" column="addr_id" length="60" nullable="true"/>
+  </entity>
+</doctrine-mapping>

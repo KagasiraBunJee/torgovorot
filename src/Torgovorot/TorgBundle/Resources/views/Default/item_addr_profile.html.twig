@@ -1,0 +1,50 @@
+{% include 'TorgovorotTorgBundle:Default:header.html.twig' with { 'title':'Добавить адрес'  } %}
+
+{{ profmenu()|raw }}
+
+{{ form_start(form) }}
+<ul class="form">
+    <li>
+        <label>Город:</label>
+        <div>{{ form_widget( form.city ) }}</div>       
+    </li>
+    <li>
+        <label>Индекс:</label>
+        <div>{{ form_widget( form.indexN ) }}</div>       
+    </li>
+    <li>
+        <label>Улица:</label>
+        <div>{{ form_widget( form.street ) }}</div>       
+    </li>
+    <li>
+        <label>Дом:</label>
+        <div>{{ form_widget( form.house ) }}</div>       
+    </li>
+    <li>
+        <label>Офис:</label>
+        <div>{{ form_widget( form.office ) }}</div>       
+    </li>
+    <li>
+        <label>Номер телефона:</label>
+        <div>{{ form_widget( form.phone ) }}</div>       
+    </li>
+    <li>
+        <label>Факс:</label>
+        <div>{{ form_widget( form.fax ) }}</div>       
+    </li>
+    <li>
+        <label>Название:</label>
+        <div>{{ form_widget( form.name ) }}</div>       
+    </li>
+    <li>
+        <label>Примечания:</label>
+        <div>{{ form_widget( form.hints ) }}</div>       
+    </li>
+    <li>
+        <label></label>
+        {{ form_row( form.save, { 'label': 'Добавить', 'attr' : { 'class' : 'btn' } } ) }}       
+    </li>
+</ul>
+{{ form_rest(form) }}
+</form>
+{% include 'TorgovorotTorgBundle:Default:bottom.html.twig' %}

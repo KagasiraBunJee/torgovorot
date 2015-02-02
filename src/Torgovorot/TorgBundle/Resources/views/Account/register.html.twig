@@ -1,0 +1,68 @@
+{% include 'TorgovorotTorgBundle:Default:header.html.twig' with { "index":"register" } %}
+
+    <div class="main">
+        <div class="content-left">
+            <div class="path">
+                <a href="#" class="home"></a>
+                <a href="{{ path("account_register") }}">Регистрация</a> >
+            </div>
+
+            <h1>Регистрация нового пользователя</h1>
+
+{{ form_start(form) }}
+                <ul class="form">
+                    <li>
+                        <label>
+                            Email-адрес <i>*</i>
+                        </label>
+
+                        <div>
+                            {{ form_widget(form.email) }}
+                            <em>Введите ваш email-адрес</em>
+                        </div>
+                    </li>
+                    <li>
+                        <label>
+                            Пароль <i>*</i>
+                        </label>
+                        <div>
+                            <style>
+                                input[type="email"]{
+                                    background: none repeat scroll 0 0 #FFFFFF;
+                                    border: 1px solid #D2D2D2;
+                                    border-radius: 5px;
+                                    box-shadow: 1px 1px 5px #999999 inset;
+                                    font-size: 14px;
+                                    margin-bottom: 5px;
+                                    padding: 9px 13px;
+                                    resize: none;
+                                    width: 355px;
+                                }
+                            </style>
+                            {{ form_widget(form.password) }}
+                            <em>Введите свой пароль</em>
+                        </div>
+                    </li>
+                    <li>
+                        <label>&nbsp;</label>
+                        <div class="f12">
+                            <input type="checkbox"/> * Я принимаю <a href="">пользовательское соглашение</a>
+                        </div>
+                    </li>
+                    <li>
+                        <label>
+                            &nbsp;
+                        </label>
+                        {{ form_widget(form.save , {'attr': {'class': 'btn'}, "label" : "Отправить"}) }}
+
+                    </li>
+
+                </ul>
+            {{ form_end(form) }}
+        </div>
+        <div class="content-right">
+
+        </div>
+    </div>            
+
+{% include 'TorgovorotTorgBundle:Default:bottom.html.twig' %}

@@ -1,0 +1,535 @@
+{#
+variables:
+-----------------------------------
+cat - object of current category
+Examples:
+cat.name = name of current category
+-----------------------------------
+item - array of entities items
+{
+    look at entities how to use parameters like "name", "id" and etc
+}
+use it in loop
+parameters:
+#}
+
+{% if type == 3 %}
+        {% set reroute = 'resumes_cat' %}
+        {% set rroute = 'resume' %}
+        {% set menu_button = 'work' %}
+        {% set title = 'Работа' %}
+        {% set work_id = "3" %}
+        {% set page_name = "Резюме" %}
+        {% set html_tag = "ul" %}
+        {% set html_class = "tdd-list" %}
+        {% set html_list = "horizont" %}
+        {% set photo_dir = "preview" %}
+        {% if app.request.get('list') == "grid" %}
+            {% set html_list = "tile" %}
+            {% set photo_dir = "item_image" %}
+        {% endif %}
+        {% set main_reroute = 'resumes' %}
+{%    elseif type == 2  %}
+        {% set reroute = 'vacances_cat' %}
+        {% set rroute = 'vacance' %}
+        {% set menu_button = 'work' %}
+        {% set title = 'Работа' %}
+        {% set work_id = "2" %}
+        {% set page_name = "Вакансии" %}
+        {% set html_tag = "ul" %}
+        {% set html_class = "tdd-list" %}
+        {% set html_list = "horizont" %}
+        {% set photo_dir = "preview" %}
+        {% if app.request.get('list') == "grid" %}
+            {% set html_list = "tile" %}
+            {% set photo_dir = "item_image" %}
+        {% endif %}
+        {% set main_reroute = 'vacances' %}
+{%    elseif type == 1  %}
+        {% set reroute = 'realy_list' %}
+        {% set rroute = 'object' %}
+        {% set menu_button = 'realty' %}
+        {% set title = 'Недвижимость' %}
+        {% set page_name = "Недвижимость" %}
+        {% set html_tag = "ul" %}
+        {% set html_class = "tdd-list" %}
+        {% set html_list = "horizont" %}
+        {% set photo_dir = "preview" %}
+        {% if app.request.get('list') == "grid" %}
+            {% set html_list = "tile" %}
+            {% set photo_dir = "item_image" %}
+        {% endif %}
+        {% set main_reroute = 'realty_list_all' %}
+{%    elseif type == 4  %}
+        {% set reroute = 'goods_cats' %}
+        {% set rroute = 'good' %}
+        {% set title = 'Товары' %}
+        {% set menu_button = 'goods' %}
+        {% set page_name = "Товары" %}
+        {% set html_tag = "ul" %}
+        {% set html_class = "tdd-list" %}
+        {% set html_list = "horizont" %}
+        {% set photo_dir = "preview" %}
+        {% if app.request.get('list') == "grid" %}
+            {% set html_list = "tile" %}
+            {% set photo_dir = "item_image" %}
+        {% endif %}
+        {% set main_reroute = 'goods_all' %}
+{%    elseif type == 5  %}
+        {% set reroute = 'events_cats' %}
+        {% set rroute = 'event' %}
+        {% set title = 'События' %}
+        {% set page_name = "События" %}
+        {% set menu_button = 'events' %}
+        {% set html_tag = "ul" %}
+        {% set html_class = "tdd-list" %}
+        {% set html_list = "horizont" %}
+        {% set photo_dir = "portrait_image" %}
+        {% if app.request.get('list') == "grid" %}
+            {% set html_list = "tile" %}
+            {% set photo_dir = "portrait_image" %}
+        {% endif %}
+        {% set main_reroute = 'events_all' %}
+{%    elseif type == 6  %}
+        {% set reroute = 'profile_all' %}
+        {% set rroute = 'profile_one' %}
+        {% set title = 'Компании' %}
+        {% set page_name = "Компании" %}
+        {% set menu_button = '' %}
+        {% set html_tag = "ul" %}
+        {% set html_class = "tdd-list" %}
+        {% set html_list = "horizont" %}
+        {% set photo_dir = "preview" %}
+        {% if app.request.get('list') == "grid" %}
+            {% set html_list = "tile" %}
+            {% set photo_dir = "item_image" %}
+        {% endif %}
+{%    elseif type == 7  %}
+        {% set reroute = 'discounts_all' %}
+        {% set rroute = 'discount' %}
+        {% set menu_button = 'discounts' %}
+        {% set title = 'Скидки' %}
+        {% set page_name = "Скидки" %}
+        {% set html_tag = "ul" %}
+        {% set html_class = "tdd-list" %}
+        {% set html_list = "horizont" %}
+        {% set photo_dir = "preview" %}
+        {% if app.request.get('list') == "grid" %}
+            {% set html_list = "tile" %}
+            {% set photo_dir = "item_image" %}
+        {% endif %}
+        {% set main_reroute = 'discounts_all' %}
+{%    elseif type == 8  %}
+        {% set reroute = 'realy_list' %}
+        {% set rroute = 'car' %}
+        {% set menu_button = 'car' %}
+        {% set title = 'Авто' %}
+        {% set page_name = "Авто" %}
+        {% set html_tag = "ul" %}
+        {% set html_class = "tdd-list" %}
+        {% set html_list = "horizont" %}
+        {% set photo_dir = "preview" %}
+        {% if app.request.get('list') == "grid" %}
+            {% set html_list = "tile" %}
+            {% set photo_dir = "item_image" %}
+        {% endif %}
+        {% set main_reroute = 'cars_all' %}
+{%    endif %}
+{%    if atype is not defined  %}
+    {% set atype = 0 %}
+{%    endif %}
+
+{% include 'TorgovorotTorgBundle:Default:header.html.twig' with { 'index':rroute, 'menu':menu_button , 'title':title }  %}
+{#
+end of defines 
+#}
+{# //old functions
+<h1>
+{% if type == 3 %}
+    Список резюме из категории: <font color="red">{{ cat.name }}</font>
+    
+   {% elseif type == 2 %}
+    Список вакансий из категории: <font color="red">{{ cat.name }}</font>
+    
+   {% endif %}
+</h1>
+    <br>
+    {% if all_cats is defined %}
+    Категории: <br>
+    
+        {% for value in all_cats %}
+        
+            <a style="margin-right: 10px;" href="{{ path(reroute, {cat_id:value.id}) }}"> {{ value.name }}({{ value.count }}) </a>
+    
+        {% endfor %}
+    {% endif %}
+    <br>
+    #}
+    <div class="main {% if rroute != "profile_one" %}withSearch  {% endif %}">
+        <div class="path">
+            <a href="{{ path('torgovorot_torg_homepage') }}" class="home"></a>
+            <a href="{{ path("work_page") }}">Работа</a> >
+            {% if catid is defined %}
+                <a href="{{ path(main_reroute) }}">{{ page_name }}</a> >
+                <span>{{ currentCat(catid).name }}</span>
+            {% else %}
+                <span>{{ page_name }}</span>
+            {% endif %}
+        </div>
+
+        <h1>
+            
+            {{ title }} <em>{{ count }} объявлений</em>
+            
+            <a href="{{ path('page', { 'name':'top-ads' }) }}" class="red-small">
+                <span>Как попасть в топ?</span>
+            </a>
+
+
+            <a href="#" class="bookmark"></a>
+        </h1>
+
+        <div class="tdd-left">
+            {% if title == "Работа" %}
+            <div class="vacancies">
+                    <ul>
+                        {{ cats(work_id,6)|raw }}
+                        
+                    </ul>                
+                    <br><br><br><a onclick="return getAllCatsByKatalog({{work_id}}, this);" href="#">Показать все</a>
+            </div>
+            {% endif %}
+           
+            <div class="toolbox">
+                
+                <input value="{{ url(app.request.attributes.get('_route'), app.request.query.all|merge({'trade_type': '0','cat_id':catid})) }}" {% if atype < 1 or atype > 2  %} checked=""  {% endif %} type="checkbox"/> <label>Все</label>
+                {% if type == 1 %}
+                    <input value="{{ url(app.request.attributes.get('_route'), app.request.query.all|merge({'trade_type': '1', 'cat_id':catid})) }}" {% if atype == 1 %} checked=""  {% endif %} type="checkbox"/> <label>Продажа</label>
+                    <input value="{{ url(app.request.attributes.get('_route'), app.request.query.all|merge({'trade_type': '2', 'cat_id':catid})) }}" {% if atype == 2 %} checked=""  {% endif %}type="checkbox"/> <label>Куплю</label>
+                {% endif %}
+                <div class="sort">
+                    
+                    <select name="time">
+                        <option {% if app.request.get('time') == "DESC" %} selected {% endif %} value="{{ url(app.request.attributes.get('_route'), app.request.query.all|merge({'time': 'DESC', 'cat_id':catid})) }}">Самые новые</option>
+                        <option {% if app.request.get('time') == "ASC" %} selected {% endif %} value="{{ url(app.request.attributes.get('_route'), app.request.query.all|merge({'time': 'ASC', 'cat_id':catid})) }}">Не Самые новые</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="view">
+                <span>
+                    Топ-объявления
+                </span>
+                <a href="#">Посмотреть все</a>
+
+                <div>
+                    Вид:
+                    <a href="{{ url(app.request.attributes.get('_route'), app.request.query.all|merge({'list': 'line', 'cat_id':catid})) }}" class="view-list {% if app.request.get('list') != "grid" %}active{% endif %}"></a>
+                    <a href="{{ url(app.request.attributes.get('_route'), app.request.query.all|merge({'list': 'grid', 'cat_id':catid})) }}" class="view-tile {% if app.request.get('list') == "grid" %}active{% endif %}"></a>
+                </div>
+            </div>
+
+            <{{ html_tag }} class="{{ html_class }} {{ html_list }}">
+                {% if items is empty %}
+                    По данному запросу ничего не найдено
+                {% else  %}
+   
+   
+                {% for value in items %}
+                    {% if type == 3 %}
+                        
+                    <li class="{% if value.vip == 1%}tdd-top{% endif %}">
+                        <div class="img fewImg">
+                            {% for i in 0..getPCount(value.ownerId)%}
+                                    <div></div>
+                            {% endfor %}
+                            {% if getUserPhoto(value.ownerId,'jpg') != "none" %}
+                                <img src="{{ asset('uploads/photo/'~photo_dir~'/'~getUserPhoto(value.ownerId,'jpg')) }}" alt=""/>
+                            {% else %}
+                                <img src="{{ asset('uploads/nophoto.png') }}" alt=""/>
+                            {% endif %}
+                        </div>
+                        <div class="tdd-center">
+                            <a href="{{ path(rroute, {'id':value.id}) }}"><span>{{value.fio}}</span></a>
+
+                            <p>
+                                Желаемая должность {{ value.position }}
+                            </p>
+
+                            <p class="tdd-date">
+                                Резюме № {{value.id}}, добавлена {{ value.time|date('Y-m-d H:i') }}, {{ value.views }} просмотр
+                            </p>
+                        </div>
+
+                    </li>
+                    {% elseif type == 2 %}    
+                        {% if value.updated == "" %}
+                            {% set updated = value.time|date('Y-m-d H:i') %}
+                        {% else %}
+                            {% set updated = value.updated|date('Y-m-d H:i') %}
+                        {% endif %}                
+                        
+                    <li class="{% if value.vip == 1%}tdd-top{% endif %}">
+                        <div class="img fewImg">
+                            {% for i in 0..getPCount(value.ownerId)%}
+                                    <div></div>
+                            {% endfor %}
+                            {% if getUserPhoto(value.ownerId,'jpg') != "none" %}
+                                <img src="{{ asset('uploads/photo/'~photo_dir~'/'~getUserPhoto(value.ownerId,'jpg')) }}" alt=""/>
+                            {% else %}
+                                <img src="{{ asset('uploads/nophoto.png') }}" alt=""/>
+                            {% endif %}
+                        </div>
+                        <div class="tdd-center">
+                            <a href="{{ path(rroute, {'id':value.id}) }}"><span>{{value.title}}</span></a>
+
+                            <p>
+                                {{ value.shortDesc }}
+                            </p>
+
+                            {#<p class="tdd-date">
+                                Вакансия № {{value.id}}, добавлена {{ value.time|date('Y-m-d H:i') }}, обновлена {{ updated }}, {{ value.views }} просмотр
+                            </p>#}
+                        </div>
+                        <div class="tdd-price">
+                            {% if value.moneyFrom != value.moneyTo and value.moneyTo != 0 %}
+                                Оплата<br> от {{ price_temp(value.moneyFrom) }} до {{ price_temp(value.moneyTo) }} руб. {#<a title="{{value.title}}" href="{{ path(rroute, {'id':value.id}) }}" rel="sidebar"></a>#}
+                            {% elseif (value.moneyFrom != value.moneyTo and value.moneyTo == 0) or (value.moneyFrom == value.moneyTo) %}
+                                Оплата<br> от {{ price_temp(value.moneyFrom) }} руб.
+                            {% endif %}
+                        </div>
+
+                    </li>
+                    {% elseif type == 1 %}
+                        {% if value.updated == "" %}
+                            {% set updated = value.time|date('Y-m-d H:i') %}
+                        {% else %}
+                            {% set updated = value.updated|date('Y-m-d H:i') %}
+                        {% endif %}  
+                        <li class="{% if value.vip == 1%}tdd-top{% endif %}">
+                            <div class="img fewImg">
+                                {% for i in 0..getPCount(value.photoIds)%}
+                                    <div></div>
+                                {% endfor %}
+                                {% if value.getPhotoUrl() != "" %}
+                                    <img src="{{ asset('uploads/photo/'~photo_dir~'/'~getPhoto(value.photoIds, 0, 'jpg')) }}" alt=""/>
+                                {% else %}
+                                    <img src="{{ asset('uploads/nophoto.png') }}" alt=""/>
+                                {% endif %}
+                            </div>
+                            <div class="tdd-center">
+                                <a href="{{ path(rroute, {'id':value.id}) }}">{% if value.emergency == 1%}<em>Срочно</em>{% endif %} <span>{{value.title}}</span></a>
+
+                                <p>
+                                    {{value.description}}
+                                </p>
+
+                                <p class="tdd-date">
+                                    {{ value.time|date('Y-m-d H:i') }}
+                                </p>
+                            </div>
+
+                            <div class="tdd-price">
+                                {{price_temp(value.price)}} р. <a title="{{value.title}}" href="{{ path(rroute, {'id':value.id}) }}" rel="sidebar"></a>
+                            </div>
+                        </li>
+                    {% elseif type == 4 %}
+                        
+                        <li class="{% if value.vip == 1%}tdd-top{% endif %}">
+                            <div class="img fewImg">
+                                {% for i in 0..getPCount(value.photoIds)%}
+                                    <div></div>
+                                {% endfor %}
+                                {% if getPhoto(value.photoIds , 0, 'jpg') != "none" %}
+                                    <img src="{{ asset('uploads/photo/'~photo_dir~'/'~getPhoto(value.photoIds , 0, 'jpg')) }}" alt=""/>
+                                {% else %}
+                                    <img src="{{ asset('uploads/nophoto.png') }}" alt=""/>
+                                {% endif %}
+                            </div>
+                            <div class="tdd-center">
+                                <a href="{{ path(rroute, {'id':value.id}) }}">{% if value.emergency == 1 %}<em>Срочно</em> {% endif %} <span>{{value.title}}</span></a>
+
+                                <p>
+                                    {{value.shortDesc|raw}}
+                                </p>
+
+                                <p class="tdd-date">
+                                    {{ value.time|date('Y-m-d H:i') }}
+                                </p>
+                            </div>
+
+                            <div class="tdd-price">
+                                {{price_temp(value.price)}} р. <a title="{{value.title}}" href="{{ path(rroute, {'id':value.id}) }}" rel="sidebar"></a>
+                            </div>
+                        </li>
+                    {% elseif type == 5 %}
+                        
+                        <li class="{% if value.vip == 1%}tdd-top{% endif %}">
+                            <div class="img fewImg">
+                                {% for i in 0..getPCount(value.photoIds)%}
+                                    <div></div>
+                                {% endfor %}
+                                {% if getPhoto(value.photoIds) != "none" %}
+                                    <img src="{{ asset('uploads/photo/'~photo_dir~'/'~getPhoto(value.photoIds, 0 , 'jpg')) }}" alt=""/>
+                                {% else %}
+                                    <img src="{{ asset('uploads/nophoto.png') }}" alt=""/>
+                                {% endif %}
+                            </div>
+                            <div class="tdd-center">
+                                <a href="{{ path(rroute, {'id':value.id}) }}">{% if value.emergency == 1 %}<em>Срочно</em> {% endif %} <span>{{value.title}}</span></a>
+
+                                <p>
+                                    {{value.shortDescr|raw}}
+                                </p>
+
+                                <p class="tdd-date">
+                                   Начало {{ value.eventTime|date('Y-m-d') }}
+                                </p>
+                            </div>
+                            <div class="tdd-price">
+                                
+                            </div>
+                        </li>
+                    {% elseif type == 6 %}
+                        
+                        <li class="{% if value.vip == 1%}tdd-top{% endif %}">
+                            <div class="img fewImg">
+                                {% for i in 0..getPCount(value.photo)%}
+                                    <div></div>
+                                {% endfor %}
+                                {% if getPhoto(value.photo) != "none" %}
+                                    <img src="{{ asset('uploads/photo/'~photo_dir~'/'~getPhoto(value.photo, 0, 'jpg')) }}" alt=""/>
+                                {% else %}
+                                    <img src="{{ asset('uploads/nophoto.png') }}" alt=""/>
+                                {% endif %}
+                            </div>
+                            <div class="tdd-center">
+                                <a href="{{ path(rroute, {'id':value.id}) }}"><span>{{value.companyName}}</span></a>
+
+                                <p class="tdd-date">
+                                   Зарегистрирован {{ value.registerTime|date('Y-m-d H:i') }}
+                                </p>
+                            </div>
+                            <div class="tdd-price">
+                                <a title="{{value.title}}" href="{{ path(rroute, {'id':value.id}) }}" rel="sidebar"></a>
+                            </div>
+                        </li>
+                        
+                    {% elseif type == 7 %}
+                        
+                        <li class="{% if value.vip == 1%}tdd-top{% endif %}">
+                            <div class="img fewImg">
+                                {% for i in 0..getPCount(value.photoIds)%}
+                                    <div></div>
+                                {% endfor %}
+                                {% if getPhoto(value.photoIds , 0, 'jpg') != "none" %}
+                                    <img src="{{ asset('uploads/photo/'~photo_dir~'/'~getPhoto(value.photoIds , 0, 'jpg')) }}" alt=""/>
+                                {% else %}
+                                    <img src="{{ asset('uploads/nophoto.png') }}" alt=""/>
+                                {% endif %}
+                            </div>
+                            <div class="tdd-center">
+                                <a href="{{ path(rroute, {'id':value.id}) }}">{% if value.emergency == 1 %}<em>Срочно</em> {% endif %} <span>{{value.title}}</span></a>
+
+                                <p>
+                                    {{ value.shortDesc|raw }}
+                                </p>
+
+                                <p class="tdd-date">
+                                    Скидка № {{value.id}}, добавлена {{ value.Time|date('Y-m-d') }}
+                                </p>
+                            </div>
+                        </li>
+                    {% elseif type == 8 %}
+                        {% if value.updated == "" %}
+                            {% set updated = value.time|date('Y-m-d H:i') %}
+                        {% else %}
+                            {% set updated = value.updated|date('Y-m-d H:i') %}
+                        {% endif %}  
+                        <li class="{% if value.vip == 1%}tdd-top{% endif %}">
+                            <div class="img fewImg">
+                                {% for i in 0..getPCount(value.photoIds)%}
+                                    <div></div>
+                                {% endfor %}
+                                {% if getPhoto(value.photoIds) != "none" %}
+                                    <img src="{{ asset('uploads/photo/'~photo_dir~'/'~getPhoto(value.photoIds, 0, 'jpg')) }}" alt=""/>
+                                {% else %}
+                                    <img src="{{ asset('uploads/nophoto.png') }}" alt=""/>
+                                {% endif %}
+                            </div>
+                            <div class="tdd-center">
+                                <a href="{{ path(rroute, {'id':value.id}) }}">{% if value.emergency == 1%}<em>Срочно</em>{% endif %} <span>{{value.title}}</span></a>
+
+                                <p>
+                                    {{value.description|raw}}
+                                </p>
+
+                                <p class="tdd-date">
+                                    {{ value.time|date('Y-m-d H:i') }}
+                                </p>
+                            </div>
+
+                            <div class="tdd-price">
+                                {{price_temp(value.price)}} р. <a title="{{value.title}}" href="{{ path(rroute, {'id':value.id}) }}" rel="sidebar"></a>
+                            </div>
+                        </li>    
+                        
+                        
+                    {% endif %}
+         
+                {% endfor %}
+   
+  
+            {% endif %}
+        </{{ html_tag }}>
+        
+            <div class="pagination">
+              {% if paginator.numpages > 1 %}
+                {% if paginator.numpages > 1 and paginator.currentpage != paginator.numpages %}
+                    <div class="pagination-top">
+                        <a href="{{ path(reroute, { 'page': paginator.currentpage+1, cat_id:catid, 'onpage' : onpage}) }}">Следующая &raquo;</a>
+
+                        {#<div>
+                            Перейти на старинцу <input type="text" value="1"/>
+                        </div>#}
+                    </div>
+                {% endif %}
+                <div class="pagination-links">
+
+                    {% for i in 1..paginator.numpages%}
+                        {% if paginator.range.0 > 2 and i == paginator.range.0 %}
+                            ...
+                        {% endif %}
+
+                        {% if(i==1 or i==paginator.numpages or i in paginator.range) %}
+                
+                            <a {% if i==paginator.currentpage %}class="active"{% endif %} href="{{ path(reroute, { 'page': i, cat_id:catid ,'onpage' : onpage } ) }}"> {{i}}</a>
+
+                        {% endif %}
+
+                        {% if paginator.range[paginator.midrange -1] < paginator.numpages -1 and i == paginator.range[paginator.midrange-1] %}
+                            ...
+                        {% endif %}
+                    {% endfor %}
+                </div>
+              {% endif %}
+            </div>
+
+            <div class="gray-block">
+                <div class="title">
+                    {{ page_name }}
+                </div>
+                <p>
+                    «Торговорот.ру» представляет собой уникальное сочетание бесплатных объявлений и товаровуслуг от мини
+                    Интернет-магазинов (витрин) Рыбинска с множеством дополнительных сервисов. Именно здесь Вы найдете
+                    информацию о скидках, ациях и распродажах Рыбинска. Сможете получить персональную скидку, просто
+                    распечатав купон с сайта. Погружаясь в "Торговорот" Вы всегда будете в курсе специальных предложений
+                    о товарах и услугах нашего города.
+                </p>
+            </div>
+        </div>
+        <div class="tdd-right">
+            {{ getbanner(1,"random",4, 239, 400, "", 4)|raw }}
+        </div>
+    
+    {% include 'TorgovorotTorgBundle:Default:bottom.html.twig' %}

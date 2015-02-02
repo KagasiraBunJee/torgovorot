@@ -1,0 +1,29 @@
+{% include 'TorgovorotTorgBundle:Admin:admin_header.html.twig' %}
+
+{{ form_start(form) }}
+<div style="width:900px;">
+{% for key,value in chs %}
+    <div style="float:left">
+    <h3>{{ key }}</h3>
+    <ul>
+        {% for item in value %}
+            <li><input name="chid[]" {% if item.id in checked %} checked="" {% endif %} type="checkbox" value="{{ item.getId() }}">{{ item.getName() }}</li>
+        {% endfor %}
+    </ul>
+    </div>
+{% endfor %}
+
+</div>
+<div style="clear:both;"></div>
+{{ form_rest(form) }}
+
+{{ form_end(form) }}
+
+<script>
+    $(function(){
+        $("input[type=file]").attr("name", "form[photo][]");
+        $("input[type=file]").after("<br><input type=\"button\" class=\"add_image\" value=\"Добавить еще\">");
+    });
+</script>
+
+{% include 'TorgovorotTorgBundle:Admin:admin_bottom.html.twig' %}

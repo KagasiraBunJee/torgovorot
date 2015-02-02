@@ -1,0 +1,174 @@
+{% include 'TorgovorotTorgBundle:Default:header.html.twig' with { 'index' : 'object','title': item.title } %}
+
+{% if item.updated == "" %}
+    {% set updated = item.time|date('Y-m-d H:i') %}
+{% else %}
+    {% set updated = item.updated|date('Y-m-d H:i') %}
+{% endif %}
+    {#<script>
+            
+    var coords = "{{ getMapCoords(""~address.city) }}";
+    
+    var coord = coords.split(" ");
+    
+    ymaps.ready(init);
+        var myMap;
+
+        function init(){
+            myMap = new ymaps.Map ("mapSmall", {
+                center: [coord[1], coord[0]],
+                zoom: 7
+            });
+        }
+    </script>#}
+{#
+variables
+current_id - realty id
+adsId - realty type id
+======================
+Objects
+item - main realy object
+character - characteristics
+address - adress
+user - user vars
+#}
+    <div class="main withSearch">
+
+        <div class="path">
+            <a href="{{ path('torgovorot_torg_homepage') }}" class="home"></a>
+            <a href="{{ path('cars_all') }}">Автомобили</a> >
+            <span>{{ item.title }}</span>
+        </div>
+       
+<h1> {{ item.title }} </h1>
+<div class="vacancy-dateils">
+    <span> Автомобиль № {{ item.id }}, добавлен {{ item.time|date('Y-m-d H:i') }}, {% if updated != item.time|date('Y-m-d H:i') %}обновлен {{ updated }},{% endif %} {{ item.views }} просмотр</span>
+            <a href="#" class="bookmark"></a>
+</div>
+<div class="vacancy-links">
+            {#<a href="#" class="vsave"><em>Сохранить в файл</em></a>#}
+            <a href="#" data-val="{{ path("car", {id:item.id}) }}" class="vlink"><em>Ссылка</em></a>
+            <a href="#" onclick="return setComplaints('{{ path("user_send_complaints", {item_id:item.id, ads_type:'8'} ) }}');" class="vcomplant"><em>Пожаловаться</em></a>
+
+            <a href="#" class="print"></a>
+</div>
+<div>
+            <div class="main-half">
+                <div class="photos">
+                    <div>
+                        {% if item.photoIds is not empty %}
+                                    <img class="zoom" src="{{ asset('uploads/photo/item_image/'~getPhoto(item.photoIds, 0,  'jpg')) }}"/>
+                        {% else %}
+                                    <img src="{{ asset('uploads/nophoto.png') }}"/>
+                        {% endif %}
+                        
+                    </div>
+
+                    <div>
+                        {% if item.photoIds is not empty %}
+                            {% for key,image in getPhoto(item.photoIds, 100, 'none') %}
+                                {% if image is not null  %}
+                                    {% if image|slice(-4) == "jpeg" %}
+                                        <img key="{{ key }}" class="gallery_box {% if key == 0 %}active{% endif %}" alt="" data-zoom-image="{{ asset('uploads/photo/'~image) }}" src="{{ asset('uploads/photo/item_image/'~image|slice(0, -4)~'jpg') }}"/>
+                                    {% else %}
+                                        <img key="{{ key }}" class="gallery_box {% if key == 0 %}active{% endif %}" alt="" data-zoom-image="{{ asset('uploads/photo/'~image) }}" src="{{ asset('uploads/photo/item_image/'~image|slice(0, -4)~'jpg') }}"/>
+                                    {% endif %}
+                                    
+                                {% else %}
+                                    <img src="{{ asset('uploads/nophoto.png') }}"/>
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                            <div class="gallery_light">
+                            {% for key,image in getPhoto(item.photoIds, 100, 'none') %}
+                                {% if image is not null  %}
+                                    {% if image|slice(-4) == "jpeg" %}
+                                        <a key="{{ key }}" data-lightbox="roadtrip" style="display: none;" href="{{ asset('uploads/photo/item_image/'~image|slice(0, -4)~'jpg') }}"><img alt="" src="{{ asset('uploads/photo/item_image/'~image|slice(0, -4)~'jpg') }}"/></a>
+                                    {% else %}
+                                        <a key="{{ key }}" data-lightbox="roadtrip" style="display: none;" href="{{ asset('uploads/photo/item_image/'~image|slice(0, -4)~'jpg') }}"><img alt="" src="{{ asset('uploads/photo/item_image/'~image|slice(0, -4)~'jpg') }}"/></a>
+                                    {% endif %}
+                                    
+                                {% else %}
+                                    <img src="{{ asset('uploads/nophoto.png') }}"/>
+                                {% endif %}
+                            {% endfor %}
+                            </div>
+                </div>
+                {% if getPhoto(item.photoIds, 100, 'jpg')|length > 0 %}<a class="all-photo" href="#">просмотреть все {{ getPhoto(item.photoIds, 100, 'jpg')|length }} фото</a>{% endif %}
+                <div {% if getPhoto(item.photoIds, 100, 'jpg')|length < 1 %}style="margin-top: 10px;"{% endif %} class="mapSmall" id="mapSmall"></div>
+                {# <a href="#" class="all-photo">просмотреть все 20 фото</a> 
+
+                <div class="mapSmall" id="mapSmall"></div>#}
+            </div>
+            <div class="main-half">
+                <ul class="options">
+                    <li class="ppp">
+                        <label>
+                            Стоимость:
+                        </label>
+
+                        <div>
+                            {{ price_temp(item.price) }} руб.
+                        </div>
+                    </li>
+                                 {% if getAddr(user.addrId, "all")|length > 0 %}
+                                    {% for key, address in getAddr(user.addrId, "all") %}
+                                        <li>
+						<em>
+							{{ address.city }}, индекс {{ address.indexN }} , ул. {{ address.street }}, д. {{ address.house }}, офис {{ address.office }}
+						</em>
+					</li>
+                                     {% endfor %}
+                                 {% endif %}
+                </ul>
+                                        <p>
+                                            <b>Комплектация</b>
+                                            
+					</p>
+                                        <p>
+                                            
+                                            {% for comf in comfort %}
+                                            
+                                                {{comf.name}}<br>
+                                                
+                                            {% endfor %}
+                                            
+                                        </p>
+                <p>
+                    <b>Опиcание</b>
+                </p>
+
+                <p>
+                    {{ item.description }}
+                </p>
+
+
+                <div class="soyellow">
+                    {% if user.fio != "" %}
+                    <div>
+                        <span class="bpeople">Продавец:</span> <b>{{ user.fio }}</b>
+                    </div>
+                    {% endif %}
+                    {% if user.mobile != "" %}
+                    <div>
+                        <span class="bphone">Телефон:</span> <b class="get_prof_number">+7 (XXX) XXX-XX-XX</b>&nbsp;&nbsp;&nbsp;<a onclick="getPhone('{{path('get_number')}}', {{ user.id }}, this);return false;" href="">Показать телефон</a>
+                    </div>
+                    {% endif %}
+                    {% if user.email != "" %}
+                    <div>
+                        <span class="bmail">Почта:</span> <b><a onclick="return false;" class="get_prof_email" href="">xxxxx@xxxx.xxx</a></b>&nbsp;&nbsp;&nbsp;<a onclick="getEmail('{{path('get_email')}}', {{item.ownerId}}, this);return false;" href="">Показать email</a>
+                    </div>
+                    {% endif %}
+                </div>
+
+                {# <a href="#" class="afgd">Все объявления этого продавца</a> #}
+            </div>
+            <script>
+                $(document).ready(function(){
+                    $(".photos div:nth-child(2) img:first-child").click(); 
+                });
+            </script>
+        </div>
+    </div>
+{% include 'TorgovorotTorgBundle:Default:bottom.html.twig' %}

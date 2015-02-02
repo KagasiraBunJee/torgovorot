@@ -1,0 +1,111 @@
+<?php
+
+namespace Torgovorot\TorgBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Complaints
+ */
+class Complaints
+{
+    /**
+     * @var integer
+     */
+    private $itemId;
+
+    /**
+     * @var integer
+     */
+    private $adsType;
+
+    /**
+     * @var \DateTime
+     */
+    private $time;
+
+    /**
+     * @var integer
+     */
+    private $id;
+
+
+    /**
+     * Set itemId
+     *
+     * @param integer $itemId
+     * @return Complaints
+     */
+    public function setItemId($itemId)
+    {
+        $this->itemId = $itemId;
+
+        return $this;
+    }
+
+    /**
+     * Get itemId
+     *
+     * @return integer 
+     */
+    public function getItemId()
+    {
+        return $this->itemId;
+    }
+
+    /**
+     * Set adsType
+     *
+     * @param integer $adsType
+     * @return Complaints
+     */
+    public function setAdsType($adsType)
+    {
+        $this->adsType = $adsType;
+
+        return $this;
+    }
+
+    /**
+     * Get adsType
+     *
+     * @return integer 
+     */
+    public function getAdsType()
+    {
+        return $this->adsType;
+    }
+
+    /**
+     * Set time
+     *
+     * @param \DateTime $time
+     * @return Complaints
+     */
+    public function setTime($time)
+    {
+        $this->time = $time;
+
+        return $this;
+    }
+
+    /**
+     * Get time
+     *
+     * @return \DateTime 
+     */
+    public function getTime()
+    {
+        return $this->time;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+}

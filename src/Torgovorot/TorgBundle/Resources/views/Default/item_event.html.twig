@@ -1,0 +1,115 @@
+{% include 'TorgovorotTorgBundle:Default:header.html.twig' with { 'title':item.title , 'menu':'events', 'title': item.title }%}
+
+<div class="main">
+
+    
+            {{ getbanner(1,"random",0, 960, 60,"",1)|raw }}
+    
+    
+    <div style="margin-top: 20px;" class="path">
+            <a href="#" class="home"></a>
+            <a href="{{ path("work_page") }}">Работа</a> >
+            <a href="{{ path("events_all") }}">Афиша</a> >
+            <span>{{ item.title }}</span>
+    </div>
+    <h1>{{ item.title }}</h1>
+    {#<div class="vacancy-dateils">
+            <span>Событие № {{ item.id }}, время {{ item.eventTime|date('Y-m-d H:i') }}</span>
+            <a href="#" class="bookmark"></a>
+    </div>#}
+    
+    <div class="vacancy-links">
+            {#<a href="#" class="vsave"><em>Сохранить в файл</em></a>#}
+            <a href="#" data-val="{{ path("event", {id:item.id}) }}" class="vlink"><em>Ссылка</em></a>
+            <a href="#" onclick="return setComplaints('{{ path("user_send_complaints", {item_id:item.id, ads_type:'5'} ) }}');" class="vcomplant"><em>Пожаловаться</em></a>
+
+            <a href="#" class="print"></a>
+    </div>
+    <div class="tdd-left ads">
+        <div class="gray">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>
+                            Время проведения
+                        </th>
+                        <th>
+                            Город
+                        </th>
+                        <th>
+                            Возрастной ценз
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>
+                            Начало: {{ item.eventTime|date('Y-m-d') }} <br> окончание: {{ item.endEvent|date('Y-m-d') }}
+                        </td>
+                        <td>
+                            {{ getAddr(item.addrId).city }}
+                        </td>
+                        <td>
+                            {{ item.ageRestrict }}+
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+        </div>
+        <p style="margin: 0 0 50px;">
+            {% if getPhoto(item.photoIds) != "none" %}
+                <img width="" height="" class="logo-company" src="{{ asset('uploads/photo/portrait_image/'~getPhoto(item.photoIds, 0, 'jpg')) }}" alt=""/>
+            {% else %}
+                <img width="134px" height="51px" class="logo-company" src="{{ asset('uploads/nophoto.png') }}" alt=""/>
+            {% endif %}
+            {{ item.description|raw }}
+        </p>
+        <div style="clear: both;" class="gray">
+                <b>{{ user.fio }}</b>
+                
+                <p>
+                    {{ user.companyName }}
+                </p>
+                
+                {% if user.mobile != "" %}
+                <p>
+                    Телефон: <span class="get_prof_number">+7 (XXX) XXX-XX-XX</span> <a onclick="getPhone('{{path('get_number')}}', {{item.ownerId}}, this);return false;" href="">Показать телефон</a>
+                </p>
+                {% endif %}
+                {% if user.email != "" %}
+                <p>
+                    e-mail: <a onclick="return false;" class="get_prof_email" href="">xxxxx@xxxx.xxx</a>  <a onclick="getEmail('{{path('get_email')}}', {{item.ownerId}}, this);return false;" href="">Показать email</a>
+                </p>
+                {% endif %}
+        </div>
+        <div class="relative-vacancy">
+            <div class="title">
+                    Похожие события:
+            </div>
+            {{ getRecommended(5,"random", 3, "similiar_div" , 1 , 1, 1)|raw }}
+        </div>
+        
+    </div>
+    <div class="tdd-right">
+            {{ getbanner(1,"random",4, 239, 400)|raw }}
+            <div class="right-ad">
+                <em class="title">Недвижимость</em>
+                {{ getRecommended(1,"random", 3, "right_div" , 1 , 1, 1)|raw }}
+
+                <a href="#">Добавить объявление</a><br/>
+                <a href="#">Все объявления</a>
+            </div>
+
+
+            <div class="title mt40">
+                Клубная жизнь
+            </div>
+            {{ getRecommended(5,"random", 3, "right_div" , 1 , 1, 1 , 2)|raw }}
+    </div>
+<div>
+</div>
+</div>
+<script>
+
+</script>
+{% include 'TorgovorotTorgBundle:Default:bottom.html.twig' %}

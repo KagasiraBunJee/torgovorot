@@ -1,0 +1,90 @@
+<html>
+<head>
+    <title>Админка</title>
+
+    <meta charset="utf-8"/>
+    {% stylesheets
+        
+    %}
+        <link type="text/css" rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+        {% javascripts
+        'bundles/torgovorottorg/js/jquery-1.11.0.min.js'
+    %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    <link rel="stylesheet" href="{{ asset('bundles/torgovorottorg/css/admin_main.css') }}">
+    <script src="{{ asset('bundles/torgovorottorg/js/nicEdit.js') }}" type="text/javascript"></script>
+    {#<script src="http://js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>#}
+
+</head>
+    <script type="text/javascript">
+        
+        //bkLib.onDomLoaded(nicEditors.allTextAreas);
+        bkLib.onDomLoaded(function() {
+            $("textarea").each(function(){
+                var attr_id = $(this).attr("id");
+                //new nicEditor({buttonList : ['fontSize','bold','italic','underline','strikeThrough','subscript','superscript','html','image']}).panelInstance(attr_id);
+                new nicEditor({buttonList : ['justify', 'left', 'center', 'right', 'underline', 'italic', 'bold']}).panelInstance(attr_id);
+            });
+        });
+    </script>
+<style>
+    textarea{
+        width:700px;
+        height:150px;
+    }
+    input[type=text]{
+
+    }
+    
+    .menu{
+        float:left;
+        width:300px;
+    }
+    .menu span{
+        font-size: 12px;
+    }
+    .content{
+        float:left;
+        
+        padding:10px;
+        border:1px solid black;
+        width: 950px;
+    }
+</style>
+<body>
+<div class="menu">
+         <a href="{{ path('torgovorot_torg_homepage') }}">На сайт</a><br><br>
+         <a href="{{ path('admin_panel') }}">Главная</a><br>
+         <hr>
+         <span>Списки</span><br><br>
+         <a href="{{ path('admin_profile_list') }}">Пользователи</a><br>
+         <a href="{{ path('admin_page_list') }}">Созданные страницы</a><br>
+         <a href="{{ path('admin_cat_list') }}">Список категорий</a><br>
+         
+         <a href="{{ path('admin_realties_all') }}">Список недвижимости</a><br>
+         <a href="{{ path('admin_resumes_all') }}">Список резюме</a><br>
+         <a href="{{ path('admin_vacances_all') }}">Список вакансий</a><br>
+         <a href="{{ path('admin_goods_all') }}">Список товаров<br>
+         <a href="{{ path('admin_events_all') }}">Список событий</a><br>
+         <a href="{{ path('admin_discounts_all') }}">Список скидок</a><br>
+         <a href="{{ path('admin_cars_all') }}">Список авто</a><br>
+         <a href="{{ path('admin_banners_view') }}">Баннеры</a><br>
+         <hr>
+         <span>Добавлять</span><br><br>
+         <a href="{{ path('admin_banners_add') }}">Добавить баннер</a><br>
+         <a href="{{ path('admin_add_page') }}">Добавить страницу</a><br>
+         <a href="{{ path('admin_cat_add') }}">Добавить категорию</a><br>
+         <hr>
+         <span>Работа с характеристиками для автомобилей</span>
+         <br><br>
+         <a href="{{ path('admin_ch_chars') }}">Характеристики</a><br>
+         &nbsp;&nbsp;&nbsp;<a href="{{ path('admin_ch_char_add') }}">Добавить характеристику</a><br>
+         <a href="{{ path('admin_ch_labels') }}">Группы характеристик</a><br>
+         &nbsp;&nbsp;&nbsp;<a href="{{ path('admin_ch_label_add') }}">Добавить группу характеристик</a><br>
+         <hr>
+         <span>Остальное</span><br><br>
+         <a href="{{ path('admin_config') }}">Настройка</a><br>
+</div>
+<div class="content">

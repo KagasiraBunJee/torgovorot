@@ -1,0 +1,37 @@
+parameters:
+#    torgovorot_torg.example.class: Torgovorot\TorgBundle\Example
+    torgovorot_torg.infodata.class: Torgovorot\TorgBundle\Helper\InfoDataBase
+
+services:
+    torgovorot_torg.info:
+        class:     Torgovorot\TorgBundle\Helper\InfoDataBase
+        arguments: [ @doctrine.orm.entity_manager ]
+    PublicContent.twig.extension:
+        class:     Torgovorot\TorgBundle\Helper\Display\PublicContentExtension
+        #arguments: [ '@doctrine.orm.entity_manager',  ]
+        tags:
+            - { name: twig.extension }
+        arguments:
+            em: "@doctrine.orm.entity_manager"
+            router: "@router"
+    profile_menu:
+        class: Torgovorot\TorgBundle\Controller\AccountController
+        #render: "@service_container"
+        
+        
+        
+    # authentication failure event listener
+    torgovorot_torg.security.authentication_failure_event_listener:
+        class: Torgovorot\TorgBundle\Helper\Listeners\AuthenticationListener
+        tags:
+            - { name: kernel.event_listener, event: security.authentication.failure, method: onAuthenticationFailure }
+ 
+    # authentication success event listener
+    torgovorot_torg.security.interactive_login_listener:
+        class: Torgovorot\TorgBundle\Helper\Listeners\AuthenticationListener
+        tags:
+            - { name: kernel.event_listener, event: security.interactive_login, method: onAuthenticationSuccess }
+            
+#    torgovorot_torg.example:
+#        class: %torgovorot_torg.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

@@ -1,0 +1,81 @@
+{#
+variables:
+-----------------------------------
+cat - object of current category
+Examples:
+cat.name = name of current category
+-----------------------------------
+item - array of entities items
+{
+    look at entities how to use parameters like "name", "id" and etc
+}
+use it in loop
+parameters:
+#}
+
+{% include 'TorgovorotTorgBundle:Default:header.html.twig' with { 'title':'Отправка резюме' }  %}
+
+    <div class="main">
+        <div class="path">
+            <a href="{{ path('torgovorot_torg_homepage') }}" class="home"></a>
+            {% if vacance.id is defined %}
+                <a href="{{ path("vacance", { 'id':vacance.id }) }}">{{ vacance.title }}</a> >
+            {% endif %}
+            
+            {% if action == "resumes_list" %}
+                <span>Шаг 1: Выберите резюме</span>
+            {% elseif action == "resumes_prepair" %}
+                <span>Шаг 2: Подтвердите</span>
+            {% else %}
+                <span>Шаг 3: Завершение</span>
+            {% endif %}
+        </div>
+        <h1>Выберите ваше резюме:</h1>
+        <div class="tdd-left">
+            {% if action == "resumes_list" %}
+            <form action="{{ path('send_resume_part1', { 'vacance_id':vac_id }) }}" method="GET">
+                <a href="{{ path("vacance", { 'id':vacance.id }) }}">{{ vacance.title }}</a>
+                <ul style="margin-left: 20px;" class="form">
+                    {% for key,item in items %}
+                
+                        <li><input type="radio" value="{{ item.id }}" name="resume_id"> {{ item.fio }}</li>
+            
+                    {% endfor %}
+                    <li><input type="hidden" value="{{ vac_id }}" name="vacance_id"></li>
+                    <li><input type="submit" class="btn" value="Выбрать"></li>
+                </ul>
+            </form>
+            {% elseif action == "resumes_prepair" %}
+                Вы подтверждаете вашу заявку?<br>
+                <form action="{{ path('send_resume_part1', { 'vacance_id':vac_id }) }}" method="GET">
+                <ul style="margin-left: 20px;" class="form">
+                    <li><a href="{{ path('resume', { 'id':resume.id }) }}">{{ resume.fio }}</a> на вакансию <a href="{{ path('vacance', { 'id':vacance.id }) }}">{{ vacance.title }}</a></li>
+                    <li><input name="confirm" type="hidden" value="1"></li>
+                    <li><input name="resume_id" type="hidden" value="{{ resume.id }}"></li>
+                    <li><input name="vacance_id" type="hidden" value="{{ vacance.id }}"></li>
+                    <li><input type="submit" class="btn" value="Подтвердить"></li>
+                </ul>
+                </form>
+            {% elseif action == "finish_resume" %}
+                {% if message == "finish" %}
+                    {{ user.fio }}, ваша заявка успешно принята.
+                {% elseif message == "exist" %}
+                    {{ user.fio }}, вы уже подали заявку на эту вакансию.
+                {% elseif message == "no_resume" %}
+                    {{ user.fio }}, вашего резюме нет.
+                {% elseif message == "no_resumes" %}
+                    {{ user.fio }}, у вас нету резюме.
+                {% elseif message == "no_vacance" %}
+                    {{ user.fio }}, этой вакансии нет.
+                {% elseif message == "yourself" %}
+                    {{ user.fio }}, Вы не можете подать заявку на ваше же вакансию.
+                {% endif %}
+            {% else %}
+                {{ user.fio }}, ошибка.
+            {% endif %}
+        </div>
+        <div class="tdd-right">
+            {{ getbanner(1,"random",4, 239, 400)|raw }}
+        </div>
+    
+    {% include 'TorgovorotTorgBundle:Default:bottom.html.twig' %}

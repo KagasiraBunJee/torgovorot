@@ -1,0 +1,111 @@
+
+{% include 'TorgovorotTorgBundle:Default:header.html.twig' with {'index':'main', 'title':'Каталог'} %}
+    <div class="main">
+    <div class="main withSearch">
+        {{ getbanner(1,"random",0, 960, 60,"",1)|raw }}
+        <div class="path">
+            <a href="{{ path("torgovorot_torg_homepage") }}" class="home"></a>
+            <a href="{{ path("katalog_page") }}">Каталог</a> >
+        </div>
+
+            <h1>Каталог</h1>
+       <div class="center">
+            <ul class="advert">
+                <li>
+                    <div class="tdd-img">
+                        <img width="61px" src="{{ asset('uploads/photo/rabota.jpg') }}" alt=""/>
+                    </div>
+                    <div class="tdd-text">
+                        <a href="{{ path("work_page") }}">
+                                    <span>
+                                         Работа
+                                    </span>
+                            
+                        </a>
+
+                        <p>
+                            <a href="{{ path("vacances") }}">Вакансии</a> <a href="{{ path("resumes") }}">Резюме</a>
+                            
+                        </p>
+                    </div>
+                </li>
+                <li>
+                    <div class="tdd-img">
+                        <img width="61px" src="{{ asset('uploads/photo/ned.jpg') }}" alt=""/>
+                    </div>
+                    <div class="tdd-text">
+                        <a href="{{ path("realty_list_all") }}">
+                                    <span>
+                                        Недвижимость
+                                    </span>
+                            
+                        </a>
+
+                        <p>
+                            <a href="{{ path("realy_list", { "cat_id" : "2" }) }}">Квартиры</a> <a href="{{ path("realy_list", { "cat_id" : "3" }) }}">Дома</a>
+                            <a href="{{ path("realy_list", { "cat_id" : "1" }) }}">Комнаты</a> <a href="{{ path("realy_list", { "cat_id" : "4" }) }}">Коммерческая недвижимость</a> <a href="{{ path("realy_list", { "cat_id" : "5" }) }}">Гараж</a>
+                            
+                        </p>
+                    </div>
+                </li>
+                <li>
+                    <div class="tdd-img">
+                        <img width="61px" src="{{ asset('uploads/photo/afisha.gif') }}" alt=""/>
+                    </div>
+                    <div class="tdd-text">
+                        <a href="{{ path("events_all") }}">
+                                    <span>
+                                        Афиша
+                                    </span>
+                            
+                        </a>
+                    </div>
+                </li>
+            </ul>
+            <ul class="advert">
+                <li>
+                    <div class="tdd-img">
+                        <img width="61px" src="{{ asset('uploads/photo/skidki.jpg') }}" alt=""/>
+                    </div>
+                    <div class="tdd-text">
+                        <a href="{{ path("discounts_all") }}">
+                                    <span>
+                                        Скидки
+                                    </span>
+                            
+                        </a>
+                    </div>
+                </li>
+                <li>
+                    <div class="tdd-img">
+                        <img width="61px" src="{{ asset('uploads/photo/tovari.jpg') }}" alt=""/>
+                    </div>
+                    <div class="tdd-text">
+                        <a href="{{ path("goods_all") }}">
+                                    <span>
+                                        Товары
+                                    </span>
+                        </a>
+                        <p>
+                            {{ getCatalogCats(3)|raw }}
+                        </p>            
+                    </div>
+                </li>
+                <li>
+                    <div class="tdd-img">
+                        <img width="61px" src="{{ asset('uploads/photo/cars.jpg') }}" alt=""/>
+                    </div>
+                    <div class="tdd-text">
+                        <a href="{{ path("cars_all") }}">
+                                    <span>
+                                        Автомобили
+                                    </span>
+                        </a>
+                    </div>
+                </li>
+            </ul>
+       </div>
+        </div>
+    </div>
+
+{% include 'TorgovorotTorgBundle:Default:bottom.html.twig' %}

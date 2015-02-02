@@ -1,0 +1,84 @@
+{#
+variables:
+-----------------------------------
+cat - object of current category
+Examples:
+cat.name = name of current category
+-----------------------------------
+item - array of entities items
+{
+    look at entities how to use parameters like "name", "id" and etc
+}
+use it in loop
+parameters:
+#}
+
+{% if type == 3 %}
+        {% set reroute = 'resumes_cat' %}
+        {% set rroute = 'resume' %}
+{%    elseif type == 2  %}
+        {% set reroute = 'vacances_cat' %}
+        {% set rroute = 'vacance' %}
+{%    elseif type == 1  %}
+        {% set reroute = 'realy_list' %}
+        {% set rroute = 'object' %}
+{%    elseif type == 4  %}
+        {% set reroute = 'goods_cats' %}
+        {% set rroute = 'good' %}
+{%    elseif type == 5  %}
+        {% set reroute = 'events_cats' %}
+        {% set rroute = 'event' %}
+{%    elseif type == 6  %}
+        {% set reroute = 'profile_all' %}
+        {% set rroute = 'profile_one' %}
+{%    elseif type == 7  %}
+        {% set reroute = 'discounts_all' %}
+        {% set rroute = 'profile_one' %}
+{%    elseif type == "banner"  %}
+        
+{%    endif %}
+{#
+end of defines 
+#}
+
+
+{% if items is empty %}
+    
+    
+{% else  %}
+
+   
+   {% for value in items %}
+        {% if type == 3 %}                 
+            <li>
+                <a href="{{ path(reroute, {'cat_id':value.id}) }}" >{{value.name}}</a><span style="color:grey;"> ({{ value.getCount() }})</span>
+            </li>
+        {% elseif type == 2 %}    
+            <li>
+                <a href="{{ path(reroute, {'cat_id':value.id}) }}" >{{value.name}}</a><span style="color:grey;"> ({{ value.getCount() }})</span>
+            </li>        
+        {% elseif type == 1 %}    
+            <li>
+                <a href="{{ path(reroute, {'cat_id':value.id}) }}" >{{value.name}}</a>
+            </li>  
+        {% elseif type == 4 %}
+            <li>
+                <a href="{{ path(reroute, {'cat_id':value.id}) }}" >{{value.name}}</a>
+            </li>
+        {% elseif type == 5 %}
+            <li>
+                <a href="{{ path(reroute, {'cat_id':value.id}) }}" >{{value.name}}</a>
+            </li>
+        {% elseif type == 6 %}
+            <li>
+                <a href="{{ path(reroute, {'cat_id':value.id}) }}" >{{value.name}}</a>
+            </li>
+        {% elseif type == 7 %}
+            <li>
+                <a href="{{ path(reroute, {'cat_id':value.id}) }}" >{{value.name}}</a>
+            </li>
+        {% endif %}
+         
+   {% endfor %}
+
+{% endif %}

@@ -1,0 +1,402 @@
+{% include 'TorgovorotTorgBundle:Default:header.html.twig' with { 'title':'Добавить недвижимость' }%}
+
+{{ profmenu()|raw }}
+<style>
+                            .form li div ul li label{
+                                width: auto;
+                            }
+                            .form li div ul li input{
+                                position:relative;
+                                top: 10px;
+                            }
+                        </style>
+{{ form_start(form) }}
+<ul class="form">
+{% if form_type == 1  %}
+    <li>
+        <label>Тип объявления:</label>
+        <div>{{ form_widget( form.rtype ) }}</div>       
+    </li>
+    <li>
+        <label>Заголовок:</label>
+        <div>{{ form_widget( form.title ) }}</div>       
+    </li>
+    <li>
+        <label>Короткое описание:</label>
+        <div>{{ form_widget( form.shortDesc ) }}</div>       
+    </li>
+    <li>
+        <label>Описание:</label>
+        <div>{{ form_widget( form.description ) }}</div>       
+    </li>
+    <li>
+        <label>Цена:</label>
+        <div>{{ form_widget( form.price ) }}</div>       
+    </li>
+    <li>
+        <label>Количество комнат:</label>
+        <div>
+            <ul>
+                {% for checkbox in form.rooms %}
+                    <li>
+                       
+                       {{ form_widget(checkbox) }}
+                       {{ form_label(checkbox) }}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>       
+    </li>
+    <li>
+        <label>Жилая площадь:</label>
+        <div>{{ form_widget( form.living_square ) }}</div>       
+    </li>
+    <li>
+        <label>Общая площадь:</label>
+        <div>{{ form_widget( form.general_square ) }}</div>       
+    </li>
+    <li>
+        <label>Этаж:</label>
+        <div>{{ form_widget( form.floor ) }}</div>       
+    </li>
+    <li>
+        <label>Этажность:</label>
+        <div>{{ form_widget( form.floor_count ) }}</div>       
+    </li>
+    <li>
+        <label>Что есть в квартире:</label>
+        <div>
+            <ul>
+                {% for checkbox in form.conv %}
+                    
+                    <li>
+                       
+                       {{ form_widget(checkbox) }}
+                       {{ form_label(checkbox) }}
+                    </li>
+                    
+                {% endfor %}    
+            </ul>
+        </div>       
+    </li>
+    <li>
+        <label>Тип санузла:</label>
+        <div>{{ form_widget( form.bath_type ) }}</div>       
+    </li>
+    <li>
+        <label>Материал дома:</label>
+        <div>{{ form_widget( form.house_mat ) }}</div>       
+    </li>
+{% elseif form_type == 2 %}    
+
+    <li>
+        <label>Тип объявления:</label>
+        <div>{{ form_widget( form.rtype ) }}</div>       
+    </li>
+    <li>
+        <label>Название:</label>
+        <div>{{ form_widget( form.title ) }}</div>       
+    </li>
+    <li>
+        <label>Короткое описание:</label>
+        <div>{{ form_widget( form.shortDesc ) }}</div>       
+    </li>
+    <li>
+        <label>Описание:</label>
+        <div>{{ form_widget( form.description ) }}</div>       
+    </li>
+    <li>
+        <label>Цена:</label>
+        <div>{{ form_widget( form.price ) }}</div>       
+    </li>
+    <li>
+        <label>Количество комнат в квартире:</label>
+        <div>
+            <ul>
+                {% for checkbox in form.rooms %}
+                    <li>
+                       
+                       {{ form_widget(checkbox) }}
+                       {{ form_label(checkbox) }}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>       
+    </li>
+    <li>
+        <label>Жилая площадь квартиры:</label>
+        <div>{{ form_widget( form.living_square ) }}</div>       
+    </li>
+    <li>
+        <label>Общая площадь квартиры:</label>
+        <div>{{ form_widget( form.general_square ) }}</div>       
+    </li>
+    <li>
+        <label>Этаж:</label>
+        <div>{{ form_widget( form.floor ) }}</div>       
+    </li>
+    <li>
+        <label>Этажность:</label>
+        <div>{{ form_widget( form.floor_count ) }}</div>       
+    </li>
+    <li>
+        <label>Что есть в квартире:</label>
+        <div>
+            <ul>
+                {% for checkbox in form.conv %}
+                    
+                    <li>
+                       
+                       {{ form_widget(checkbox) }}
+                       {{ form_label(checkbox) }}
+                    </li>
+                    
+                {% endfor %}    
+            </ul>
+        </div>       
+    </li>
+    <li>
+        <label>Тип санузла:</label>
+        <div>{{ form_widget( form.bath_type ) }}</div>       
+    </li>
+    <li>
+        <label>Материал дома:</label>
+        <div>{{ form_widget( form.house_mat ) }}</div>       
+    </li>
+{% elseif form_type == 3 %}
+    <li>
+        <label>Тип объявления:</label>
+        <div>{{ form_widget( form.rtype ) }}</div>       
+    </li>
+    <li>
+        <label>Название:</label>
+        <div>{{ form_widget( form.title ) }}</div>       
+    </li>
+    <li>
+        <label>Короткое описание:</label>
+        <div>{{ form_widget( form.shortDesc ) }}</div>       
+    </li>
+    <li>
+        <label>Описание:</label>
+        <div>{{ form_widget( form.description ) }}</div>       
+    </li>
+    <li>
+        <label>Цена:</label>
+        <div>{{ form_widget( form.price ) }}</div>       
+    </li>
+    <li>
+        <label>Тип:</label>
+        <div>{{ form_widget( form.ttype ) }}</div>       
+    </li>
+    <li>
+        <label>Планировка:</label>
+        <div>
+            <ul>
+                {% for checkbox in form.plan %}
+                    <li>
+                       
+                       {{ form_widget(checkbox) }}
+                       {{ form_label(checkbox) }}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>       
+    </li>
+    <li>
+        <label>Площадь дома:</label>
+        <div>{{ form_widget( form.hsquare ) }}</div>       
+    </li>
+    <li>
+        <label>Площадь земельного участка:</label>
+        <div>{{ form_widget( form.esquare ) }}</div>       
+    </li>
+    <li>
+        <label>Расстояние до ближайшего города:</label>
+        <div>{{ form_widget( form.distance ) }}</div>       
+    </li>
+    <li>
+        <label>Что есть в доме:</label>
+        <div>
+            <ul>
+                {% for checkbox in form.conv %}
+                    
+                    <li>
+                       
+                       {{ form_widget(checkbox) }}
+                       {{ form_label(checkbox) }}
+                    </li>
+                    
+                {% endfor %}    
+            </ul>
+        </div>       
+    </li>
+    <li>
+        <label>Материал дома:</label>
+        <div>{{ form_widget( form.house_mat ) }}</div>       
+    </li>
+
+{% elseif form_type == 4 %}
+    <li>
+        <label>Тип объявления:</label>
+        <div>{{ form_widget( form.rtype ) }}</div>       
+    </li>
+    <li>
+        <label>Название:</label>
+        <div>{{ form_widget( form.title ) }}</div>
+        
+    </li>
+    <li>
+        <label>Короткое описание:</label>
+        <div>{{ form_widget( form.shortDesc ) }}</div>       
+    </li>
+    <li>
+        <label>Описание:</label>
+        <div>{{ form_widget( form.description ) }}</div>       
+    </li>
+    <li>
+        <label>Цена:</label>
+        <div>{{ form_widget( form.price ) }}</div>       
+    </li>
+    <li>
+        <label>Тип недвижимости:</label>
+        <div>
+            <ul>
+                {% for checkbox in form.type %}
+                    
+                    <li>
+                       
+                       {{ form_widget(checkbox) }}
+                       {{ form_label(checkbox) }}
+                    </li>
+                    
+                {% endfor %}    
+            </ul>
+        </div>        
+    </li>
+    <li>
+        <label>Площадь земли:</label>
+        <div>{{ form_widget( form.hsquare ) }}</div>       
+    </li>
+    <li>
+        <label>Площадь здания:</label>
+        <div>{{ form_widget( form.esquare ) }}</div>       
+    </li>
+{% elseif form_type == 5 %}
+    <li>
+        <label>Тип объявления:</label>
+        <div>{{ form_widget( form.rtype ) }}</div>       
+    </li>
+    <li>
+        <label>Название:</label>
+        <div>{{ form_widget( form.title ) }}</div>       
+    </li>
+    <li>
+        <label>Короткое описание:</label>
+        <div>{{ form_widget( form.shortDesc ) }}</div>       
+    </li>
+    <li>
+        <label>Описание:</label>
+        <div>{{ form_widget( form.description ) }}</div>       
+    </li>
+    <li>
+        <label>Цена:</label>
+        <div>{{ form_widget( form.price ) }}</div>       
+    </li>
+    <li>
+        <label>Тип:</label>
+        <div>
+            <ul>
+                {% for checkbox in form.type %}
+                    
+                    <li>
+                       
+                       {{ form_widget(checkbox) }}
+                       {{ form_label(checkbox) }}
+                    </li>
+                    
+                {% endfor %}    
+            </ul>
+        </div>
+    </li>
+    <li>
+        <label>Что есть в гараже:</label>
+        <div>
+            <ul>
+                {% for checkbox in form.conv %}
+                    
+                    <li>
+                       
+                       {{ form_widget(checkbox) }}
+                       {{ form_label(checkbox) }}
+                    </li>
+                    
+                {% endfor %}    
+            </ul>
+        </div>
+    </li>
+{% else %}
+    <li>
+        <label>Тип объекта недвижимости:</label>
+        <div>
+            <ul>
+                {% for checkbox in form.rtype %}
+                    
+                    <li>
+                       
+                       {{ form_widget(checkbox) }}
+                       {{ form_label(checkbox) }}
+                    </li>
+                    
+                {% endfor %}    
+            </ul>
+        </div>       
+    </li>
+    <li>
+        <label></label>
+        {{ form_row( form.save, { 'label': 'Выбрать', 'attr' : { 'class' : 'btn' } } ) }}       
+    </li>
+{% endif %}
+{% if form_type < 6 and form_type > 0 %}
+    <li>
+        <label>Фото:</label>
+        <div>{{ form_widget( form.photo, { 'attr' : { 'class' : 'upload_photo'} , 'full_name' : 'form[photo][]'} ) }}</div>
+    </li>
+    <li class="add_img">
+        <label></label>
+        <div><input type="button" class="add_image" value="Добавить еще"></div>       
+    </li>
+    
+    <li>
+        <label>Видео:</label>
+        <div>{{ form_widget( form.video ) }}</div>       
+    </li>
+    <li>
+        <label>Почтовый индекс:</label>
+        <div>{{ form_widget( form.index ) }}</div>       
+    </li>
+    <li>
+        <label>Улица:</label>
+        <div>{{ form_widget( form.street ) }}</div>       
+    </li>
+    <li>
+        <label>Номер дома:</label>
+        <div>{{ form_widget( form.house ) }}</div>       
+    </li>
+    <li>
+        <label>Офис:</label>
+        <div>{{ form_widget( form.flat ) }}</div>       
+    </li>
+{#    <li>
+        <label>Название:</label>
+        <div>{{ form_widget( form.name ) }}</div>       
+    </li>#}
+    <li>
+        <label></label>
+        {{ form_row( form.save, { 'label': 'Добавить', 'attr' : { 'class' : 'btn' } } ) }}       
+    </li>
+{% endif %}
+{{ form_rest(form) }}
+</ul>
+{{ form_end(form) }}
+
+{% include 'TorgovorotTorgBundle:Default:bottom.html.twig' %}

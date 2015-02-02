@@ -1,0 +1,173 @@
+{% include 'TorgovorotTorgBundle:Default:header.html.twig' with { 'index':'resume', 'menu':'work', 'title':'Резюме: '~jobs} %}
+
+
+{#defining variables#}
+{#FAMILY#}
+{% if item.family == 1 %}
+    {% set family = 'холост(а)' %}
+{% elseif item.family == 2 %}
+    {% set family = 'Женат(замужем)' %}
+{% else %}
+    {% set family = 'Не важно' %}
+{% endif %}
+{#END FAMILY#}
+{#gender#}
+{% if item.sex == 1 %}
+    {% set sex = 'мужской' %}
+{% elseif item.sex == 2 %}
+    {% set sex = 'женский' %}
+{% else %}
+    {% set sex = 'Не важно' %}
+{% endif %}
+{#end gender#}
+{% if item.education == 0 %}
+    {% set education = 'высшее' %}
+{% elseif item.education == 1 %}
+    {% set education = 'неполное высшее' %}
+{% elseif item.education == 2 %}
+    {% set education = 'среднее специальное' %}
+{% elseif item.education == 3 %}
+    {% set education = 'среднее' %}
+{% elseif item.education == 4 %}
+    {% set education = 'начальное' %}                        
+{% else %}
+    {% set education = 'не важно' %}
+{% endif %}
+{#driver#}
+{% if item.driver == 1 %}
+    {% set driver = 'Есть' %}
+{% else %}
+    {% set driver = 'Нет' %}
+{% endif %}
+{#end driver#}
+{#CHILDREN#}
+{% if item.children == 1 %}
+    {% set children = 'Есть' %}
+{% else %}
+    {% set children = 'Нет' %}
+{% endif %}
+{#END CHILDREN#}
+{#IS_STUDY#}
+{% if item.isStudy == 1 %}
+    {% set isStudy = '. Еще учусь' %}
+{% else %}
+    {% set isStudy = 'окончено: ' ~ item.endStudy|date('Y-m-d') %}
+{% endif %}
+{#END IS_STUDY#}
+{#end defining variables#}
+    <div class="main withSearch">
+        
+            {{ getbanner(1,"random",0, 960, 60,"",1)|raw }}
+        
+        <div class="path">
+            <a href="{{ path('torgovorot_torg_homepage') }}" class="home"></a>
+            <a href="{{ path("work_page") }}">Работа</a> >
+            <a href="{{ path("resumes") }}">Резюме</a> >
+            <span>{{ jobs }}</span>
+        </div>
+
+        <h1>
+            {{ jobs }}
+
+        </h1>
+
+        <div class="vacancy-dateils">
+            <span>Резюме № {{ item.id }}, добавлена {{ item.time|date('Y-m-d H:i') }}, {{ item.views }} просмотр</span>
+            <a href="#" class="bookmark"></a>
+        </div>
+
+        <div class="vacancy-links">
+            {#<a href="#" class="vsave"><em>Сохранить в файл</em></a>#}
+            <a href="#" data-val="{{ path("resume", {id:item.id}) }}" class="vlink"><em>Ссылка</em></a>
+            <a href="#" onclick="return setComplaints('{{ path("user_send_complaints", {item_id:item.id, ads_type:'3'} ) }}');" class="vcomplant"><em>Пожаловаться</em></a>
+
+            <a href="#" class="print"></a>
+        </div>
+        <div class="tdd-left ads">
+            <div class="gray">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>
+                            Желаемая професия
+                        </th>
+                        <th>
+                            Город
+                        </th>
+                        <th>
+                            Опыт работы
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>
+                            {{ item.position }}
+                        </td>
+                        <td>
+                            {% if user.addrId != "" %}
+                                {{ getAddr(user.addrId).city }}
+                            {% else %}
+                                Не указано
+                            {% endif %}
+                        </td>
+                        <td>
+                            {{ item.experience }} лет
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p>
+                
+                {{ item.aboutMe }}
+            </p>
+            
+            <h4>Тип занятости:</h4>
+            <p>
+                {{ time }}
+            </p>
+
+            <h4>Дополнительная информация:</h4>
+            <ul>
+                <li>
+                    Дата рождения - {{ item.birthDate|date('Y-m-d') }}
+                </li>
+                <li>
+                    Семейное положение - {{ family }}
+                </li>
+                <li>
+                    Пол - {{ sex }}
+                </li>
+                <li>
+                    Образование - {{ education }}. Начало обучения: {{ item.startStudy|date('Y-m-d') }} {{ isStudy }}
+                </li>
+                <li>
+                    Водительские права - {{ driver }}
+                </li>
+                <li>
+                    Дети - {{ children }}
+                </li>
+                <li>
+                    Навыки - {{ item.skills }}
+                </li>
+            </ul>
+
+
+            <div class="gray">
+                <b>{{ item.fio }}</b>
+                {% if user.mobile != "" %}
+                <p>
+                    Телефон: <span class="get_prof_number">+7 (XXX) XXX-XX-XX</span> <a onclick="getPhone('{{path('get_number')}}', {{item.ownerId}}, this);return false;" href="">Показать телефон</a>
+                </p>
+                {% endif %}
+                {% if user.email != "" %}
+                <p>
+                    e-mail: <a onclick="return false;" class="get_prof_email" href="">xxxxx@xxxx.xxx</a>  <a onclick="getEmail('{{path('get_email')}}', {{item.ownerId}}, this);return false;" href="">Показать email</a>
+                </p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+{% include 'TorgovorotTorgBundle:Default:bottom.html.twig' %}

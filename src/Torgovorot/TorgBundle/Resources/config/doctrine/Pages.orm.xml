@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Torgovorot\TorgBundle\Entity\Pages" table="pages">
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="title" type="string" column="title" length="255" nullable="true"/>
+    <field name="chpu" type="string" column="chpu" length="255" nullable="true"/>
+    <field name="url" type="string" column="url" length="255" nullable="true"/>
+    <field name="content" type="text" column="content" nullable="true"/>
+    <field name="topMenu" type="integer" column="top_menu" nullable="true"/>
+    <field name="bottomMenu" type="integer" column="bottom_menu" nullable="true"/>
+    <field name="mainPage" type="integer" column="main_page" nullable="true"/>
+    <field name="undeleted" type="integer" column="undeleted" nullable="true"/>
+  </entity>
+</doctrine-mapping>

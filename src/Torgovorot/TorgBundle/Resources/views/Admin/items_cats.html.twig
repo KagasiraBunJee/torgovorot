@@ -1,0 +1,49 @@
+{% include 'TorgovorotTorgBundle:Admin:admin_header.html.twig' %}
+<h1>Список категорий</h1>
+<div>
+    <table width="1000">
+        <tr>
+            <td>id</td>
+            <td>Название</td>
+            <td>Приоритет в позиции</td>
+            <td>Действия</td>
+        </tr>
+        {% for item in items %}
+        <tr>
+            <td>{{ item.id }}</td>
+            <td>{{ item.name }}</td>
+            <td>{{ item.topPos }}</td>
+            <td>
+                <a href="{{ path('admin_cat_edit', {'id':item.id}) }}"> Редактировать </a>/
+                <a href="{{ path("admin_delete_cat", { 'id':item.id }) }}">Удалить</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+<div class="paginator">
+    
+        {% if paginator.currentpage != 1 %}
+             <a class="previous" href="{{ path('admin_cat_list', { 'page': paginator.currentpage-1 }) }}">Previous</a>
+        {% endif %}
+        {% for i in 1..paginator.numpages%}
+            {% if paginator.range.0 > 2 and i == paginator.range.0 %}
+                  ...
+            {% endif %}
+
+            {% if(i==1 or i==paginator.numpages or i in paginator.range) %}
+                
+                <a {% if i==paginator.currentpage %}class="active"{% endif %} href="{{ path('admin_cat_list', { 'page': i }) }}"> {{i}}</a>
+
+            {% endif %}
+
+            {% if paginator.range[paginator.midrange -1] < paginator.numpages -1 and i == paginator.range[paginator.midrange-1] %}
+                ...
+            {% endif %}
+        {% endfor %}
+        {% if paginator.numpages > 1 and paginator.currentpage != paginator.numpages %}
+         <a class="next" href="{{ path('admin_cat_list', { 'page': paginator.currentpage+1}) }}">Next</a>
+        {% endif %}
+    
+</div>
+{% include 'TorgovorotTorgBundle:Admin:admin_bottom.html.twig' %}

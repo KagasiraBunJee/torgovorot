@@ -1,0 +1,45 @@
+{% include 'TorgovorotTorgBundle:Admin:admin_header.html.twig' %}
+<a href=" {{ path('admin_profile_view', {'id':user.id}) }} "> <-К профилю </a><br><br>
+{{ form_start(form) }}
+
+
+
+
+{{ form_row(form.title , { 'label':'Название:' }) }}
+<br>
+Короткое описание:
+{{ form_widget(form.shortDescr) }}<br>
+Полное описание:
+{{ form_widget(form.description) }}<br>
+Другая информация:
+{{ form_widget(form.else) }}<br>
+{{ form_row(form.ageRestrict , { 'label':'Возрастное ограничение:' }) }}<br>
+<br>
+Изображение:<br>
+{% if getPhoto(item.photoIds) != "none" %}
+    <img src="{{ asset('uploads/photo/'~getPhoto(item.photoIds)) }}" width="300px">
+{% else %}
+    <img src="{{ asset('uploads/nophoto.png') }}"/>
+{% endif %}
+<br>
+{{ form_widget(form.photo) }}
+<br>
+<br>
+{{ form_row(form.eventTime , { 'label':'Время начала:' }) }}
+<br>
+{{ form_row(form.endEvent , { 'label':'Время окончания:' }) }}
+<br>
+{{ form_row(form.length , { 'label':'Длительность:' }) }}
+<br>
+{{ form_row(form.director , { 'label':'Режиссер:' }) }}
+<br>
+{{ form_row(form.genre , { 'label':'Жанр:' }) }}
+<br>
+{{ form_row(form.save , { 'label':'Cохранить' }) }}
+
+
+
+
+{{ form_rest(form) }}
+{{ form_end(form)  }}
+{% include 'TorgovorotTorgBundle:Admin:admin_bottom.html.twig' %}

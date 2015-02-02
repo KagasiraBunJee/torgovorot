@@ -1,0 +1,367 @@
+torgovorot_torg_homepage:
+    pattern:  /
+    defaults: { _controller: TorgovorotTorgBundle:Default:index }
+torgovorot_cats:
+    pattern: /cats
+    defaults: { _controller: TorgovorotTorgBundle:Default:cats }
+account_register:
+    path:     /register
+    defaults: { _controller: TorgovorotTorgBundle:Account:register }
+account_create:
+    path:     /register/create
+    defaults: { _controller: TorgovorotTorgBundle:Account:create }
+login:
+    pattern:   /login
+    defaults:  { _controller: TorgovorotTorgBundle:Account:login }
+login_check:
+    pattern:   /login_check
+logout:
+    pattern:   /logout
+admin_login:
+    pattern:   /admin/login
+    defaults:  { _controller: TorgovorotTorgBundle:Admin:login }
+admin_login_check:
+    pattern:   /admin/login_check
+admin_logout:
+    pattern:   /admin/logout
+profile:
+    pattern:   /account
+    defaults:  {_controller: TorgovorotTorgBundle:Account:profileItems}
+#profile actions 
+profile_addr_view:
+    pattern:   /account/addr/{id1}
+    defaults:  {_controller: TorgovorotTorgBundle:Account:profileAddr}
+profile_res_view:
+    pattern:   /account/resume/{id1}
+    defaults:  {_controller: TorgovorotTorgBundle:Account:updateRes}
+profile_vac_view:
+    pattern:   /account/vac/{id1}
+    defaults:  {_controller: TorgovorotTorgBundle:Account:updateVac}
+profile_good_view:
+    pattern:   /account/good/{id1}
+    defaults:  {_controller: TorgovorotTorgBundle:Account:updateGood}
+profile_event_view:
+    pattern:   /account/event/{id}
+    defaults:  {_controller: TorgovorotTorgBundle:Account:updateEvent}
+profile_car_view:
+    pattern:   /account/car/{id}
+    defaults:  {_controller: TorgovorotTorgBundle:Account:updateCar}
+profile_event_view:
+    pattern:   /account/event/{id}
+    defaults:  {_controller: TorgovorotTorgBundle:Account:updateEvent}
+profile_realty_view:
+    pattern:   /account/type/{param}/realty/{id1}
+    defaults:  {_controller: TorgovorotTorgBundle:Account:updateRealty}
+profile_add_addr:
+    pattern:   /account/address/add
+    defaults:  {_controller: TorgovorotTorgBundle:Account:addAdress}
+profile_items:
+    pattern:   /account/items/{item_type}
+    defaults:  {_controller: TorgovorotTorgBundle:Account:profileItems}
+profile_item_delete:
+    pattern:   /account/item/{id}/delete/{type}
+    defaults:  {_controller: TorgovorotTorgBundle:Account:deleteProfileItem}
+profile_item_update:
+    pattern:   /account/item/{id}/update/{type}/{action}
+    defaults:  {_controller: TorgovorotTorgBundle:Account:updateProfileItem}
+add_car:
+    pattern:   /car/add
+    defaults:  {_controller: TorgovorotTorgBundle:Advertise:addCarAds} 
+#end profile actions    
+selectAdvert:
+    pattern:   /add
+    defaults:  { _controller: TorgovorotTorgBundle:Advertise:select}
+addAdvert:
+    pattern:   /add/{param}
+    defaults:  { _controller: TorgovorotTorgBundle:Advertise:advert}
+addEvent:
+    pattern:   /add/event
+    defaults:  { _controller: TorgovorotTorgBundle:Advertise:addEvent}
+addRealty:
+    pattern:   /realty/{param}
+    defaults:  { _controller: TorgovorotTorgBundle:Advertise:realty}
+selectRealty:
+    pattern:   /realty
+    defaults:  { _controller: TorgovorotTorgBundle:Advertise:realty}
+resumes_cat:
+    pattern:   /resumes/{cat_id}
+    defaults: {_controller: TorgovorotTorgBundle:Default:resume}
+vacances_cat:
+    pattern:   /vacances/{cat_id}
+    defaults: {_controller: TorgovorotTorgBundle:Default:vacance}
+resumes:
+    pattern:   /resumes
+    defaults: {_controller: TorgovorotTorgBundle:Default:resume}
+vacances:
+    pattern:   /vacances
+    defaults: {_controller: TorgovorotTorgBundle:Default:vacance}
+resume:
+    pattern:   /resume/{id}
+    defaults: {_controller: TorgovorotTorgBundle:Detail:rDetail}
+vacance:
+    pattern:   /vacance/{id}
+    defaults: {_controller: TorgovorotTorgBundle:Detail:vDetail}
+realy_list:
+    pattern:   /realties/{cat_id}
+    defaults: {_controller: TorgovorotTorgBundle:Default:realties}
+realty_list_all:
+    pattern:   /realties
+    defaults: {_controller: TorgovorotTorgBundle:Default:realties}
+object:
+    pattern:   /object/{id}
+    defaults: {_controller: TorgovorotTorgBundle:Detail:rtDetail}
+good_add:
+    pattern:   /add/{param}
+    defaults:  { _controller: TorgovorotTorgBundle:Advertise:advert}
+good:
+    pattern:   /good/{id}
+    defaults:  {_controller: TorgovorotTorgBundle:Detail:good}
+goods_all:
+    pattern:   /goods
+    defaults:  {_controller: TorgovorotTorgBundle:Default:good}
+cars_all:
+    pattern:   /cars
+    defaults:  {_controller: TorgovorotTorgBundle:Default:cars}
+car:
+    pattern:   /cars/{id}
+    defaults:  {_controller: TorgovorotTorgBundle:Detail:car}
+goods_cats:
+    pattern:   /goods/{cat_id}
+    defaults:  {_controller: TorgovorotTorgBundle:Default:good}
+uploader:
+    pattern:   /upload
+    defaults:  {_controller: TorgovorotTorgBundle:Default:upload}
+admin_panel:
+    pattern:   /admin
+    defaults:  {_controller: TorgovorotTorgBundle:Admin:main}
+admin_panel_add_ads:
+    pattern:   /admin/add/{param}
+    defaults:  {_controller: TorgovorotTorgBundle:Admin:add}
+admin_panel_add_list:
+    pattern:   /admin/add
+    defaults:  {_controller: TorgovorotTorgBundle:Admin:add}
+event:
+    pattern:   /event/{id}
+    defaults:  {_controller: TorgovorotTorgBundle:Detail:event}
+events_all:
+    pattern:   /events
+    defaults:  {_controller: TorgovorotTorgBundle:Default:event}
+events_cats:
+    pattern:   /events/{cat_id}
+    defaults:  {_controller: TorgovorotTorgBundle:Default:event}
+profile_one:
+    pattern:   /profile/{id}
+    defaults:  {_controller: TorgovorotTorgBundle:Detail:user}
+profile_all:
+    pattern:   /profiles
+    defaults:  {_controller: TorgovorotTorgBundle:Default:users}
+discounts_all:
+    pattern:   /discounts
+    defaults:  {_controller: TorgovorotTorgBundle:Default:discounts}
+discount:
+    pattern:   /discount/{id}
+    defaults:  {_controller: TorgovorotTorgBundle:Detail:discount}
+lift_product_up:
+    pattern:   /lift/{type}/id/{id}
+    defaults:  {_controller: TorgovorotTorgBundle:Account:liftUp}
+make_premium:
+    pattern:   /premium/{type}/id/{id}
+    defaults:  {_controller: TorgovorotTorgBundle:Account:makePremium}
+make_vip:
+    pattern:   /vip/{type}/id/{id}
+    defaults:  {_controller: TorgovorotTorgBundle:Account:makeVip}
+map_url:
+    pattern:   /realty_map
+    defaults:  { _controller: TorgovorotTorgBundle:Default:map }
+#admin routing start
+admin_profile_list:
+    pattern:   /admin/profiles
+    defaults:  {_controller: TorgovorotTorgBundle:Admin:profileList}
+admin_page_list:
+    pattern:   /admin/pages
+    defaults:  {_controller: TorgovorotTorgBundle:Admin:pages}    
+admin_profile_view:
+    pattern:   /admin/profile/{id}
+    defaults:  {_controller: TorgovorotTorgBundle:Admin:updateProfile}
+admin_profile_addr_view:
+    pattern:   /admin/profile/{id}/addr/{id1}
+    defaults:  {_controller: TorgovorotTorgBundle:Admin:profileAddr}
+admin_res_view:
+    pattern:   /admin/profile/{id}/resume/{id1}
+    defaults:  {_controller: TorgovorotTorgBundle:Admin:updateRes}
+admin_vac_view:
+    pattern:   /admin/profile/{id}/vac/{id1}
+    defaults:  {_controller: TorgovorotTorgBundle:Admin:updateVac}
+admin_good_view:
+    pattern:   /admin/profile/{id}/good/{id1}
+    defaults:  {_controller: TorgovorotTorgBundle:Admin:updateGood}
+admin_event_view:
+    pattern:   /admin/profile/{id}/event/{id1}
+    defaults:  {_controller: TorgovorotTorgBundle:Admin:updateEvents}
+admin_discount_view:
+    pattern:   /admin/profile/{id}/discount/{id1}
+    defaults:  {_controller: TorgovorotTorgBundle:Admin:updateDiscounts}
+admin_realty_view:
+    pattern:   /admin/profile/{id}/type/{param}/realty/{id1}
+    defaults:  {_controller: TorgovorotTorgBundle:Admin:updateRealty}
+admin_banners_view:
+    pattern:   /admin/banners
+    defaults:  {_controller: TorgovorotTorgBundle:Admin:banners}
+admin_pages_view:
+    pattern:   /admin/banners
+    defaults:  {_controller: TorgovorotTorgBundle:Admin:banners}
+admin_banners_add:
+    pattern:   /admin/banners/add
+    defaults:  {_controller: TorgovorotTorgBundle:Admin:addBanner}
+admin_banner_view:
+    pattern:   /admin/banners/{id}
+    defaults:  {_controller: TorgovorotTorgBundle:Admin:editBanner}
+admin_page_view:
+    pattern:   /admin/page/{id}
+    defaults:  {_controller: TorgovorotTorgBundle:Admin:page}
+admin_add_page:
+    pattern:   /admin/pages/add
+    defaults:  {_controller: TorgovorotTorgBundle:Admin:newPage}
+admin_realties_all:
+    pattern:   /admin/items/realties
+    defaults:  {_controller: TorgovorotTorgBundle:Admin:realties}
+admin_vacances_all:
+    pattern:   /admin/items/vacances
+    defaults:  {_controller: TorgovorotTorgBundle:Admin:vacances}
+admin_resumes_all:
+    pattern:   /admin/items/resumes
+    defaults:  {_controller: TorgovorotTorgBundle:Admin:resumes}
+admin_goods_all:
+    pattern:   /admin/items/goods
+    defaults:  {_controller: TorgovorotTorgBundle:Admin:goods}
+admin_events_all:
+    pattern:   /admin/items/events
+    defaults:  {_controller: TorgovorotTorgBundle:Admin:events}
+admin_cars_all:
+    pattern:   /admin/cars
+    defaults:  {_controller: TorgovorotTorgBundle:Admin:cars}
+admin_car_add:
+    pattern:   /admin/adscar
+    defaults:  {_controller: TorgovorotTorgBundle:Admin:addCarAds}
+admin_car_edit:
+    pattern:   /admin/adscar/{id}
+    defaults:  {_controller: TorgovorotTorgBundle:Admin:addCarAds}
+admin_discounts_all:
+    pattern:   /admin/items/discounts
+    defaults:  {_controller: TorgovorotTorgBundle:Admin:discounts}
+admin_cat_list:
+    pattern:   /admin/items/cats
+    defaults:  {_controller: TorgovorotTorgBundle:Admin:cats}
+admin_cat_edit:
+    pattern:   /admin/cat/{id}
+    defaults:  {_controller: TorgovorotTorgBundle:Admin:executeCat}
+admin_cat_add:
+    pattern:   /admin/cat/add
+    defaults:  {_controller: TorgovorotTorgBundle:Admin:executeCat}
+admin_config:
+    pattern:   /admin/configs
+    defaults:  { _controller: TorgovorotTorgBundle:Admin:config}
+admin_complaints:
+    pattern:   /admin/complaints
+    defaults:  { _controller: TorgovorotTorgBundle:Admin:complaints }
+admin_complaints:
+    pattern:   /admin/complaints
+    defaults:  { _controller: TorgovorotTorgBundle:Admin:complaints }
+#admin routings end
+page:
+    pattern:   /page/{name}
+    defaults:  {_controller: TorgovorotTorgBundle:Default:page}
+work_page:
+    pattern:   /work
+    defaults:  {_controller: TorgovorotTorgBundle:Default:work}
+katalog_page:
+    pattern:   /katalog
+    defaults:  {_controller: TorgovorotTorgBundle:Default:katalog}    
+#processing functions
+#start processing
+send_resume_part1:
+    pattern:   /send_resume/{vacance_id}
+    defaults:  {_controller: TorgovorotTorgBundle:Processing:selectResume}
+#processing
+send_resume_part2:
+    pattern:   /send_resume/{vacance_id}/{resume_id}
+    defaults:  {_controller: TorgovorotTorgBundle:Processing:sendResume}
+#finish process
+send_resume_part3:
+    pattern:   /send_resume/{vacance_id}/{resume_id}/{condition}
+    defaults:  {_controller: TorgovorotTorgBundle:Processing:finishResume}
+#additional functions
+get_number:
+    pattern:   /get/number
+    defaults:  {_controller: TorgovorotTorgBundle:Processing:getNumber}
+get_email:
+    pattern:   /get/email
+    defaults:  {_controller: TorgovorotTorgBundle:Processing:getEmail}
+get_realty_url:
+    pattern:   /gen/url/{id}
+    defaults:  {_controller: TorgovorotTorgBundle:Processing:realtyGenerateUrl}
+#characteristics
+##label
+admin_ch_labels:
+    pattern:   /admin/labels
+    defaults:  {_controller: TorgovorotTorgBundle:Admin:getLabels}
+admin_ch_label_edit:
+    pattern:   /admin/label/{id}
+    defaults:  {_controller: TorgovorotTorgBundle:Admin:label}
+admin_ch_label_add:
+    pattern:   /admin/label
+    defaults:  {_controller: TorgovorotTorgBundle:Admin:label}
+##characteristic
+admin_ch_chars:
+    pattern:   /admin/chars
+    defaults:  {_controller: TorgovorotTorgBundle:Admin:getChars}
+admin_ch_char_edit:
+    pattern:   /admin/char/{id}
+    defaults:  {_controller: TorgovorotTorgBundle:Admin:char}
+admin_ch_char_add:
+    pattern:   /admin/char
+    defaults:  {_controller: TorgovorotTorgBundle:Admin:char}
+##cars mark
+admin_ch_mark_add:
+    pattern:   /admin/add/carmark
+    defaults:  {_controller: TorgovorotTorgBundle:Admin:mark}
+admin_ch_mark_edit:
+    pattern:   /admin/carmark/{id}
+    defaults:  {_controller: TorgovorotTorgBundle:Admin:mark}
+admin_ch_marks:
+    pattern:   /admin/carmarks
+    defaults:  {_controller: TorgovorotTorgBundle:Admin:getMarks}
+user_send_complaints:
+    pattern:   /complaint/{item_id}/{ads_type}
+    defaults:  {_controller: TorgovorotTorgBundle:Processing:setComplaints}
+###Admin delete links
+##ads
+admin_delete_ads:
+    pattern:   /admin/delete/ads/{ads_type}/{id}
+    defaults:  {_controller: TorgovorotTorgBundle:Admin:deleteAds}
+##pages
+admin_delete_pages:
+    pattern:   /admin/delete/page/{id}
+    defaults:  {_controller: TorgovorotTorgBundle:Admin:deletePage}
+##cats
+admin_delete_cat:
+    pattern:   /admin/delete/cat/{id}
+    defaults:  {_controller: TorgovorotTorgBundle:Admin:deleteCats}
+##banners
+admin_delete_banners:
+    pattern:   /admin/delete/banner/{id}
+    defaults:  {_controller: TorgovorotTorgBundle:Admin:deleteBanner}
+##users
+###Ads state changing  $item_id, $ads_type, $action
+admin_ads_state_change:
+    pattern:   /admin/ads_state
+    defaults:  { _controller: TorgovorotTorgBundle:Processing:updateAds }
+get_all_cats_json:
+    pattern:   /json/getCats/{type}
+    defaults:  { _controller: TorgovorotTorgBundle:Processing:loadAllCats }
+#save_new_data: 
+#    pattern:   /savedata
+#    defaults:  { _controller: TorgovorotTorgBundle:Processing:repairCatss }
+parse_data:
+    pattern:   /parse
+    defaults:  { _controller: TorgovorotTorgBundle:AdminParser:parseRealty }

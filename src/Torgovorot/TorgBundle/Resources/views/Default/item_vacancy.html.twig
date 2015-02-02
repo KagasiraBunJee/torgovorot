@@ -1,0 +1,185 @@
+{% include 'TorgovorotTorgBundle:Default:header.html.twig' with {index:"vacance", 'menu':'work', 'title': item.title}%}
+
+
+{#defining variables#}
+{#FAMILY#}
+{% if item.family == 1 %}
+    {% set family = 'холост(а)' %}
+{% elseif item.family == 2 %}
+    {% set family = 'Женат(замужем)' %}
+{% else %}
+    {% set family = 'Не важно' %}
+{% endif %}
+{#END FAMILY#}
+{#gender#}
+{% if item.sex == 1 %}
+    {% set sex = 'мужской' %}
+{% elseif item.sex == 2 %}
+    {% set sex = 'женский' %}
+{% else %}
+    {% set sex = 'Не важно' %}
+{% endif %}
+{#end gender#}
+{% if item.education == 0 %}
+    {% set education = 'высшее' %}
+{% elseif item.education == 1 %}
+    {% set education = 'неполное высшее' %}
+{% elseif item.education == 2 %}
+    {% set education = 'среднее специальное' %}
+{% elseif item.education == 3 %}
+    {% set education = 'среднее' %}
+{% elseif item.education == 4 %}
+    {% set education = 'начальное' %}                        
+{% else %}
+    {% set education = 'не важно' %}
+{% endif %}
+
+
+{% if item.updated == "" %}
+    {% set updated = item.time|date('Y-m-d H:i') %}
+{% else %}
+    {% set updated = item.updated|date('Y-m-d H:i') %}
+{% endif %}
+
+{#end defining variables#}
+<script>
+    $(document).mouseup(function (e) {
+    var container = $(".link-age");
+    if (container.has(e.target).length === 0){
+        container.hide();
+    }
+});
+
+</script>
+<div class="main withSearch">
+        <a href="#" class="banner1">
+            {{ getbanner(1,"random",0, 960, 60,"",1)|raw }}
+        </a>
+        <div class="path">
+            <a href="{{ path('torgovorot_torg_homepage') }}" class="home"></a>
+            <a href="{{ path("work_page") }}">Работа</a> >
+            <a href="{{ path("vacances") }}">Вакансии</a> >
+            <span>{{ item.title }}</span>
+        </div>
+        <h1>
+            {{ item.title }}
+        </h1>
+        <div class="vacancy-dateils">
+            <span>Вакансия № {{ item.id }}, добавлена {{ item.time|date('Y-m-d H:i') }}, {% if updated != item.time|date('Y-m-d H:i') %}обновлена {{ updated }},{% endif %} {{ item.views }} просмотр</span>
+            <a href="#" class="bookmark"></a>
+        </div>
+        <div class="vacancy-links">
+            {#<a href="#" class="vsave"><em>Сохранить в файл</em></a>#}
+            <a href="#" data-val="{{ path("vacance", {id:item.id}) }}" class="vlink"><em>Ссылка</em></a>
+            <a href="#" onclick="return setComplaints('{{ path("user_send_complaints", {item_id:item.id, ads_type:'2'} ) }}');" class="vcomplant"><em>Пожаловаться</em></a>
+
+            <a href="#" class="print"></a>
+        </div>
+                <div class="tdd-left ads">
+            <div class="gray">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>
+                            Уровень зарплаты
+                        </th>
+                        <th>
+                            Город
+                        </th>
+                        <th>
+                            Требуемый опыт работы
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>
+                            {% if item.moneyFrom != item.moneyTo and item.moneyTo != 0 %}
+                                От {{ price_temp(item.moneyFrom) }} до {{ price_temp(item.moneyTo) }} руб.
+                            {% elseif (item.moneyFrom != item.moneyTo and item.moneyTo == 0) or (item.moneyFrom == item.moneyTo) %}
+                                 От {{ price_temp(item.moneyFrom) }} руб.
+                            {% endif %}
+                            
+                        </td>
+                        <td>
+                            {% if user.addrId != "" %}{{ getAddr(user.addrId).city }}{% else %}Не указано{% endif %}
+                        </td>
+                        <td>
+                            {% if item.experience != "" %}
+                                {{ item.experience }} лет
+                            {% else %}
+                                Не важно
+                            {% endif %}
+                            
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p>
+                {{ item.requirement }}
+            </p>
+
+            <h4>Тип занятости:</h4>
+            <p>
+                {{ time }}
+            </p>
+
+            <h4>Требования</h4>
+            <ul>
+                <li>
+                    Образование: {{ education }}
+                </li>
+                <li>
+                    Пол: {{ sex }}
+                </li>
+                <li>
+                    Семейное положение: {{ family }}
+                </li>
+            </ul>
+
+
+            <div class="gray">
+                <b>{{ user.fio }}</b>
+                <p>
+                    {{ user.CompanyName }}
+                </p>
+                {% if user.mobile != "" %}
+                <p>
+                    Телефон: <span class="get_prof_number">+7 (XXX) XXX-XX-XX</span> <a onclick="getPhone('{{path('get_number')}}', {{item.ownerId}}, this);return false;" href="">Показать телефон</a>
+                </p>
+                {% endif %}
+                {% if user.email != "" %}
+                <p>
+                    e-mail: <a onclick="return false;" class="get_prof_email" href="">xxxxx@xxxx.xxx</a>  <a onclick="getEmail('{{path('get_email')}}', {{item.ownerId}}, this);return false;" href="">Показать email</a>
+                </p>
+                {% endif %}
+                {% if app.user %}
+                    <a href="{{ path("send_resume_part1", { 'vacance_id':item.id }) }}" class="btn">ОТПРАВИТЬ РЕЗЮМЕ</a>
+                {% endif %}
+            </div>
+            {#{% if getRecommended(2,"random", 3, "div", 0 , 0, 0 , 2)|raw != "" %}
+            <div class="relative-vacancy">
+                <div class="title"> Похожие вакансии: </div>
+                {{ getRecommended(2,"random", 3, "div", 0 , 0, 0 , 2)|raw }}
+            </div>
+            {% endif %}#}
+        </div>
+        <div class="tdd-right">
+
+            <div class="right-ad">
+                <em class="title">Недвижимость</em>
+                {{ getRecommended(1,"random", 3, "right_div" , 1 , 1, 1)|raw }}
+
+                <a href="#">Добавить объявление</a><br/>
+                <a href="#">Все объявления</a>
+            </div>
+
+
+            <div class="title mt40">
+                Клубная жизнь
+            </div>
+            {{ getRecommended(5,"random", 3, "right_div" , 1 , 1, 1 , 2)|raw }}
+        </div>
+</div>
+{% include 'TorgovorotTorgBundle:Default:bottom.html.twig' %}

@@ -1,0 +1,4 @@
+torgovorot_torg:
+    resource: "@TorgovorotTorgBundle/Resources/config/routing.yml"
+    prefix:   /
+

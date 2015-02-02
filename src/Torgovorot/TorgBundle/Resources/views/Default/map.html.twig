@@ -1,0 +1,67 @@
+{% include 'TorgovorotTorgBundle:Default:header.html.twig' with {'index':'main', 'title':'Карта недвижимости', 'menu':'realty'} %}
+
+<script>
+    var mapping = [ {{ getAllMapCoords()|raw }} ];
+    
+    
+   window.onload = function () {
+            // Создание экземпляра карты и его привязка к созданному контейнеру
+            var map = new YMaps.Map(document.getElementById("map"), {
+                
+                // Коэффициент масштабирования
+                zoom: 1,
+                // включаем масштабирование карты колесом
+                behaviors: ['default', 'scrollZoom'],
+                center: ['58.049002', '38.852316'] // Рыбинск
+            });
+            
+            // Установка для карты ее центра и масштаба
+            map.setCenter(new YMaps.GeoPoint('38.852316', '58.049002'));
+            map.setZoom(12);
+            //map.enableMagnifier();
+            map.enableScrollZoom();
+            /*// Создание метки
+            var placemark = new YMaps.Placemark(new YMaps.GeoPoint('57.0', '31.0'));
+            // Установка содержимого значка метки
+            placemark.setIconContent('dwadwad');
+            // Добавление метки на карту
+            map.addOverlay(placemark);*/
+            
+            for(var i = 0; i < mapping.length; i++)
+            {
+                var object = mapping[i];
+                
+                var url = ""+object[0];
+                
+                var content = "<div><a href=\""+url+"\">"+object[1]+"</a></div>";
+                
+                var s = new YMaps.Style();
+                s.balloonContentStyle = new YMaps.BalloonContentStyle(
+                    new YMaps.Template(content)
+                );
+                
+                
+                // Создание метки
+                var placemark = new YMaps.Placemark(new YMaps.GeoPoint(object[6], object[7]) , {style: s});
+                // Установка содержимого значка метки
+                //placemark.setIconContent(object[1]);
+                // Добавление метки на карту
+                map.addOverlay(placemark);
+            
+                
+            
+                //map.openBalloon(new YMaps.GeoPoint(object[7], object[6]), content);
+                
+            }
+            
+        }
+</script>
+    <div class="main withSearch">
+        <div class="shadow-map">
+            <div></div>
+        </div>
+        <div id="map"></div>
+        <a href="{{ path('realty_list_all') }}" class="back"></a>
+    </div>
+    
+{% include 'TorgovorotTorgBundle:Default:bottom.html.twig' %}

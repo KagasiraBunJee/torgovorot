@@ -1,0 +1,208 @@
+{% include 'TorgovorotTorgBundle:Admin:admin_header.html.twig' %}
+<h1>Список страниц</h1>
+<div>
+    {% if items is empty %}
+            Записей не найдено. 
+    {% else %}
+    {% set url = "" %}
+    <table width="1000">
+        <tr>
+            <td>id</td>
+            <td>Заголовок</td>
+            <td>Состояние</td>
+            <td>Действие</td>
+        </tr> 
+        {% for item in items %}
+            {% if type == 1 %}
+                <tr>
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.title }}</td>
+                    <td>
+                        <select class="state_select">
+                            <option {% if item.adsState == 0 %} selected {% endif %} value="{{ item.id }}_{{ type }}_0">Обрабатывается</option>
+                            <option {% if item.adsState == 1 %} selected {% endif %} value="{{ item.id }}_{{ type }}_1">Размещено</option>
+                            <option {% if item.adsState == 2 %} selected {% endif %} value="{{ item.id }}_{{ type }}_2">Снятое с размещения</option>
+                        </select>
+                    </td>
+                    {% set url = "admin_realties_all" %}
+                    <td>
+                        <a href="{{ path("admin_realty_view", {'id':item.ownerId , 'param':item.adsType ,'id1' : item.id}) }}"> Редактировать </a>/
+                        <a href="{{ path("admin_delete_ads", { 'ads_type':1, 'id':item.id }) }}">Удалить</a>
+                    </td>
+                </tr>
+            {% elseif type == 2 %}
+                <tr>
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.title }}</td>
+                    <td>
+                        <select class="state_select">
+                            <option {% if item.adsState == 0 %} selected {% endif %} value="{{ item.id }}_{{ type }}_0">Обрабатывается</option>
+                            <option {% if item.adsState == 1 %} selected {% endif %} value="{{ item.id }}_{{ type }}_1">Размещено</option>
+                            <option {% if item.adsState == 2 %} selected {% endif %} value="{{ item.id }}_{{ type }}_2">Снятое с размещения</option>
+                        </select>
+                    </td>
+                    {% set url = "admin_vacances_all" %}
+                    <td>
+                        <a href="{{ path('admin_vac_view', {'id':item.ownerId , 'id1' : item.id}) }}"> Редактировать </a>/
+                        <a href="{{ path("admin_delete_ads", { 'ads_type':2, 'id':item.id }) }}">Удалить</a>
+                    </td>
+                </tr>
+            {% elseif type == 3 %}
+                <tr>
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.fio }}</td>
+                    <td>
+                        <select class="state_select">
+                            <option {% if item.adsState == 0 %} selected {% endif %} value="{{ item.id }}_{{ type }}_0">Обрабатывается</option>
+                            <option {% if item.adsState == 1 %} selected {% endif %} value="{{ item.id }}_{{ type }}_1">Размещено</option>
+                            <option {% if item.adsState == 2 %} selected {% endif %} value="{{ item.id }}_{{ type }}_2">Снятое с размещения</option>
+                        </select>
+                    </td>
+                    {% set url = "admin_resumes_all" %}
+                    <td>
+                        <a href="{{ path('admin_res_view', {'id':item.ownerId , 'id1' : item.id}) }}"> Редактировать </a>/
+                        <a href="{{ path("admin_delete_ads", { 'ads_type':3, 'id':item.id }) }}">Удалить</a>
+                    </td>
+                </tr>
+            {% elseif type == 4 %}
+                <tr>
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.title }}</td>
+                    <td>
+                        <select class="state_select">
+                            <option {% if item.adsState == 0 %} selected {% endif %} value="{{ item.id }}_{{ type }}_0">Обрабатывается</option>
+                            <option {% if item.adsState == 1 %} selected {% endif %} value="{{ item.id }}_{{ type }}_1">Размещено</option>
+                            <option {% if item.adsState == 2 %} selected {% endif %} value="{{ item.id }}_{{ type }}_2">Снятое с размещения</option>
+                        </select>
+                    </td>
+                    {% set url = "admin_goods_all" %}
+                    <td>
+                        <a href="{{ path('admin_good_view', {'id':item.ownerId , 'id1' : item.id}) }}"> Редактировать </a>/
+                        <a href="{{ path("admin_delete_ads", { 'ads_type':4, 'id':item.id }) }}">Удалить</a>
+                    </td>
+                </tr>
+            {% elseif type == 5 %}
+                <tr>
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.title }}</td>
+                    <td>
+                        <select class="state_select">
+                            <option {% if item.adsState == 0 %} selected {% endif %} value="{{ item.id }}_{{ type }}_0">Обрабатывается</option>
+                            <option {% if item.adsState == 1 %} selected {% endif %} value="{{ item.id }}_{{ type }}_1">Размещено</option>
+                            <option {% if item.adsState == 2 %} selected {% endif %} value="{{ item.id }}_{{ type }}_2">Снятое с размещения</option>
+                        </select>
+                    </td>
+                    {% set url = "admin_events_all" %}
+                    <td>
+                        <a href="{{ path('admin_event_view', {'id':item.ownerId , 'id1' : item.id}) }}"> Редактировать </a>/
+                        <a href="{{ path("admin_delete_ads", { 'ads_type':5, 'id':item.id }) }}">Удалить</a>
+                    </td>
+                </tr>
+            {% elseif type == 6 %}
+                <tr>
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.title }}</td>
+                    <td>
+                        <select class="state_select">
+                            <option {% if item.adsState == 0 %} selected {% endif %} value="{{ item.id }}_{{ type }}_0">Обрабатывается</option>
+                            <option {% if item.adsState == 1 %} selected {% endif %} value="{{ item.id }}_{{ type }}_1">Размещено</option>
+                            <option {% if item.adsState == 2 %} selected {% endif %} value="{{ item.id }}_{{ type }}_2">Снятое с размещения</option>
+                        </select>
+                    </td>
+                    {% set url = "admin_discounts_all" %}
+                    <td>
+                        <a href="{{ path('admin_discount_view', {'id':item.ownerId , 'id1' : item.id}) }}"> Редактировать </a>
+                        
+                    </td>
+                </tr>
+            {% elseif type == 7 %}
+                <tr>
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.name }}</td>
+                    <td>Нет</td>
+                    <td>
+                        <select class="state_select">
+                            <option {% if item.adsState == 0 %} selected {% endif %} value="{{ item.id }}_{{ type }}_0">Обрабатывается</option>
+                            <option {% if item.adsState == 1 %} selected {% endif %} value="{{ item.id }}_{{ type }}_1">Размещено</option>
+                            <option {% if item.adsState == 2 %} selected {% endif %} value="{{ item.id }}_{{ type }}_2">Снятое с размещения</option>
+                        </select>
+                    </td>
+                    {% set url = "admin_ch_labels" %}
+                    <td>
+                        <a href="{{ path('admin_ch_label_edit', {'id':item.id}) }}"> Редактировать </a>
+                    </td>
+                </tr>
+            {% elseif type == 8 %}
+                <tr>
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.title }}</td>
+                    <td>
+                        <select class="state_select">
+                            <option {% if item.adsState == 0 %} selected {% endif %} value="{{ item.id }}_{{ type }}_0">Обрабатывается</option>
+                            <option {% if item.adsState == 1 %} selected {% endif %} value="{{ item.id }}_{{ type }}_1">Размещено</option>
+                            <option {% if item.adsState == 2 %} selected {% endif %} value="{{ item.id }}_{{ type }}_2">Снятое с размещения</option>
+                        </select>
+                    </td>
+                    {% set url = "admin_cars_all" %}
+                    <td>
+                        <a href="{{ path('admin_car_edit', {'id':item.id}) }}"> Редактировать </a>/
+                        <a href="{{ path("admin_delete_ads", { 'ads_type':8, 'id':item.id }) }}">Удалить</a>
+                    </td>
+                </tr>
+            {% elseif type == 9 %}
+                <tr>
+                    <td>{{ item.id }}</td>
+                    
+                    <td>{{ item.name }}</td>
+                    <td>Нет</td>
+                    {% set url = "admin_ch_marks" %}
+                    <td>
+                        <a href="{{ path('admin_ch_mark_edit', {'id':item.id}) }}"> Редактировать </a>
+                    </td>
+                </tr>
+            
+            {% elseif type == 10 %}
+                <tr>
+                    <td>{{ item.id }}</td>
+                    
+                    <td>{{ item.name }}</td>
+                    <td>Нет</td>
+                    {% set url = "admin_ch_chars" %}
+                    <td>
+                        <a href="{{ path('admin_ch_char_edit', {'id':item.id}) }}"> Редактировать </a>
+                    </td>
+                </tr>
+            {% endif %}
+        {% endfor %}
+        
+    </table>
+    {% endif %}
+</div>
+{% if items is not empty %}
+<div class="paginator">
+
+        {% if paginator.currentpage != 1 %}
+            <a class="previous" href="{{ path(url, { 'page': paginator.currentpage-1 }) }}"><</a>
+        {% endif %}
+        {% for i in 1..paginator.numpages%}
+            {% if paginator.range.0 > 2 and i == paginator.range.0 %}
+                  ...
+            {% endif %}
+
+            {% if(i==1 or i==paginator.numpages or i in paginator.range) %}
+                
+                <a {% if i==paginator.currentpage %}class="active"{% endif %} href="{{ path(url, { 'page': i }) }}"> {{i}}</a>
+
+            {% endif %}
+
+            {% if paginator.range[paginator.midrange -1] < paginator.numpages -1 and i == paginator.range[paginator.midrange-1] %}
+                ...
+            {% endif %}
+        {% endfor %}
+        {% if paginator.numpages > 1 and paginator.currentpage != paginator.numpages %}
+         <a class="next" href="{{ path(url, { 'page': paginator.currentpage+1}) }}">></a>
+        {% endif %}
+
+</div>
+{% endif %}
+{% include 'TorgovorotTorgBundle:Admin:admin_bottom.html.twig' %}

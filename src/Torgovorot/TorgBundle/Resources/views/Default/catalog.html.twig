@@ -1,0 +1,16 @@
+{% include 'TorgovorotTorgBundle:Default:header.html.twig'with { 'title' : 'Каталог' } %}
+<div class="main">
+    <div class="content-left">
+    Выберите что вы хотите добавить:
+<br><br>
+
+<form action="{{ path('selectAdvert') }}" method="post">
+                                {% for checkbox in form.type %}
+                                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ form_widget(checkbox) }} {{ form_label(checkbox) }}<br><br>
+                                {% endfor %}
+    {{ form_widget( form.save, { 'label': 'Выбрать', 'attr' : { 'class' : 'btn', 'style' : 'float:left' } } ) }}
+    {{ form_rest(form) }}
+</form>
+
+    </div>
+{% include 'TorgovorotTorgBundle:Default:bottom.html.twig' %}

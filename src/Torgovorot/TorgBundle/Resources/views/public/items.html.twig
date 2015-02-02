@@ -1,0 +1,318 @@
+{#
+variables:
+-----------------------------------
+cat - object of current category
+Examples:
+cat.name = name of current category
+-----------------------------------
+item - array of entities items
+{
+    look at entities how to use parameters like "name", "id" and etc
+}
+use it in loop
+parameters:
+#}
+
+{% if type == 3 %}
+        {% set reroute = 'resumes_cat' %}
+        {% set rroute = 'resume' %}
+{%    elseif type == 2  %}
+        {% set reroute = 'vacances_cat' %}
+        {% set rroute = 'vacance' %}
+{%    elseif type == 1  %}
+        {% set reroute = 'realy_list' %}
+        {% set rroute = 'object' %}
+{%    elseif type == 4  %}
+        {% set reroute = 'goods_cats' %}
+        {% set rroute = 'good' %}
+{%    elseif type == 5  %}
+        {% set reroute = 'events_cats' %}
+        {% set rroute = 'event' %}
+{%    elseif type == 6  %}
+        {% set reroute = 'discounts' %}
+        {% set rroute = 'discount' %}
+{%    elseif type == 7  %}
+        {% set reroute = 'discounts_all' %}
+        {% set rroute = 'profile_one' %}
+{%    elseif type == "banner"  %}
+        
+{%    endif %}
+{#
+end of defines 
+#}
+
+
+{% if items is empty %}
+    
+    
+    
+{% else  %}
+
+   
+   {% for value in items %}
+        {% if value.addrId is defined %}
+            {% set addr = getAddr(value.addrId) %}
+        {% endif %}
+        {% if value.catId is defined %}
+            {% set cat = getCat(value.catId) %}
+        {% endif %}
+        {% if type == 3 %}
+            
+            {% if tag == 'li' %}
+                <li>
+                    <a href="{{ path(rroute, {'id':value.id}) }}" >Резюме № {{value.id}} от {{value.fio}}</a>
+                </li>
+            {% elseif tag == 'div' %}
+                <div {% if value.vip == 1 and vip == 1 %}class="yellow"{% endif %}>
+                    <div class="img fewImg">
+                                {% for i in 0..getPCount(value.photoIds)%}
+                                    <div></div>
+                                {% endfor %}
+                                {% if getPhoto(value.photoIds, 0, 'jpg') != "none" %}
+                                    <img src="{{ asset('uploads/photo/average/'~getPhoto(value.photoIds, 0, 'jpg')) }}" alt=""/>
+                                {% else %}
+                                    <img src="{{ asset('uploads/nophoto.png') }}" alt=""/>
+                                {% endif %}
+                    </div>
+                    
+                    <a href="{{ path(rroute, {'id':value.id}) }}">
+                        
+                               {% if value.emergency == 1 and emergency == 1  %}<i>Срочно</i> {% endif %} {{value.title}}
+                    </a>
+                    <em><b>{{ price_temp(value.price)}}</b> руб.</em>
+                    {% if info == 1 %}
+                    <span>
+                        {{addr.city}}, <br/>
+                        {{addr.street}}, {{addr.house}}
+                    </span>
+                    {% endif %}
+                </div>
+            {% endif %}
+        {% elseif type == 2 %}
+                        {% if value.updated == "" %}
+                            {% set updated = value.time|date('Y-m-d H:i:s') %}
+                        {% else %}
+                            {% set updated = value.updated|date('Y-m-d H:i:s') %}
+                        {% endif %}  
+            {% if tag == 'li' %}
+                
+                <li>
+                    <a href="{{ path(rroute, {'id':value.id}) }}" >Вакансия № {{value.id}} название {{value.title}}</a>
+                </li>
+            {% elseif tag == 'div' %}
+                <div>
+                    <a href="{{ path(rroute, {'id':value.id}) }}">{{value.title}}</a>
+                    {% if getUserPhoto(value.ownerId) != "" %}
+                        <img src="{{ asset('uploads/photo/average/'~getUserPhoto(value.ownerId, 'jpg')) }}" alt=""/>
+                    {% else %}
+                        <img src="{{ asset('uploads/nophoto.png') }}" alt=""/>
+                    {% endif %}
+                    <p> {{ value.requirement }} </p>
+                    <em> Вакансия № {{value.id}}, добавлена {{ value.time|date('Y-m-d H:i:s') }}, обновлена {{ updated }}, {{ value.views }} просмотр </em>
+                    <span> {{ value.moneyFrom }} – {{ value.moneyTo }} руб. </span>
+                </div>
+            {% elseif tag == 'right_div' %}
+                
+            {% endif %}
+        {% elseif type == 1 %}
+            {% if tag == 'li' %}
+                <li>
+                    <a href="{{ path(rroute, {'id':value.id}) }}" >Обьект № {{value.id}} название {{value.title}} <img width="100" src="{{ asset('uploads/photo/average'~value.getPhotoUrl()) }}" /></a>
+                </li>
+            {% elseif tag == 'div' %}
+                <div {% if value.vip == 1 and vip == 1  %}class="yellow"{% endif %}>
+                    <div class="img fewImg">
+                                {% for i in 1..getPCount(value.photoIds)%}
+                                    <div></div>
+                                {% endfor %}
+                                {% if getPhoto(value.photoIds, 0, 'jpg') != "none" %}
+                                    <img src="{{ asset('uploads/photo/average/'~getPhoto(value.photoIds, 0, 'jpg')) }}" alt=""/>
+                                {% else %}
+                                    <img src="{{ asset('uploads/nophoto.png') }}" alt=""/>
+                                {% endif %}
+                    </div>
+                    <a href="{{ path(rroute, {'id':value.id}) }}">
+                        
+                              {% if value.emergency == 1 and emergency == 1  %}<i>Срочно</i> {% endif %}  {{value.title}}
+                    </a>
+                    <em><b>{{price_temp(value.price)}}</b> руб.</em>
+                    {% if info == 1 %}
+                    <span>
+                        {{addr.city}}, <br/>
+                        {{addr.street}}, {{addr.house}}
+                    </span>
+                    {% endif %}
+                </div>
+            {% elseif tag == 'right_div' %}
+                <div>
+                   
+                    {% if getPhoto(value.photoIds) != "none" %}
+                        <img src="{{ asset('uploads/photo/average/'~getPhoto(value.photoIds, 0, 'jpg')) }}" alt=""/>
+                    {% else %}
+                        <img src="{{ asset('uploads/nophoto.png') }}" alt=""/>
+                    {% endif %}
+                    <div>
+                        <a href="{{ path(rroute, {'id':value.id}) }}">{{value.title}}</a>
+                        <b>{{price_temp(value.price)}} <i>руб.</i></b>
+                    </div>
+
+                    <span>
+                        {{addr.city}}, {{addr.street}}, {{addr.house}}
+                    </span>
+                </div>
+            {% endif %}
+        {% elseif type == 4 %}
+            {% if tag == 'li' %}
+                <li>
+                    <a href="{{ path(rroute, {'id':value.id}) }}" >Товар № {{value.id}} название {{value.title}}</a>
+                </li>
+            {% elseif tag == 'div' %}
+                <div {% if value.vip == 1 and vip == 1 %}class="yellow"{% endif %}>
+                    <div class="img fewImg">
+                                {% for i in 1..getPCount(value.photoIds)%}
+                                    <div></div>
+                                {% endfor %}
+                                {% if getPhoto(value.photoIds) != "none" %}
+                                    <img src="{{ asset('uploads/photo/average/'~getPhoto(value.photoIds, 0, 'jpg')) }}" alt=""/>
+                                {% else %}
+                                    <img src="{{ asset('uploads/nophoto.png') }}" alt=""/>
+                                {% endif %}
+                    </div>
+                    <a href="{{ path(rroute, {'id':value.id}) }}">
+                              {% if value.emergency == 1 and emergency == 1 %}<i>Срочно</i> {% endif %}  {{value.title}}
+                    </a>
+                    <em><b>{{price_temp(value.price)}}</b> руб.</em>
+                    {% if info == 1 %}
+                    <span>
+                        {{ cat.name }}
+                    </span>
+                    {% endif %}
+                </div>
+            {% elseif tag == 'div_noinfo' %}
+                <div>
+                    <div class="img fewImg">
+                                {% for i in 1..getPCount(value.photoIds)%}
+                                    <div></div>
+                                {% endfor %}
+                                {% if getPhoto(value.photoIds) != "none" %}
+                                    <img src="{{ asset('uploads/photo/average/'~getPhoto(value.photoIds, 0, 'jpg')) }}" alt=""/>
+                                {% else %}
+                                    <img src="{{ asset('uploads/nophoto.png') }}" alt=""/>
+                                {% endif %}
+                    </div>
+                    <a href="{{ path(rroute, {'id':value.id}) }}">
+                              {% if value.emergency == 1 and emergency == 1 %}<i>Срочно</i> {% endif %}  {{value.title}}
+                    </a>
+                    <em><b>{{price_temp(value.price)}}</b> руб.</em>
+                    
+                </div>
+            {% elseif tag == 'div_opis' %}
+                <div>
+                    <div class="img">
+                                {% for i in 1..getPCount(value.photoIds)%}
+                                    <div></div>
+                                {% endfor %}
+                                {% if getPhoto(value.photoIds) != "none" %}
+                                    <img src="{{ asset('uploads/photo/average/'~getPhoto(value.photoIds, 0 , 'jpg')) }}" alt=""/>
+                                {% else %}
+                                    <img src="{{ asset('uploads/nophoto.png') }}" alt=""/>
+                                {% endif %}
+                    </div>
+                    <a href="{{ path(rroute, {'id':value.id}) }}">
+                              {% if value.emergency == 1 and emergency == 1 %}<i>Срочно</i> {% endif %}  {{value.title}}
+                    </a>
+                    <span>{{ value.shortDesc|raw }}</span>
+                </div>
+            {% endif %}
+        {% elseif type == 5 %}
+            {% if tag == 'li' %}
+                <li>
+                    <a href="{{ path(rroute, {'id':value.id}) }}" >Событие № {{value.id}} название {{value.title}}</a>
+                </li>
+            {% elseif tag == 'div' %}
+                <div class="{% if value.recommend == 1 %}right-div-else{% else %}right-div{% endif %}">
+                    {% if getPhoto(value.photoIds) != "none" %}
+                        <img width="120px" src="{{ asset('uploads/photo/portrait_image/'~getPhoto(value.photoIds, 'jpg')) }}" alt=""/>
+                    {% else %}
+                        <img src="{{ asset('uploads/nophoto.png') }}" alt=""/>
+                    {% endif %}
+                    <a href="{{ path(rroute, {'id':value.id}) }}">{{value.title}}</a>
+                    <p> {{value.shortDescr|raw}} </p>
+                </div>
+            {% elseif tag == 'right_div' %}
+                <div class="right-div">
+                    {% if getPhoto(value.photoIds) != "" %}
+                        <img src="{{ asset('uploads/photo/small/'~getPhoto(value.photoIds, 'jpg')) }}" alt=""/>
+                    {% else %}
+                        <img src="{{ asset('uploads/nophoto.png') }}" alt=""/>
+                    {% endif %}
+                    <a href="{{ path(rroute, {'id':value.id}) }}">{{value.title}}</a>
+                    <p> {{value.shortDescr|raw}} </p>
+                </div>
+            {% elseif tag == 'similiar_div' %}
+                <div style="float:left;margin:6px;">
+                    <a style="width: 210px;" href="{{ path(rroute, {'id':value.id}) }}">{{value.title}}</a>
+                    {% if getPhoto(value.photoIds) != "none" %}
+                        <img src="{{ asset('uploads/photo/average/'~getPhoto(value.photoIds, 'jpg')) }}" alt=""/>
+                    {% else %}
+                        <img src="{{ asset('uploads/nophoto.png') }}" alt=""/>
+                    {% endif %}
+                    <p style="width: 210px;">
+                        {{value.shortDescr|raw}}
+                    </p>
+                    <em>
+                        Время: {{ value.eventTime|date('Y-m-d') }}
+                    </em>
+                    <span>
+                        
+                    </span>
+                </div>
+            {% endif %}
+        {% elseif type == 6 %}
+            {% if tag == 'li' %}
+                <li>
+                    <a href="{{ path(rroute, {'id':value.id}) }}" >Пользователь № {{value.id}} название {{value.companyName}}</a>
+                </li>
+            {% elseif tag == 'div' %}
+                <div {% if value.vip == 1 and vip == 1 %}class="yellow"{% endif %}>
+                    <div class="img fewImg">
+                                {% for i in 0..getPCount(value.photoIds)%}
+                                    <div></div>
+                                {% endfor %}
+                                {% if getPhoto(value.photoIds, 0, 'jpg') != "none" %}
+                                    <img src="{{ asset('uploads/photo/average/'~getPhoto(value.photoIds, 0, 'jpg')) }}" alt=""/>
+                                {% else %}
+                                    <img src="{{ asset('uploads/nophoto.png') }}" alt=""/>
+                                {% endif %}
+                    </div>
+                    
+                    <a href="{{ path(rroute, {'id':value.id}) }}">
+                        
+                               {% if value.emergency == 1 and emergency == 1  %}<i>Срочно</i> {% endif %} {{value.title}}
+                    </a>
+                    <p>
+                        {{value.shortDesc|raw}}
+                    </p>
+                </div>
+            {% endif %}
+        {% elseif type == 7 %}
+            {% if tag == 'li' %}
+                <li>
+                    <a href="{{ path(rroute, {'id':value.id}) }}" >Скидка № {{value.id}} от {{value.companyName}} в {{ value.discounts }} %</a>
+                </li>
+            {% elseif tag == 'div' %}
+                
+            {% endif %}
+        {% elseif type == "banner" %}
+            {% if tag == 'li' %}
+                <li>
+                    <a href="{{ value.url }}" >Баннер № {{value.id}} название {{value.title}}</a>
+                </li>
+            {% elseif tag == 'div' %}
+                
+            {% endif %}
+        {% endif %}
+         
+   {% endfor %}
+
+{% endif %}

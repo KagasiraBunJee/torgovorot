@@ -1,0 +1,32 @@
+</div>
+<script>
+    $(function(){
+        $(".add_image").click(function(){
+            
+            var input = 'Фото <input id="form_photo" class="upload_photo" type="file" multiple="multiple" accept="image/*" name="form[photo][]"><br>';
+        
+            $(".add_image").before(input);
+        });
+    });
+    
+    $(".state_select").change(function(){
+        
+        var params = $(this).children("option:selected").val();
+        
+        var params_arr = params.split("_");
+        
+        var id = params_arr[0];
+        var ads = params_arr[1];
+        var param = params_arr[2];
+        
+        $.get("{{ path('admin_ads_state_change') }}", { item_id:""+id+"", ads_type:""+ads+"", action:""+param+"" }, function(response){
+            if(response.code == 100 && response.success){//dummy check
+                      alert("ok");
+            }
+            
+        });
+    })
+    
+</script>
+</body>
+</html>

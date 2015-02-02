@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Torgovorot\TorgBundle\Entity\ChComm" table="ch_comm">
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="commType" type="integer" column="comm_type" nullable="true"/>
+    <field name="squareEarth" type="float" column="square_earth" precision="10" scale="0" nullable="true"/>
+    <field name="squarePlace" type="float" column="square_place" precision="10" scale="0" nullable="true"/>
+    <field name="videoId" type="integer" column="video_id" nullable="true"/>
+    <field name="photoId" type="integer" column="photo_id" nullable="true"/>
+  </entity>
+</doctrine-mapping>

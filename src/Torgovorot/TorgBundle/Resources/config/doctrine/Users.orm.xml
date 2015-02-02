@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Torgovorot\TorgBundle\Entity\Users" table="users">
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="userName" type="string" column="user_name" length="255" nullable="true"/>
+    <field name="passNorm" type="string" column="pass_norm" length="255" nullable="true"/>
+    <field name="passHex" type="string" column="pass_hex" length="255" nullable="true"/>
+    <field name="email" type="string" column="email" length="255" nullable="true"/>
+    <field name="addrId" type="string" column="addr_id" length="11" nullable="true"/>
+    <field name="accessLvl" type="integer" column="access_lvl" nullable="true"/>
+    <field name="registerTime" type="datetime" column="register_time" nullable="true"/>
+    <field name="lastActive" type="datetime" column="last_active" nullable="true"/>
+    <field name="online" type="integer" column="online" nullable="true"/>
+    <field name="salt" type="string" column="salt" length="255" nullable="true"/>
+    <field name="photo" type="string" column="photo" length="255" nullable="true"/>
+    <field name="about" type="text" column="about" nullable="true"/>
+    <field name="contacts" type="text" column="contacts" nullable="true"/>
+    <field name="fio" type="string" column="fio" length="255" nullable="true"/>
+    <field name="tel" type="string" column="tel" length="255" nullable="true"/>
+    <field name="fax" type="string" column="fax" length="255" nullable="true"/>
+    <field name="mobile" type="string" column="mobile" length="255" nullable="true"/>
+    <field name="discounts" type="integer" column="discounts" nullable="true"/>
+    <field name="rolesStr" type="string" column="roles_str" length="255" nullable="true"/>
+    <field name="companyName" type="string" column="company_name" length="255" nullable="true"/>
+    <field name="credits" type="integer" column="credits" nullable="true"/>
+  </entity>
+</doctrine-mapping>

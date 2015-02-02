@@ -1,0 +1,37 @@
+{% include 'TorgovorotTorgBundle:Admin:admin_header.html.twig' %}
+<a href=" {{ path('admin_profile_view', {'id':user.id}) }} "> <-К профилю </a><br><br>
+{{ form_start(form) }}
+
+
+
+
+{{ form_row(form.title , { 'label':'Наименование:' }) }}
+<br>
+Описание:
+{{ form_widget(form.text) }}<br>
+Краткое описание:
+{{ form_widget(form.shortDesc) }}
+<br>
+{{ form_row(form.catId , { 'label':'Категории:' }) }}
+<br>
+{{ form_row(form.days , { 'label':'Время товара:' }) }}<br>
+Изображение:<br>
+{% if getPhoto(item.photoIds) != "none" %}
+    <img src="{{ asset('uploads/photo/'~getPhoto(item.photoIds)) }}" width="300px">
+{% else %}
+    <img src="{{ asset('uploads/nophoto.png') }}"/>
+{% endif %}
+<br>
+{{ form_widget(form.photo) }}
+{{ form_widget( form.photo, { 'attr' : { 'class' : 'upload_photo'} , 'label': 'Загрузить:', 'full_name' : 'form[photo][]'} ) }}<br>
+<input type="button" class="add_image" value="Добавить еще">
+<br>
+<br>
+{{ form_row(form.price , { 'label':'Цена:' }) }}
+<br>
+{{ form_row(form.save , { 'label':'Cохранить' }) }}
+
+
+{{ form_rest(form) }}
+{{ form_end(form)  }}
+{% include 'TorgovorotTorgBundle:Admin:admin_bottom.html.twig' %}

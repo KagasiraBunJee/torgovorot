@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Torgovorot\TorgBundle\Entity\ChHouse" table="ch_house">
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="houseType" type="integer" column="house_type" nullable="true"/>
+    <field name="planing" type="integer" column="planing" nullable="true"/>
+    <field name="squareHouse" type="float" column="square_house" precision="10" scale="0" nullable="true"/>
+    <field name="squareEarth" type="float" column="square_earth" precision="10" scale="0" nullable="true"/>
+    <field name="distanceToCity" type="float" column="distance_to_city" precision="10" scale="0" nullable="true"/>
+    <field name="convinient" type="integer" column="convinient" nullable="true"/>
+    <field name="canalization" type="integer" column="canalization" nullable="true"/>
+    <field name="water" type="integer" column="water" nullable="true"/>
+    <field name="electricity" type="integer" column="electricity" nullable="true"/>
+    <field name="gas" type="integer" column="gas" nullable="true"/>
+    <field name="houseMaterial" type="integer" column="house_material" nullable="true"/>
+    <field name="videoId" type="integer" column="video_id" nullable="true"/>
+    <field name="photoId" type="integer" column="photo_id" nullable="true"/>
+  </entity>
+</doctrine-mapping>

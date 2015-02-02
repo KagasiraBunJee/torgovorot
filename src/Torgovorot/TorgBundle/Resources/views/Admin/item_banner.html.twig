@@ -1,0 +1,14 @@
+{% include 'TorgovorotTorgBundle:Admin:admin_header.html.twig' %}
+{{ getbanner(1,"simple", item.id)|raw }}
+{{ form_start(form) }} 
+                {{ form_row( form.title, { 'label': 'Название:', 'value' : item.title} ) }}
+                {{ form_row( form.descr, { 'label': 'Описание:', 'value' : item.descr} ) }}
+                
+                {{ form_row( form.link, { 'label': 'Сcылка:', 'value' : item.url} ) }}<br>
+                {{ form_row( form.idd, {'value' : item.id} ) }}<br>
+                Баннер (swf,png,jpeg)
+                {{ form_widget(form.file)}}<br>
+
+{{ form_rest(form) }}
+</form>
+{% include 'TorgovorotTorgBundle:Admin:admin_bottom.html.twig' %}

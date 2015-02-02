@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1">
+        <file>
+            <url>src/Torgovorot/TorgBundle/Controller/AdminController.php</url>
+            <bookmark id="1">
+                <name/>
+                <line>3394</line>
+                <key/>
+            </bookmark>
+        </file>
+    </editor-bookmarks>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/work/NetBeansProjects/NetBeansProjects/torgovorot/src/Torgovorot/TorgBundle/Controller/AdminController.php</file>
+            <file>file:/C:/work/NetBeansProjects/NetBeansProjects/torgovorot/src/Torgovorot/TorgBundle/Resources/views/Admin/items_pages.html.twig</file>
+            <file>file:/C:/work/NetBeansProjects/NetBeansProjects/torgovorot/vendor/erivello/simple-html-dom-bundle/Erivello/SimpleHtmlDomBundle/lib/simple_html_dom.php</file>
+            <file>file:/C:/work/NetBeansProjects/NetBeansProjects/torgovorot/src/Torgovorot/TorgBundle/Resources/views/public/items.html.twig</file>
+            <file>file:/C:/work/NetBeansProjects/NetBeansProjects/torgovorot/src/Torgovorot/TorgBundle/Controller/DefaultController.php</file>
+            <file>file:/C:/work/NetBeansProjects/NetBeansProjects/torgovorot/src/Torgovorot/TorgBundle/Resources/views/Admin/items_all.html.twig</file>
+            <file>file:/C:/work/NetBeansProjects/NetBeansProjects/torgovorot/src/Torgovorot/TorgBundle/Helper/Display/PublicContentExtension.php</file>
+            <file>file:/C:/work/NetBeansProjects/NetBeansProjects/torgovorot/src/Torgovorot/TorgBundle/Controller/AdvertiseController.php</file>
+            <file>file:/C:/work/NetBeansProjects/NetBeansProjects/torgovorot/web/app.php</file>
+            <file>file:/C:/work/NetBeansProjects/NetBeansProjects/torgovorot/src/Torgovorot/TorgBundle/Controller/ProcessingController.php</file>
+            <file>file:/C:/work/NetBeansProjects/NetBeansProjects/torgovorot/src/Torgovorot/TorgBundle/Resources/views/Default/main.html.twig</file>
+            <file>file:/C:/work/NetBeansProjects/NetBeansProjects/torgovorot/src/Torgovorot/TorgBundle/Resources/views/Default/item_vacancy.html.twig</file>
+            <file>file:/C:/work/NetBeansProjects/NetBeansProjects/torgovorot/src/Torgovorot/TorgBundle/Helper/Parser/Parser.php</file>
+            <file>file:/C:/work/NetBeansProjects/NetBeansProjects/torgovorot/src/Torgovorot/TorgBundle/Resources/public/js/scripts.js</file>
+            <file>file:/C:/work/NetBeansProjects/NetBeansProjects/torgovorot/src/Torgovorot/TorgBundle/Resources/config/routing.yml</file>
+            <file>file:/C:/work/NetBeansProjects/NetBeansProjects/torgovorot/web/bundles/torgovorottorg/js/scripts.js</file>
+            <file>file:/C:/work/NetBeansProjects/NetBeansProjects/torgovorot/src/Torgovorot/TorgBundle/Resources/views/Default/items.html.twig</file>
+            <file>file:/C:/work/NetBeansProjects/NetBeansProjects/torgovorot/src/Torgovorot/TorgBundle/Resources/views/Admin/items_compl.html.twig</file>
+            <file>file:/C:/work/NetBeansProjects/NetBeansProjects/torgovorot/src/Torgovorot/TorgBundle/Controller/AdminParserController.php</file>
+        </group>
+    </open-files>
+</project-private>

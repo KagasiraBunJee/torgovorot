@@ -1,0 +1,50 @@
+{% include 'TorgovorotTorgBundle:Admin:admin_header.html.twig' %}
+<h1>Список компаний</h1>
+<div>
+    <table width="1000">
+        <tr>
+            <td>id</td>
+            <td>ФИО</td>
+            <td>Компания</td>
+            <td>Баланс</td>
+            <td>Дата регистрации</td>
+            <td>Действие</td>
+        </tr>
+        {% for item in items %}
+        <tr>
+            <td>{{ item.id }}</td>
+            <td>{{ item.fio }}</td>
+            <td>{{ item.companyName }}</td>
+            <td>{{ item.credits }}</td>
+            <td>{{ item.registerTime|date('Y-m-d H:i:s') }}</td>
+            <td><a href="{{ path('admin_profile_view', {'id':item.id}) }}"> Редактировать </a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+<div class="paginator">
+    
+        {% if paginator.currentpage != 1 %}
+             <a class="previous" href="{{ path('admin_profile_list', { 'page': paginator.currentpage-1 }) }}">Previous</a>
+        {% endif %}
+        {% for i in 1..paginator.numpages%}
+            {% if paginator.range.0 > 2 and i == paginator.range.0 %}
+                  ...
+            {% endif %}
+
+            {% if(i==1 or i==paginator.numpages or i in paginator.range) %}
+                
+                <a {% if i==paginator.currentpage %}class="active"{% endif %} href="{{ path('admin_profile_list', { 'page': i }) }}"> {{i}}</a>
+
+            {% endif %}
+
+            {% if paginator.range[paginator.midrange -1] < paginator.numpages -1 and i == paginator.range[paginator.midrange-1] %}
+                ...
+            {% endif %}
+        {% endfor %}
+        {% if paginator.numpages > 1 and paginator.currentpage != paginator.numpages %}
+         <a class="next" href="{{ path('admin_profile_list', { 'page': paginator.currentpage+1}) }}">Next</a>
+        {% endif %}
+    
+</div>
+{% include 'TorgovorotTorgBundle:Admin:admin_bottom.html.twig' %}

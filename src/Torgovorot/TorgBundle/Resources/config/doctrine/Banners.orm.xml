@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Torgovorot\TorgBundle\Entity\Banners" table="banners">
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="title" type="string" column="title" length="255" nullable="true"/>
+    <field name="descr" type="text" column="descr" nullable="true"/>
+    <field name="url" type="string" column="url" length="255" nullable="true"/>
+    <field name="type" type="string" column="type" length="255" nullable="true"/>
+    <field name="objUrl" type="string" column="obj_url" length="255" nullable="true"/>
+    <field name="time" type="datetime" column="time" nullable="true"/>
+    <field name="width" type="float" column="width" precision="10" scale="0" nullable="true"/>
+    <field name="height" type="float" column="height" precision="10" scale="0" nullable="true"/>
+    <field name="position" type="integer" column="position" nullable="true"/>
+  </entity>
+</doctrine-mapping>

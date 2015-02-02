@@ -1,0 +1,19 @@
+{% include 'TorgovorotTorgBundle:Admin:admin_header.html.twig' %}
+
+{{ form_start(form) }}
+<h1>Настройка</h1>
+<table>
+    {% for item in config %}
+    <tr>
+        <td style="padding-right:50px;">{{item.name}}</td>
+        <td>Цена:</td>
+        <td><input name="{{ item.param1 }}" value="{{item.val}}" type="{{item.type}}"> кредитов</td>
+    </tr>
+    {% endfor %}
+    
+</table>
+    
+{{ form_row(form.save) }}
+{{ form_rest(form) }}
+{{ form_end(form) }}
+{% include 'TorgovorotTorgBundle:Admin:admin_bottom.html.twig' %}

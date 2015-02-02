@@ -1,0 +1,2597 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,700italic,400,600,700&subset=latin,cyrillic-ext);
+
+/*Reset*/
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td {
+    margin: 0;
+    padding: 0;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+fieldset, img {
+    border: 0;
+}
+
+address, caption, cite, code, dfn, em, strong, th, var {
+    font-style: normal;
+    font-weight: normal;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+caption, th {
+    text-align: left;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-size: 100%;
+    font-weight: normal;
+}
+
+q:before, q:after {
+    content: '';
+}
+
+abbr, acronym {
+    border: 0;
+}
+
+li, div {
+    vertical-align: top;
+    position: relative;
+}
+
+img {
+    vertical-align: top;
+}
+
+html {
+    min-height: 100%;
+}
+
+a {
+    color: #005cab;
+    text-decoration: none;
+    outline: none;
+}
+
+body {
+    font-family: "Open Sans", Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    background: url("../../bundles/torgovorottorg/images/bg.png") repeat-y center;
+    color: #353535;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.wrapper {
+    width: 980px;
+    margin: 0 auto;
+}
+
+.footer {
+    width: 980px;
+    margin: 0 auto;
+}
+
+.top-menu {
+    background: #353535;
+    height: 30px;
+    font-size: 11px;
+    color: #ababab;
+    text-transform: uppercase;
+
+}
+
+.city {
+    display: inline-block;
+    margin: 5px 10px;
+}
+
+.top-menu ul {
+    display: inline-block;
+}
+
+.top-menu li {
+    border-right: 1px solid #5D5D5D;
+    display: inline-block;
+}
+
+.top-menu li:last-child {
+    border-right: none;
+}
+
+.top-menu li a {
+    color: #ABABAB;
+    display: inline-block;
+    margin: 6px 10px 4px;
+}
+
+.top-menu li a:hover, .top-menu li a.active {
+    text-decoration: none;
+    color: #f8ce60;
+}
+
+.lich {
+    background: url("../../bundles/torgovorottorg/images/key.png") no-repeat scroll left center rgba(0, 0, 0, 0);
+    color: #FFFFFF;
+    font-size: 12px;
+    padding-left: 25px;
+    position: absolute;
+    right: 10px;
+    top: 5px;
+}
+
+.top-gray {
+    height: 140px;
+    background: url("../../bundles/torgovorottorg/images/footer-bg.png");
+}
+
+.gray-menu {
+
+}
+
+.gray-menu > a {
+    color: #3E525F;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: bold;
+    margin: -3px 3px 0 0;
+    padding: 2px 5px;
+}
+
+.gray-menu > a:hover, .gray-menu > a.active {
+    background: none repeat scroll 0 0 #9B171E;
+    border-radius: 5px;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.gray-menu {
+    display: table;
+    margin: 0 auto;
+    padding-top: 30px;
+    text-transform: uppercase;
+}
+
+.add-ad {
+    background: none repeat scroll 0 0 #00B77F;
+    border-radius: 5px;
+    box-shadow: 1px 1px 3px #999999;
+    color: #FFFFFF;
+    display: block;
+    padding: 5px;
+    position: absolute;
+    right: 5px;
+    text-transform: none;
+    top: 24px;
+}
+
+.add-ad:hover {
+    text-decoration: none;
+}
+
+.search {
+
+}
+
+.select {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.select li {
+    display: block;
+}
+
+.select label {
+    color: #7A7A7A;
+    display: block;
+    font-size: 15px;
+    padding-left: 6px;
+}
+
+.inline-select {
+    display: inline-block;
+    position: relative;
+}
+
+.menu-select {
+    background: #ffffff;
+    border: 1px solid #CAD0D3;
+    cursor: auto !important;
+    display: none;
+    left: 0;
+    margin: 0;
+    padding: 10px 0;
+    position: absolute;
+    top: 100%;
+    border-radius: 0 0 5px 5px;
+}
+
+.menu-select li {
+    margin-bottom: 5px;
+    padding: 5px 10px 5px 15px;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.menu-select li:hover {
+    background: #F4F4F4;
+}
+
+.menu-select li.last {
+    margin: 0;
+}
+
+.select {
+    margin-bottom: 10px;
+}
+
+.title-select {
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #FEFEFE), color-stop(1, #EEEEEE));
+    background-image: -o-linear-gradient(bottom, #FEFEFE 0%, #EEEEEE 100%);
+    background-image: -moz-linear-gradient(bottom, #FEFEFE 0%, #EEEEEE 100%);
+    background-image: -webkit-linear-gradient(bottom, #FEFEFE 0%, #EEEEEE 100%);
+    background-image: -ms-linear-gradient(bottom, #FEFEFE 0%, #EEEEEE 100%);
+    background-image: linear-gradient(to bottom, #FEFEFE 0%, #EEEEEE 100%);
+    border-radius: 3px;
+    cursor: pointer;
+    padding: 5px 30px 6px 13px;
+    position: relative;
+    width: 215px;
+    box-shadow: 0 0 5px #999;
+}
+
+.title-select span {
+    display: block;
+    font-size: 13px;
+    font-weight: bold;
+    line-height: 14px;
+    margin: 5px 0 3px 2px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.inline-select .cls {
+    background: url("../../bundles/torgovorottorg/images/arrow-one.png") no-repeat scroll 0 7px rgba(0, 0, 0, 0);
+    height: 15px;
+    position: absolute;
+    right: 1px;
+    top: 9px;
+    width: 17px;
+}
+
+.inline-select .two .cls {
+    background: url("../../bundles/torgovorottorg/images/arrow.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+}
+
+.inline-select.open .title-select {
+    border-bottom-color: transparent;
+    z-index: 6;
+    border-radius: 5px 5px 0 0;
+}
+
+.inline-select.open .menu-select {
+    background: none repeat scroll 0 0 #EEEEEE;
+    border-top: medium none;
+    margin-left: -1px;
+    margin-top: -1px;
+    z-index: 10;
+}
+
+.w190 {
+    width: 190px;
+}
+
+.title-select span {
+    font-weight: normal;
+    font-size: 14px;
+}
+
+.title-select.white {
+    background: url("../../bundles/torgovorottorg/images/point.png") no-repeat scroll 0 3px #353535;
+    box-shadow: none;
+    padding: 0 15px 0 9px;
+    position: relative;
+    top: -4px;
+    vertical-align: top;
+    width: 67px;
+}
+
+.title-select.white > span {
+    color: #FFFFFF;
+    font-size: 11px;
+}
+
+.white .cls {
+    background: url("../../bundles/torgovorottorg/images/white-arrow.png") no-repeat;
+}
+
+.city .select {
+    margin-left: 7px;
+}
+
+.white .cls {
+    background: url("../../bundles/torgovorottorg/images/white-arrow.png") no-repeat scroll center center rgba(0, 0, 0, 0);
+    height: 16px;
+    top: 0;
+    width: 10px;
+}
+
+.city .menu-select li {
+    background: none repeat scroll 0 0 #353535;
+    font-size: 11px;
+    margin: 0;
+}
+
+.city .menu-select {
+    background: none repeat scroll 0 0 #353535 !important;
+    border: medium none;
+    left: -2px;
+}
+
+.city .menu-select li:hover {
+    background: none repeat scroll 0 0 #454545;
+}
+
+.search {
+    background: none repeat scroll 0 0 #F8CE60;
+    border-bottom: 3px solid #DFB64A;
+    border-radius: 10px;
+    box-shadow: 0 1px 5px #999999;
+    height: 70px;
+    left: 10px;
+    padding: 20px;
+    position: absolute;
+    top: 75px;
+    width: 920px;
+}
+
+.search form > div {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #CCAA50;
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px #999999 inset;
+    display: inline-block;
+    width: 760px;
+    height: 32px;
+}
+
+.search .select {
+    margin-right: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.search .title-select {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    box-shadow: none;
+    width: 110px;
+}
+
+.search .title-select span {
+    color: #353535;
+    font-size: 15px;
+    font-weight: normal;
+    line-height: 20px;
+    margin-top: 0;
+}
+
+.search .inline-select .cls {
+    background: url("../../bundles/torgovorottorg/images/black-arrow.png") no-repeat scroll 0 6px rgba(0, 0, 0, 0);
+}
+
+.search form > div input[type="text"] {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: medium none;
+    font-size: 15px;
+    margin: 7px;
+    width: 590px;
+}
+
+.search input[type="submit"] {
+    background: #006CB7 url("../../bundles/torgovorottorg/images/search.png") no-repeat 25px center;
+    border: medium none;
+    border-radius: 5px;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    margin-left: 10px;
+    padding: 7px 44px;
+    box-shadow: 0 1px 5px #999;
+}
+
+.search .inline-select.open .menu-select {
+    border: medium none;
+    margin-top: -6px;
+    background: #fff;
+}
+
+.search > div {
+    font-size: 14px;
+    font-weight: normal;
+    margin: 5px;
+}
+
+.search > div em {
+    display: inline-block;
+    font-weight: 600;
+    margin: 0 5px;
+    text-decoration: underline;
+}
+
+.main {
+    padding: 10px;
+}
+
+.main.withSearch {
+    margin-top: 35px;
+}
+
+.main-left {
+    display: inline-block;
+    margin-top: 20px;
+    width: 795px;
+}
+
+.main-right {
+    display: inline-block;
+    margin-top: 20px;
+    width: 160px;
+}
+
+.main-left-left {
+    display: inline-block;
+    margin: 0 20px 0 0;
+    width: 350px;
+}
+
+.main-left-right {
+    display: inline-block;
+    width: 420px;
+}
+
+.main .title, .main .title a {
+    font-size: 16px;
+    color: #353535;
+}
+
+.abs-top-right {
+    color: #9F9F9F;
+    font-size: 13px;
+    font-weight: normal;
+    position: absolute;
+    right: 0;
+    top: 1px;
+}
+
+.abs-top-right a {
+    color: #9F9F9F;
+}
+
+.abs-top-right a:hover {
+    text-decoration: none;
+    color: #005cab;
+}
+
+.gray-list li a {
+    color: #353535;
+    font-size: 13px;
+    text-decoration: underline;
+}
+
+.gray-list li a:hover {
+    text-decoration: none;
+}
+
+.gray-list li {
+    margin-bottom: 5px;
+}
+
+.top-border {
+    border-top: 2px solid #dadada;
+    margin-top: 20px;
+    padding-top: 20px;
+}
+
+.top-border .abs-top-right {
+    top: 20px;
+}
+
+.gray-list > ul {
+    display: inline-block;
+    margin: 15px 0;
+    width: 172px;
+    vertical-align: top;
+}
+
+.vip > div > div {
+    display: inline-block;
+    margin: 20px 5px 0px 0;
+    width: 168px;
+}
+
+.img > img {
+    border: 2px solid #FFFFFF;
+    border-radius: 2px;
+    box-shadow: 2px 2px 5px #999999;
+    position: relative;
+    z-index: 3;
+    width: 98%;
+}
+
+.img.fewImg > div:nth-child(1) {
+    background: none repeat scroll 0 0 #FFFFFF;
+    box-shadow: 2px 2px 5px #999999;
+    height: 100%;
+    left: 2px;
+    position: absolute;
+    top: 2px;
+    width: 100%;
+    z-index: 2;
+}
+
+.img.fewImg > div:nth-child(2) {
+    background: none repeat scroll 0 0 #FFFFFF;
+    box-shadow: 2px 2px 5px #999999;
+    height: 100%;
+    left: 4px;
+    position: absolute;
+    top: 4px;
+    width: 100%;
+    z-index: 1;
+}
+
+.img {
+    margin-bottom: 15px;
+}
+
+.vip div div a {
+    display: block;
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+
+.vip em {
+    font-weight: bold;
+}
+
+.vip em b {
+    font-size: 17px;
+}
+
+.vip div div span {
+    color: #9F9F9F;
+    display: block;
+    font-size: 12px;
+    margin: 5px 0;
+}
+
+.select-list {
+    margin: 0 !important;
+    width: auto !important;
+}
+
+.select-list > a {
+    background: url("../../bundles/torgovorottorg/images/blue-arrow.png") no-repeat right center;
+    padding-right: 12px;
+}
+
+.select-list > a span {
+    color: #005cab !important;
+    font-weight: bold !important;
+    border-bottom: 1px dashed !important;
+    font-size: 14px !important;
+}
+
+.select-list > a:hover span {
+    border-color: transparent !important;
+}
+
+.select-list > ul {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border-radius: 0 0 5px 5px;
+    box-shadow: 0 5px 5px #999999;
+    display: none;
+    left: 0;
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    z-index: 5;
+    margin-top: -10px;
+    padding-top: 10px;
+}
+
+.select-list li a {
+    display: block;
+    font-size: 12px !important;
+    padding: 0 5px;
+}
+
+.select-list:hover ul {
+    display: block;
+}
+
+.tdd-img {
+    display: inline-block;
+    margin-right: 20px;
+    width: 80px;
+    text-align: center;
+}
+
+.tdd-img > img {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+}
+
+.select-list {
+    margin: -5px 0 0 !important;
+    width: auto !important;
+}
+
+.advert {
+    margin: 20px 0;
+}
+
+.tdd-text > a:hover {
+    text-decoration: none;
+}
+
+.tdd-text > a span {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.tdd-text > a:hover span {
+    text-decoration: underline;
+}
+
+.tdd-text > a em {
+    color: #A2A2A2;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.tdd-img {
+    display: inline-block;
+    margin-right: 20px;
+    margin-top: 5px;
+    text-align: center;
+    width: 70px;
+}
+
+.tdd-text {
+    display: inline-block;
+    width: 254px;
+}
+
+.tdd-text p {
+    font-size: 13px;
+    font-weight: normal;
+    margin: 5px 0;
+}
+
+.tdd-text p a {
+    color: #353535;
+}
+
+.advert > li {
+    margin-bottom: 10px;
+}
+
+.top-border .abs-top-right {
+    top: 23px;
+}
+
+.main-left-right .vip > div > div:not(.select-list) {
+    margin: 5px 10px 5px 0;
+    padding: 10px;
+    width: 180px;
+}
+
+.main-left-right .vip > div > div:not(.select-list):nth-child(2n+2) {
+    margin-right: 0;
+}
+
+.yellow {
+    background: none repeat scroll 0 0 #FFF0CA;
+}
+
+.bn {
+    display: block;
+    margin: 10px 0;
+}
+
+.vip div div a i {
+    background: none repeat scroll 0 0 #C82121;
+    border-radius: 5px;
+    color: #FFFFFF;
+    display: inline-block;
+    font-style: normal;
+    padding: 3px 5px;
+    position: relative;
+    top: -2px;
+}
+
+.vip div div span a {
+    color: #C4C4C4;
+    margin: 0;
+}
+
+.main-left-right .title {
+    margin-left: 10px;
+}
+
+.main-left-right .abs-top-right {
+    right: 10px;
+}
+
+.right-div > a {
+    color: #353535;
+    display: block;
+    margin: 5px 0;
+    text-decoration: underline;
+}
+
+.right-div > a:hover {
+    text-decoration: none;
+}
+
+.right-div > p {
+    display: block;
+    font-size: 13px;
+    font-weight: normal;
+    margin: 10px 5px 0 0;
+}
+
+.right-div > img {
+    display: block;
+    margin: 20px 0 10px;
+    width: 120px;
+    box-shadow: 3px 3px 5px #999999;
+}
+
+.main-right {
+    display: inline-block;
+    margin-top: 20px;
+    padding-left: 10px;
+    width: 150px;
+}
+
+.news {
+    background: url("../../bundles/torgovorottorg/images/blue-bg.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border-radius: 0 10px 10px 0;
+    left: -10px;
+    margin: 20px 0;
+    padding: 15px 10px;
+    position: relative;
+    font-size: 13px;
+    font-weight: normal;
+}
+
+.news .title {
+    font-weight: 600;
+}
+
+.redch > a.active {
+    background: none repeat scroll 0 0 #A20000;
+    color: #FFFFFF;
+}
+
+.redch > a {
+    color: #353535;
+    display: inline-block;
+    left: -5px;
+    margin: 5px 0;
+    padding: 2px 5px;
+    position: relative;
+}
+
+.redch > a.active em {
+    background: url("../../bundles/torgovorottorg/images/red-cloud.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    height: 4px;
+    left: 5px;
+    position: absolute;
+    top: 100%;
+    width: 5px;
+}
+
+.gray-link > a, .gray-link {
+    color: #9F9F9F;
+}
+
+.news-item {
+    margin: 5px -10px;
+    padding: 10px;
+}
+
+.date {
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #212c38;
+}
+
+.news-item > a {
+    color: #353535;
+}
+
+.news-item:hover {
+    background: #212c38 url("../../bundles/torgovorottorg/images/ugol.png") no-repeat right top;
+}
+
+.news-item:hover .date {
+    color: #e1bd17;
+}
+
+.news-item:hover a {
+    color: #fff;
+}
+
+.news-item > i {
+    display: none;
+}
+
+.news-item:hover > i {
+    color: #E1BD17;
+    font-size: 9px;
+    font-weight: bold;
+    left: 0;
+    position: absolute;
+    top: 11px;
+    display: block;
+}
+
+.right-div-else > img {
+    margin: 10px 0;
+}
+
+.right-div-else > a {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.right-div-else > p {
+    font-size: 13px;
+    font-weight: normal;
+    margin-bottom: 10px;
+}
+
+.main-left-right .img.fewImg > div {
+    display: none;
+}
+
+.main-left-right .img > img {
+    border: medium none;
+    box-shadow: none;
+    width: 100%;
+}
+
+.shadow {
+    left: 0;
+    position: absolute;
+    top: 0;
+    z-index: 5;
+    width: 13px;
+}
+
+.shadow img {
+    width: 100%;
+    height: 100%;
+}
+
+.wrapper {
+    padding-bottom: 170px;
+}
+
+html {
+    min-height: 100%;
+    position: relative;
+}
+
+.wrapper-footer {
+    left: 0;
+    margin-top: -171px;
+    position: absolute;
+    top: 100%;
+    width: 100%;
+}
+
+.footer {
+    border-top: 1px solid #f8ce60;
+    height: 170px;
+
+}
+
+.copy {
+    left: 20px;
+    position: absolute;
+    top: 30px;
+    font-size: 13px;
+}
+
+.copy b {
+    text-transform: uppercase;
+    display: block;
+}
+
+.copy span {
+    color: #777777;
+    font-weight: normal;
+}
+
+.social {
+    bottom: 20px;
+    left: 20px;
+    position: absolute;
+}
+
+.social a {
+    background: url("../../bundles/torgovorottorg/images/social.png") no-repeat;
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.social a.fb {
+    background-position: -31px 0;
+}
+
+.social a.tw {
+    background-position: -63px 0;
+}
+
+.social a.od {
+    background-position: -98px 0;
+}
+
+.list {
+    font-size: 13px;
+    left: 390px;
+    position: absolute;
+    top: 30px;
+}
+
+.list a {
+    color: #797979;
+    text-decoration: underline;
+}
+
+.list a:hover {
+    text-decoration: none;
+}
+
+.list ul {
+    display: inline-block;
+    margin-right: 10px;
+    vertical-align: top;
+    width: 165px;
+}
+
+.list li {
+    margin-bottom: 4px;
+}
+
+.o16 {
+    background: url("../../bundles/torgovorottorg/images/16.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    height: 28px;
+    position: absolute;
+    right: 30px;
+    top: 30px;
+    width: 52px;
+}
+
+.without-search .top-gray {
+    height: 85px;
+}
+
+.main {
+    padding: 30px 10px 10px;
+}
+
+.content-left {
+    display: inline-block;
+    margin: 0 20px;
+    width: 640px;
+}
+
+.content-right {
+    display: inline-block;
+    width: 265px;
+}
+
+.path {
+    margin-top: -10px;
+    font-size: 13px;
+    color: #8d8d8d;
+}
+
+.home {
+    background: url("../../bundles/torgovorottorg/images/home.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    display: inline-block;
+    height: 23px;
+    margin-right: 5px;
+    position: relative;
+    top: -3px;
+    width: 31px;
+}
+
+.path a {
+    font-size: 13px;
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 5px;
+}
+
+h1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 10px 0;
+    position: relative;
+}
+
+.content-left p {
+    font-size: 13px;
+    font-weight: normal;
+    margin-bottom: 25px;
+}
+
+.question {
+    margin: 20px 0;
+}
+
+.question a {
+    font-size: 14px;
+    font-weight: normal;
+    text-decoration: underline;
+}
+
+.question a:hover {
+    text-decoration: none;
+}
+
+.question li {
+    margin-top: 7px;
+}
+
+.title2 {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.quest > a {
+    background: url("../../bundles/torgovorottorg/images/arrow2.png") no-repeat scroll right 7px rgba(0, 0, 0, 0);
+    display: inline-block;
+    font-size: 14px;
+    font-weight: normal;
+    padding-right: 11px;
+    text-decoration: none;
+    margin-bottom: 10px;
+}
+
+.quest.open > a {
+    background-position: right -6px;
+}
+
+.quest a span {
+    border-bottom: 1px dashed;
+    display: inline-block;
+}
+
+.quest a:hover span {
+    border-color: transparent;
+}
+
+.quest p {
+    display: none;
+}
+
+.quest.open p {
+    display: block;
+}
+
+h2 {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.withSearch .path {
+    margin: 10px 0;
+}
+
+h1 a {
+    border-bottom: 1px dashed;
+    display: inline-block;
+    line-height: 25px;
+    text-decoration: none;
+}
+
+h1 a:hover {
+    border-color: transparent;
+    text-decoration: none;
+}
+
+.bookmark {
+    background: url("../../bundles/torgovorottorg/images/add-bookmark.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border-color: rgba(0, 0, 0, 0);
+    display: block;
+    height: 25px;
+    position: absolute;
+    right: 20px;
+    bottom: 0;
+    width: 181px;
+}
+
+.center .advert {
+    display: inline-block;
+    margin: 30px 105px 30px 20px;
+    vertical-align: top;
+    width: 371px;
+}
+
+.center .advert:nth-child(2) {
+    margin-right: 10px;
+}
+
+.center .advert li {
+    margin-bottom: 20px;
+}
+
+.ph {
+    background: none repeat scroll 0 0 #000000;
+    bottom: 0;
+    left: 0;
+    opacity: 0.7;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 10000;
+}
+
+.dialog {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border-radius: 5px;
+    left: 50%;
+    position: absolute;
+    top: 100px;
+    z-index: 10001;
+    border-bottom: 3px solid #D4D4D4;
+}
+
+.dw400 {
+    margin-left: -200px;
+    width: 400px;
+}
+
+.dtitle {
+    background: none repeat scroll 0 0 #F8CE60;
+    border-bottom: 2px solid #E4B028;
+    border-radius: 5px 5px 0 0;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    padding: 15px 20px;
+}
+
+.dclose {
+    background: url("../../bundles/torgovorottorg/images/close.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    display: block;
+    height: 13px;
+    position: absolute;
+    right: 20px;
+    top: 24px;
+    width: 13px;
+}
+
+.dcontent {
+    padding: 5px 20px 20px;
+}
+
+.dcontent > span {
+    display: block;
+    font-weight: normal;
+    margin-bottom: 20px;
+}
+
+.dcontent label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.dcontent > input[type="text"] {
+    border: 1px solid #D2D2D2;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    padding: 8px;
+    box-shadow: inset 1px 1px 5px #999;
+}
+
+.dw400 .dcontent > input[type="text"] {
+    width: 342px;
+}
+
+input[type="checkbox"] {
+    position: relative;
+    top: -1px;
+}
+
+.f136c6c6c {
+    font-size: 13px;
+    color: #6c6c6c;
+}
+
+.dlinks {
+    margin: 35px 0 30px;
+}
+
+.dotted {
+    border-bottom: 1px dotted;
+    display: inline-block;
+    line-height: 12px;
+    margin-right: 15px;
+}
+
+.dotted:hover {
+    text-decoration: none;
+    border-color: transparent;
+}
+
+.next:hover, .next:hover span {
+    text-decoration: none;
+}
+
+.next span {
+    text-decoration: underline;
+}
+
+.btn {
+    background: none repeat scroll 0 0 #006CB7;
+    border: medium none;
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px #999999;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: table;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0 auto;
+    padding: 10px;
+    width: 256px;
+}
+
+.lll {
+    margin-bottom: 40px;
+}
+
+.lll a {
+    text-decoration: underline;
+}
+
+.lll a:hover {
+    text-decoration: none;
+}
+
+.form {
+    padding: 30px 0;
+}
+
+.form li {
+    margin-bottom: 20px;
+}
+
+.form label {
+    display: inline-block;
+    font-weight: bold;
+    margin-right: 25px;
+    position: relative;
+    text-align: right;
+    top: 7px;
+    vertical-align: top;
+    width: 185px;
+}
+
+.form label i {
+    color: #C30E0E;
+}
+
+.main .inline-select .cls {
+    background: url("../../bundles/torgovorottorg/images/gray-arrow.png") no-repeat scroll center center rgba(0, 0, 0, 0);
+    right: 10px;
+}
+
+.main .title-select {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #D2D2D2;
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px #999999 inset;
+    width: 340px;
+}
+
+.form textarea, .form input[type=text], .form input[type=password] {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #D2D2D2;
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px #999999 inset;
+    width: 355px;
+    padding: 9px 13px;
+    font-size: 14px;
+    resize: none;
+    margin-bottom: 5px;
+
+}
+
+.form .btn {
+    display: inline-block;
+    margin: 0;
+    padding: 10px !important;
+    width: auto;
+}
+
+.files input[type=file] {
+    display: none;
+}
+
+.files a, .files a:hover {
+    background: url("../../bundles/torgovorottorg/images/file.png") no-repeat scroll 4px 6px rgba(0, 0, 0, 0);
+    display: inline-block;
+    padding-left: 20px;
+    text-decoration: none;
+}
+
+.files a span {
+    border-bottom: 1px dashed;
+    display: inline-block;
+    font-size: 13px;
+}
+
+.files a:hover span {
+    border-color: transparent;
+}
+
+.form .inline-select.open .menu-select {
+    background: none repeat scroll 0 0 #FFFFFF;
+    box-shadow: 0 3px 5px #999999;
+}
+
+.form .inline-select.open .menu-select {
+    background: none repeat scroll 0 0 #FFFFFF;
+    box-shadow: 0 3px 5px #999999;
+    margin-left: 0;
+}
+
+.form li > div:not(.select) {
+    display: inline-block;
+    width: 415px;
+}
+
+.form li > div em {
+    color: #8D8D8D;
+    display: block;
+    font-size: 13px;
+}
+
+.btn:hover {
+    text-decoration: none;
+}
+
+.form .btn.btn-clear {
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #F9F9F9), color-stop(1, #F3F3F3));
+    background-image: -o-linear-gradient(bottom, #F9F9F9 0%, #F3F3F3 100%);
+    background-image: -moz-linear-gradient(bottom, #F9F9F9 0%, #F3F3F3 100%);
+    background-image: -webkit-linear-gradient(bottom, #F9F9F9 0%, #F3F3F3 100%);
+    background-image: -ms-linear-gradient(bottom, #F9F9F9 0%, #F3F3F3 100%);
+    background-image: linear-gradient(to bottom, #F9F9F9 0%, #F3F3F3 100%);
+    color: #353535;
+    font-size: 15px;
+    margin-bottom: 10px;
+    padding: 7px 15px !important;
+}
+
+.form input.small[type="text"] {
+    margin-right: 10px;
+    width: 147px;
+}
+
+.add {
+    background: url("../../bundles/torgovorottorg/images/plus.png") no-repeat scroll 0 center rgba(0, 0, 0, 0);
+    display: inline-block;
+    font-size: 13px;
+    height: 30px;
+    line-height: 27px;
+    margin: 10px 0;
+    padding-left: 35px;
+}
+
+.add > span {
+    border-bottom: 1px dashed;
+    display: block;
+    line-height: 19px;
+    position: relative;
+    top: 4px;
+}
+
+.add:hover {
+    text-decoration: none;
+}
+
+.add:hover > span {
+    border-color: transparent;
+}
+
+.form label.title {
+    display: block;
+    font-size: 18px;
+    margin-left: 45px;
+    text-align: left;
+    width: auto;
+}
+
+.form .btn {
+    display: inline-block;
+    margin: 0;
+    padding: 7px 15px !important;
+    width: auto;
+}
+
+.a-with-span {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.photos-file {
+    margin: 10px 0 0;
+}
+
+.photos-file span {
+    display: block;
+}
+
+.photos-file input {
+    display: none;
+}
+
+.dw595 {
+    width: 595px;
+    margin-left: -298px;
+}
+
+.category {
+    display: inline-block;
+    width: 220px;
+}
+
+.subcategory {
+    display: inline-block;
+    width: 330px;
+}
+
+.category li, .subcategory li {
+    font-weight: normal;
+    color: #005cab;
+    display: block;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.category li {
+    background-image: url("../../bundles/torgovorottorg/images/blue-arrow-left.png");
+    background-position: 206px center;
+    background-repeat: no-repeat;
+    padding-right: 20px;
+    border-right: 1px solid #a3a3a3;
+}
+
+.category li.active, .subcategory li.active, .category li:hover, .subcategory li:hover {
+    background-color: #daeeff;
+}
+
+.subcategory > ul {
+    display: none;
+}
+
+.hide {
+    display: none;
+}
+
+.categoryText, .categoryEdit:not(.btn) {
+    display: none;
+}
+
+.categoryText {
+    font-size: 13px;
+    margin-bottom: 12px;
+    margin-top: 9px;
+}
+
+.categoryEdit:not(.btn) {
+    text-decoration: none;
+    border-bottom: 1px dashed;
+}
+
+.categoryEdit:not(.btn):hover {
+    border-color: transparent;
+    text-decoration: none;
+}
+
+.categoryText > i {
+    display: block;
+    font-size: 12px;
+    font-weight: normal;
+    margin: 10px 0;
+}
+
+.f12 {
+    font-size: 12px;
+}
+
+#map {
+    height: 800px;
+    margin: -65px -10px -10px;
+}
+
+.top-gray {
+    z-index: 3;
+}
+
+.shadow-map {
+    height: 49px;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: -35px;
+    z-index: 2;
+    overflow: hidden;
+}
+
+.shadow-map div {
+    box-shadow: 0 5px 5px #7D7D7D inset;
+    height: 49px;
+    margin: 0 -30px;
+}
+
+.back {
+    background: url("../../bundles/torgovorottorg/images/back.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    display: block;
+    height: 37px;
+    left: 17px;
+    position: absolute;
+    top: 33px;
+    width: 192px;
+    z-index: 4;
+}
+
+.search form > span.sss {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: medium none;
+    box-shadow: none;
+    width: auto;
+}
+
+.sss .select {
+    position: relative;
+}
+
+.sss .title-select {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #CCAA50;
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px #999999 inset;
+}
+
+.sss .inline-select.open .menu-select {
+    border: 1px solid #CCAA50;
+    box-shadow: 0 -2px 5px #999999 inset;
+    border-top: none;
+    margin-left: 0;
+}
+
+.menu-select li:hover {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0.09);
+}
+
+.sss > input[type="text"] {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #CCAA50;
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px #999999 inset;
+    font-size: 14px;
+    padding: 8px 13px;
+    width: 103px;
+}
+
+.sss > .select, .sss > input[type="text"] {
+    margin-right: 5px;
+}
+
+.floatright {
+    float: right;
+}
+
+.path a {
+    text-decoration: underline;
+}
+
+.path a:hover {
+    text-decoration: none;
+}
+
+.path span {
+    color: #005CAB;
+}
+
+h1 em {
+    color: #AAAAAA;
+    display: inline-block;
+    font-size: 15px;
+    font-weight: normal;
+    margin: 0 10px;
+}
+
+.tdd-left {
+    display: inline-block;
+    width: 670px;
+}
+
+.tdd-right {
+    display: inline-block;
+    width: 255px;
+    margin-left: 25px;
+}
+
+.red-small {
+    background: none repeat scroll 0 0 #C82121;
+    border: medium none;
+    border-radius: 5px;
+    bottom: 4px;
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 13px;
+    padding: 5px;
+    position: absolute;
+    right: 291px;
+}
+
+.red-small > span {
+    border-bottom: 1px dashed;
+    display: inline-block;
+}
+
+.red-small:hover > span {
+    border-color: transparent;
+}
+
+.toolbox .title-select {
+    background: none repeat scroll 0 0 #FFC223;
+    border-color: #FFC223;
+    box-shadow: none;
+    padding: 1px 27px 1px 5px;
+    width: 100px;
+    color: #000000;
+}
+
+.sort {
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.ch-checkbox {
+    cursor: pointer;
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+    background: url("../../bundles/torgovorottorg/images/checkbox.png") no-repeat -25px 0;
+}
+
+.ch-checkbox.checked {
+    background-position: 0 0;
+}
+
+.toolbox {
+    background: none repeat scroll 0 0 #36373E;
+    border-radius: 5px;
+    color: #FFFFFF;
+    padding: 8px 15px;
+}
+
+.toolbox > label {
+    display: inline-block;
+    margin-right: 10px;
+    color: #b4b4b4;
+}
+
+.toolbox > label.checked {
+    color: #fff;
+}
+
+.sort .select {
+    margin: 0;
+}
+
+.sort > label {
+    font-weight: normal;
+    margin-right: 10px;
+    position: relative;
+    top: 3px;
+}
+
+.sort {
+    display: block;
+    position: absolute;
+    right: 15px;
+    top: 5px;
+}
+
+.toolbox .inline-select .cls {
+    background: url("../../bundles/torgovorottorg/images/black-arrow.png") no-repeat scroll 8px 0 rgba(0, 0, 0, 0);
+    top: 7px;
+}
+
+.toolbox .inline-select.open .menu-select {
+    background: none repeat scroll 0 0 #FFC223;
+    color: #000000;
+    margin-left: 0;
+    border-color: #FFC223;
+}
+
+.toolbox .menu-select li {
+    font-weight: normal;
+    padding: 5px 5px 5px 7px;
+}
+
+.toolbox .title-select > span {
+    margin: 1px;
+    top: 3px;
+}
+
+.sort .select {
+    margin: 0;
+    position: relative;
+    top: 3px;
+}
+
+.view {
+    border-top: 1px solid #EBEAEA;
+    font-size: 13px;
+    margin: 10px 0 0;
+    padding: 10px;
+}
+
+.view > a {
+    border-bottom: 1px dashed;
+    display: inline-block;
+    line-height: 14px;
+    margin: 0 10px;
+}
+
+.view > a:hover {
+    border-color: transparent;
+    text-decoration: none;
+}
+
+.view-list, .view-tile {
+    border: 1px solid #C1C1C1;
+    border-radius: 2px;
+    display: inline-block;
+    height: 25px;
+    margin-left: 5px;
+    position: relative;
+    top: 8px;
+    width: 25px;
+}
+
+.view > div {
+    position: absolute;
+    right: 17px;
+    top: -2px;
+}
+
+.view-list {
+    background: url("../../bundles/torgovorottorg/images/view.png") no-repeat scroll 3px 5px rgba(0, 0, 0, 0);
+}
+
+.view-list.active {
+    background: url("../../bundles/torgovorottorg/images/view.png") no-repeat scroll 3px -19px rgba(0, 0, 0, 0);
+}
+
+.view-tile {
+    background: url("../../bundles/torgovorottorg/images/view.png") no-repeat scroll -32px -19px rgba(0, 0, 0, 0);
+}
+
+.view-tile.active {
+    background: url("../../bundles/torgovorottorg/images/view.png") no-repeat scroll -32px 5px rgba(0, 0, 0, 0);
+}
+
+.view > span {
+    color: #A2A2A2;
+}
+
+.tdd-list li {
+    margin: 5px 0;
+    padding: 20px;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.tdd-list li.tdd-top {
+    background: #fef5df;
+    border: none;
+}
+
+.tdd-list .img {
+    display: inline-block;
+    margin: 0 10px 10px 0;
+    width: 75px;
+}
+
+.tdd-center > a {
+    font-weight: bold;
+}
+
+.tdd-center > a:hover {
+    text-decoration: none;
+}
+
+.tdd-center > a:hover span {
+    text-decoration: underline;
+}
+
+.tdd-center {
+    display: inline-block;
+    margin: -5px 0 0 15px;
+    width: 365px;
+}
+
+.tdd-center > a em {
+    background: none repeat scroll 0 0 #C82121;
+    border-radius: 5px;
+    color: #FFFFFF;
+    display: inline-block;
+    margin-right: 5px;
+    padding: 3px 10px;
+}
+
+.tdd-center p {
+    color: #878787;
+    font-size: 12px;
+    font-weight: normal;
+    margin-top: 10px;
+}
+
+.tdd-center p.tdd-date {
+    font-size: 13px;
+}
+
+.tdd-price {
+    display: inline-block;
+    text-align: right;
+    width: 155px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.tdd-price > a {
+    background: url("../../bundles/torgovorottorg/images/star.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    display: inline-block;
+    height: 18px;
+    margin-left: 5px;
+    position: relative;
+    top: 3px;
+    width: 18px;
+}
+
+.tdd-left .banner img {
+    margin: 10px 0;
+    width: 670px;
+}
+
+.view-list.active, .view-tile.active {
+    box-shadow: 1px 1px 2px #999999;
+}
+
+.pagination {
+    margin: 30px 0 40px;
+}
+
+.pagination-top {
+    display: table;
+    margin: 0 auto 10px;
+}
+
+.pagination-links {
+    display: table;
+    margin: 20px auto;
+}
+
+.pagination-top > div {
+    left: 100%;
+    margin-left: 50px;
+    position: absolute;
+    top: 0;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.pagination-top > a {
+    font-size: 16px;
+}
+
+.pagination-top input[type="text"] {
+    border: 1px solid #999999;
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px #B1B1B1 inset;
+    font-size: 12px;
+    padding: 2px 5px;
+    width: 11px;
+    margin-left: 10px;
+}
+
+.pagination-top > div {
+    font-size: 14px;
+    font-weight: normal;
+    left: 100%;
+    margin-left: 50px;
+    position: absolute;
+    top: 0;
+    width: 190px;
+}
+
+.pagination-links a {
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #F4F4F4), color-stop(1, #EBEBEB));
+    background-image: -o-linear-gradient(bottom, #F4F4F4 0%, #EBEBEB 100%);
+    background-image: -moz-linear-gradient(bottom, #F4F4F4 0%, #EBEBEB 100%);
+    background-image: -webkit-linear-gradient(bottom, #F4F4F4 0%, #EBEBEB 100%);
+    background-image: -ms-linear-gradient(bottom, #F4F4F4 0%, #EBEBEB 100%);
+    background-image: linear-gradient(to bottom, #F4F4F4 0%, #EBEBEB 100%);
+
+    display: inline-block;
+    border-radius: 5px;
+    box-shadow: 0 2px 3px #999999;
+    margin: 0 2px;
+    padding: 2px 8px;
+    border: 1px solid transparent;
+}
+
+.pagination-links a.active, .pagination-links a:hover {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #C1C1C1;
+    box-shadow: 1px 1px 5px #999999 inset;
+    color: #595959;
+    text-decoration: none;
+}
+
+.gray-block .title {
+    color: #949494;
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.gray-block > p {
+    color: #949494;
+    font-size: 13px;
+    font-weight: normal;
+    margin-bottom: 20px;
+}
+
+.right-ad .title {
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+.right-ad > div img {
+    border: 2px solid #FFFFFF;
+    border-radius: 3px;
+    box-shadow: 1px 1px 5px #999999;
+    display: inline-block;
+    margin: 0 10px 10px 0;
+    width: 90px;
+}
+
+.right-ad > div div {
+    display: inline-block;
+    width: 145px;
+}
+
+.right-ad b {
+    display: block;
+    font-size: 17px;
+    margin: 5px 0;
+}
+
+.right-ad i {
+    font-size: 14px;
+    font-style: normal;
+}
+
+.right-ad span {
+    color: #9F9F9F;
+    display: block;
+    font-size: 12px;
+    margin-bottom: 25px;
+}
+
+.mt40 {
+    margin-top: 40px;
+}
+
+.tdd-list.tile li {
+    border: medium none;
+    display: inline-block;
+    margin: 0 20px 20px 0;
+    padding: 5px;
+    width: 194px;
+}
+
+.tdd-list.tile li:nth-child(3n+3) {
+    margin-right: 0;
+}
+
+.tdd-list.tile .img {
+    display: block;
+    margin-bottom: 10px;
+    width: 187px;
+}
+
+.tdd-list.tile .tdd-center {
+    margin: 10px 5px;
+    width: auto;
+}
+
+.tdd-list.tile .tdd-center > a {
+    font-size: 13px;
+}
+
+.tdd-list.tile .tdd-center > p {
+    display: none;
+}
+
+.tdd-list.tile .tdd-price {
+    display: block;
+    margin: 0 5px 10px;
+    text-align: left;
+    width: auto;
+}
+
+.tdd-list.tile .tdd-price > a {
+    float: right;
+    margin: 0 5px 0 0;
+}
+
+.vacancy-dateils > span {
+    color: #ACACAC;
+    font-size: 12px;
+}
+
+.vacancy-dateils {
+    margin-bottom: 20px;
+}
+
+.vacancy-links {
+    margin-bottom: 20px;
+}
+
+.vacancy-links a {
+    display: inline-block;
+    margin-right: 20px;
+    padding-left: 25px;
+    text-decoration: underline;
+}
+
+.vacancy-links a:hover {
+    text-decoration: none;
+}
+
+.vacancy-links a.vsave {
+    background: url("../../bundles/torgovorottorg/images/v1.png") no-repeat 0 center;
+}
+
+.vacancy-links a.vlink {
+    background: url("../../bundles/torgovorottorg/images/v2.png") no-repeat 0 center;
+}
+
+.vacancy-links a.vcomplant {
+    background: url("../../bundles/torgovorottorg/images/v3.png") no-repeat 0 center;
+}
+
+.vacancy-links a.print {
+    background: url("../../bundles/torgovorottorg/images/print.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    display: block;
+    height: 31px;
+    margin: 0;
+    position: absolute;
+    right: 0;
+    top: -6px;
+    width: 129px;
+}
+
+.gray {
+    background: none repeat scroll 0 0 #F6F6F6;
+    border-radius: 3px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.gray table {
+    width: 100%;
+}
+
+.gray th {
+    font-size: 13px;
+    color: #939393;
+    padding-bottom: 10px;
+}
+
+.gray td {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.ads > p {
+    font-size: 13px;
+    font-weight: normal;
+    margin: 0 0 20px;
+}
+
+.logo-company {
+    float: right;
+    margin: 0 0 20px 20px;
+}
+
+h4 {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.ads ul {
+    margin-bottom: 20px;
+}
+
+.ads li {
+    font-weight: normal;
+    list-style: disc inside none;
+    margin: 0 0 3px 5px;
+}
+
+.gray > b {
+    display: block;
+    margin-bottom: 25px;
+}
+
+.gray .btn {
+    margin: 20px 0 0;
+    width: auto;
+}
+
+.relative-vacancy {
+    margin: 50px 0;
+}
+
+.relative-vacancy .title {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.relative-vacancy a {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.relative-vacancy img {
+    margin-bottom: 5px;
+}
+
+.relative-vacancy p {
+    font-size: 12px;
+    margin-bottom: 20px;
+}
+
+.relative-vacancy em {
+    display: block;
+    font-size: 12px;
+    font-weight: normal;
+    margin-bottom: 20px;
+}
+
+.relative-vacancy span {
+    font-size: 16px;
+    font-weight: bold;
+    position: absolute;
+    right: 0;
+    top: 1px;
+}
+
+.gr {
+    color: #828282;
+}
+
+.search.green {
+    background: none repeat scroll 0 0 #00B77F;
+    border: medium none;
+    height: 34px;
+    box-shadow: none;
+}
+
+.search.green input[type="text"] {
+    border: 1px solid #019769;
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px #999999 inset;
+    font-size: 12px;
+    padding: 8px 13px;
+}
+
+.search.green input[type="text"]:nth-child(1) {
+    width: 435px;
+}
+
+.search.green input[type="text"]:nth-child(2) {
+    margin-left: 10px;
+    width: 260px;
+}
+
+.search > div.search-tabs {
+    left: 0;
+    margin: -10px 0 0;
+    position: absolute;
+    top: 100%;
+    font-weight: 600;
+}
+
+.search > div.search-tabs a.active {
+    background: #00b77f;
+    border-radius: 0 0 5px 5px;
+    color: #fff;
+    text-decoration: none;
+}
+
+.search > div.search-tabs a {
+    display: inline-block;
+    padding: 15px 16px 6px;
+    text-decoration: underline;
+}
+
+.search > div.search-tabs a:hover {
+    text-decoration: none;
+}
+
+.add-search {
+    margin-top: 5px;
+    position: absolute;
+    right: 15px;
+    text-decoration: underline;
+    top: 100%;
+}
+
+.add-search:hover {
+    text-decoration: none;
+}
+
+.vacancies > ul {
+    display: inline-block;
+    margin: 0 20px 0 0;
+    width: 320px;
+}
+
+.vacancies > ul:nth-child(2n+2) {
+    margin-right: 0;
+}
+
+.vacancies li {
+    list-style: none outside none;
+    margin-bottom: 5px;
+    font-size: 13px;
+}
+
+.vacancies a {
+    text-decoration: underline;
+}
+
+.vacancies a:hover {
+    text-decoration: none;
+}
+
+.vacancies em {
+    color: #999999;
+    display: inline-block;
+    margin: 0 5px;
+}
+
+.sort.rab {
+    display: inline-block;
+    position: relative;
+    top: -3px;
+}
+
+.sort.rab {
+    display: inline-block;
+    margin: 0 10px;
+    position: relative;
+    top: -3px;
+}
+
+.relative-vacancy.nom {
+    margin: 15px 0;
+}
+
+.vacancies {
+    margin-bottom: 20px;
+}
+
+.main-half {
+    display: inline-block;
+    margin: 0 20px 20px 0;
+    width: 465px;
+}
+
+.main .main-half:nth-child(2) {
+    margin-right: 0;
+}
+
+.g1, .g2, .g3 {
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #F4F4F4), color-stop(1, #EBEBEB));
+    background-image: -o-linear-gradient(bottom, #F4F4F4 0%, #EBEBEB 100%);
+    background-image: -moz-linear-gradient(bottom, #F4F4F4 0%, #EBEBEB 100%);
+    background-image: -webkit-linear-gradient(bottom, #F4F4F4 0%, #EBEBEB 100%);
+    background-image: -ms-linear-gradient(bottom, #F4F4F4 0%, #EBEBEB 100%);
+    background-image: linear-gradient(to bottom, #F4F4F4 0%, #EBEBEB 100%);
+    border-radius: 5px;
+    box-shadow: 0 1px 3px #666666;
+    color: #353535;
+    font-size: 13px;
+    padding: 5px 10px;
+    text-decoration: none !important;
+    position: relative;
+}
+
+.g1:hover, .g2:hover, .g3:hover {
+    box-shadow: inset 0 1px 5px #999;
+}
+
+.g1 > i {
+    background: url("../../bundles/torgovorottorg/images/ghome.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    display: block;
+    height: 16px;
+    left: 5px;
+    position: absolute;
+    top: 5px;
+    width: 16px;
+}
+
+.g2, .g3 {
+    padding-left: 30px !important;
+}
+
+.g2 > i {
+    background: url("../../bundles/torgovorottorg/images/gclock.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    display: block;
+    height: 20px;
+    left: 5px;
+    position: absolute;
+    top: 4px;
+    width: 20px;
+}
+
+.g3 > i {
+    background: url("../../bundles/torgovorottorg/images/gplane.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    display: block;
+    height: 20px;
+    left: 5px;
+    position: absolute;
+    top: 4px;
+    width: 20px;
+}
+
+.photos > div:nth-child(1) {
+    display: block;
+    height: 280px;
+    position: relative;
+    text-align: center;
+    width: 435px;
+}
+
+.photos > div:nth-child(1) img {
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.photos > div:nth-child(1) i {
+    background: url("../../bundles/torgovorottorg/images/zoom.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    bottom: 5px;
+    display: block;
+    height: 35px;
+    position: absolute;
+    right: 7px;
+    width: 35px;
+}
+
+.photos div:nth-child(2) img {
+    border: 2px solid #FFFFFF;
+    display: inline-block;
+    height: 60px;
+    margin: 10px 10px 0 0;
+    width: 94px;
+    cursor: pointer;
+}
+
+.photos div:nth-child(2) img.active {
+    border-color: #F8CE60;
+}
+
+.all-photo {
+    display: table;
+    font-size: 13px;
+    margin: 10px 0;
+    text-decoration: underline;
+}
+
+.all-photo:hover {
+    text-decoration: none;
+}
+
+.b111 {
+    display: block;
+    margin: 20px 0;
+}
+
+.main-half .vip {
+    width: 355px;
+}
+
+.save25 {
+    display: block;
+    margin: 20px 0;
+}
+
+.special .title {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.special > div:not(.title) {
+    border: 1px solid #E7E7E7;
+    margin-bottom: 15px;
+    padding: 10px;
+    width: 325px;
+}
+
+.special img {
+    display: table;
+    margin: 0 auto 10px;
+}
+
+.special a {
+    display: block;
+    margin-bottom: 10px;
+    text-decoration: underline;
+}
+
+.special a:hover {
+    text-decoration: none;
+}
+
+.options label {
+    display: inline-block;
+    font-weight: bold;
+    margin-right: 20px;
+    text-align: right;
+    width: 125px;
+}
+
+.options div {
+    display: inline-block;
+    width: 305px;
+}
+
+.options li {
+    margin-bottom: 10px;
+}
+
+.options li.ppp {
+    margin-bottom: 15px;
+}
+
+.ppp > div {
+    font-size: 18px;
+    font-weight: bold;
+    position: relative;
+    top: -4px;
+    vertical-align: top;
+}
+
+.soyellow {
+    background: none repeat scroll 0 0 #FFF8EA;
+    font-size: 15px;
+    margin: 20px 0 10px;
+    padding: 15px 10px;
+}
+
+.soyellow span {
+    display: inline-block;
+    padding: 0 0 0 30px;
+    width: 105px;
+}
+
+.bpeople {
+    background: url("../../bundles/torgovorottorg/images/blue-people.png") no-repeat 0 center;
+}
+
+.bphone {
+    background: url("../../bundles/torgovorottorg/images/blue-phone.png") no-repeat 2px center;
+}
+
+.soyellow > div {
+    margin-bottom: 10px;
+}
+
+.soyellow > div:last-child{
+    margin-bottom: 0;
+}
+
+.afgd {
+    display: table;
+    font-size: 13px;
+    margin: 5px 0 20px;
+    text-decoration: underline;
+}
+
+.main-half > p {
+    font-size: 13px;
+    font-weight: normal;
+    margin-bottom: 20px;
+}
+
+.mapSmall {
+    height: 240px;
+}
+
+.options em {
+    display: block;
+    font-size: 13px;
+    margin-bottom: 30px;
+}
+
+.bmail{
+    background: url("../../bundles/torgovorottorg/images/at.png") no-repeat 2px center;
+}
+
+.soyellow a{
+    font-size: 13px;
+    text-decoration: underline;
+}
+
+.soyellow a:hover{
+    text-decoration: none;
+}
+.logo {
+    background: url("../../bundles/torgovorottorg/images/logo.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    display: block;
+    height: 53px;
+    left: 13px;
+    position: absolute;
+    top: 9px;
+    width: 155px;
+}
+

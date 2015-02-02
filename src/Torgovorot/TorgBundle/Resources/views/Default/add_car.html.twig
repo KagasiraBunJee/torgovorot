@@ -1,0 +1,317 @@
+{% include 'TorgovorotTorgBundle:Default:header.html.twig' with { 'title':'Добавить автомобиль' }%}
+
+    <div class="main">
+        <div class="content-left">
+            <div class="path">
+                <a href="{{ path('torgovorot_torg_homepage') }}" class="home"></a>
+                <a href="#">Автомобили</a> >
+                <b>Добавить автомобиль</b>
+            </div>
+
+            <h1>Добавление бесплатного объявления</h1>
+
+            {{ form_start(form) }}
+                <ul class="form">
+                    <li>
+                        <label>
+                            Заголовок <i>*</i>
+                        </label>
+
+                        <div>
+                            {{ form_widget(form.title) }}
+                            <em>не более 70 знаков</em>
+                        </div>
+                    </li>
+                    <li>
+                        <label class="title">
+                            Основное
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            Марка <i>*</i>
+                        </label>
+                        {{ form_widget(form.markId) }}
+                    </li>
+                    <li>
+                        <label>
+                            Модель <i>*</i>
+                        </label>
+
+                        <div>
+                            {{ form_widget(form.model) }}
+                        </div>
+                    </li>
+                    <li>
+                        <label>
+                            Год выпуска <i>*</i>
+                        </label>
+
+                        <div>
+                            {{ form_widget(form.yearProd) }}
+                        </div>
+                    </li>
+                    <li>
+                        <label>
+                            Тип кузова <i>*</i>
+                        </label>
+                        {{ form_widget(form.bodyId) }}
+                    </li>
+                    <li>
+                        <label>
+                            Пробег <i>*</i>
+                        </label>
+
+                        <div>
+                            {{ form_widget(form.runDistance) }}
+                        </div>
+                    </li>
+                    <li>
+                        <label>
+                            Срок владения <i>*</i>
+                        </label>
+
+                        <div class="radios">
+                            
+                            {% for radio in form.yearsOld %}
+                                {{ form_widget(radio) }}
+                                <i>{{ form_label(radio) }}</i>
+                            {% endfor %}
+                                <script>
+                                    $(function(){
+                                        $(".radios").find("label").each(function(){
+                                           var text = $(this).text();
+                                           $(this).parent().html(text);
+                                        });
+                                    });
+                                </script>
+                        </div>
+                    </li>
+                    <li>
+                        <label>
+                            Винкод <i>*</i>
+                        </label>
+
+                        <div>
+                            {{ form_widget(form.wincode) }}
+                        </div>
+                    </li>
+
+                    <li>
+                        <label class="title">
+                            Двигатель
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            Объем <i>*</i>
+                        </label>
+
+                        <div>
+                            {{ form_widget(form.volume) }}
+                        </div>
+                    </li>
+                    <li>
+                        <label>
+                            Мощность <i>*</i>
+                        </label>
+
+                        <div>
+                            {{ form_widget(form.power) }}
+                        </div>
+                    </li>
+                    <li>
+                        <label>
+                            Тип двигателя <i>*</i>
+                        </label>
+
+                        <div>
+
+                            {{ form_widget(form.engineId) }}
+                        </div>
+                    </li>
+                    <li>
+                        <label class="title">
+                            Оснащение
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            Состояние <i>*</i>
+                        </label>
+
+                        <div>
+                            {{ form_widget(form.conditionId) }}
+                        </div>
+                    </li>
+                    <li>
+                        <label>
+                            Цвет <i>*</i>
+                        </label>
+
+                        <div>
+                            {{ form_widget(form.color) }}
+                        </div>
+                    </li>
+                    {#<li>
+                        <label>Фотографии<i>*</i></label>
+
+                        <div>
+                            <a onclick="upload('load_1');return false;" id="load_1" href="#" class="btn btn-clear load-photo">Загрузить фото</a>
+                            <em>(JPG, PNG)</em>
+
+                            <div class="photos-file">
+                                {{ form_widget( form.photo, { 'full_name' : 'form[photo][]', 'attr' : { 'number' : 'load_1' } } ) }}
+                                <span></span>
+                                
+                            </div>
+
+                            <a href="#" class="add add-photo"><span>добавить еще фотографию</span></a>
+                        </div>
+                    </li>#}
+                    <li>
+                        <label>Фотографии<i>*</i></label>
+                        <div>{{ form_widget( form.photo, { 'attr' : { 'class' : 'upload_photo'} , 'full_name' : 'form[photo][]'} ) }}</div>
+                    </li>
+                    <li class="add_img">
+                        <label></label>
+                        <div><input type="button" class="add_image" value="Добавить еще"></div>       
+                    </li>
+                    <li>
+                        <label class="title">
+                            Комплектация
+                        </label>
+                    </li>
+                    <li>
+                        <label>&nbsp;
+                        </label>
+                        <div>
+                            {% set i = 0 %}
+                            {% for key,value in chs %}
+                            {% set i = i + 1 %}
+                            {% if i == 1 %}    
+                            <div class="ch-div">
+                            {% endif %}
+                                <div>{{ key }}</div>
+                                {% for item in value %}
+                                    <input name="chid[]" {% if item.id in checked %} checked="" {% endif %} type="checkbox" value="{{ item.getId() }}">{{ item.getName() }}<br/>
+                                {% endfor %}
+                                    <br>
+                                
+                            {% if i == 3 %}
+                            {% set i = 0 %}
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                        
+                    </li>
+                    <li>
+                        <label class="title">
+                            Условия продажи и контактная информация
+                        </label>
+                    </li>
+
+                    <li>
+                        <label>
+                            Цена<i>*</i>
+                        </label>
+
+                        <div style="font-weight: normal">
+                            {{ form_widget(form.price, { 'attr' : { 'class' : 'small' } }) }}<br/>
+                            
+
+                            {{ form_widget(form.torg) }} торг<br/>
+                            
+                        </div>
+                    </li>
+                    <li>
+                        <label>
+                            Наличие в городе продажи <i>*</i>
+                        </label>
+
+                        <div>
+                            {{ form_widget(form.isYourTown) }}
+                        </div>
+                    </li>
+                    <li>
+                        <label>Город продажи <i>*</i></label>
+
+                        <div>
+
+                            {{ form_widget(form.town) }}
+                        </div>
+                    </li>
+
+                    <li>
+                        <label>Текст объявления </label>
+                        <div>
+                        {{ form_widget(form.description) }}
+                        </div>
+                    </li>
+                    <li>
+                        <label>Короткое описание </label>
+                        <div>
+                        {{ form_widget(form.shortDesc) }}
+                        </div>
+                    </li>
+                    {% if app.user == null %}
+                    <li>
+                        <label class="title">
+                            Мгновенная регистраци:
+                        </label>
+
+                    </li>
+                    <li>
+                        <label>
+                            Email-адрес<i>*</i>
+                        </label>
+
+                        <div>
+                            {{ form_widget(form.email) }}
+                            <em><input type="checkbox"/> не получать ответы на e-mail</em>
+                        </div>
+                    </li>
+                    <li>
+                        <label>Номер телефона</label>
+
+                        <div>
+                            {{ form_widget(form.phone) }}
+
+                            {#<a href="#" class="add add-input"><span>добавить дополнительный номер</span></a>#}
+                        </div>
+                    </li>
+                    {% endif %}
+                    <li>
+                        <label>
+                            &nbsp;
+                        </label>
+
+                        <div>
+                            {{ form_row( form.save, { 'label': 'Опубликовать', 'attr' : { 'class' : 'btn' } } ) }}
+                        </div>
+                    </li>
+
+                    <li>
+                        <label>&nbsp;</label>
+
+                        <div>
+                            <em>
+                                <input type="checkbox"/> Я соглашаюсь с правилами использования сервиса, а также с
+                                передачей моих данных в Всётут.ru.
+                                Я подтверждаю своё совершеннолетие и ответственность за размещение объявления.
+                            </em>
+                        </div>
+                    </li>
+
+                </ul>
+                {{ form_rest(form) }}
+            </form>
+        </div>
+        <div class="content-right">
+
+        </div>
+
+
+
+{% include 'TorgovorotTorgBundle:Default:bottom.html.twig' %}

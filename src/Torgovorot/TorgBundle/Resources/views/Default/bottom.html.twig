@@ -1,0 +1,86 @@
+</div>
+<div class="wrapper-footer">
+    <div class="footer">
+        <div class="copy">
+            <b>&copy; 2014 Всётут.ru</b>
+            <span>Доска бесплатных объявлений.</span>
+        </div>
+
+        <div class="social">
+            <a href="#" class="vk"></a>
+            <a href="#" class="fb"></a>
+            <a href="#" class="tw"></a>
+            <a href="#" class="od"></a>
+        </div>
+
+        <div class="list">
+            {% set ul = 0 %}
+            {% for link in generateBottomMenu() %}
+                
+                {% if ul == 0 %}
+                    <ul>
+                {% endif %}
+                        {% if link.undeleted == 1 %}
+                            <li><a href="{{ path(link.chpu) }}">{{ link.title }}</a></li>
+                        {% else %}
+                            <li><a href="{{ path('page', { 'name':link.chpu }) }}">{{ link.title }}</a></li>
+                        {% endif %}
+                        
+                        
+                {% set ul = ul+1 %}
+                {% if ul == 6 or (ul-1) == generateBottomMenu()|length %}
+                    </ul>    
+                    {% set ul = 0 %}
+                {% endif %}
+            {% endfor %}
+
+        </div>
+
+        <div class="o16">
+
+        </div>
+    </div>
+</div>
+
+
+<div onclick="$(this).fadeOut();$('.dialog').fadeOut();" style="z-index:66666;display:none;" class="ph"></div>
+
+<div style="z-index:77777;display: none;" class="dialog dw400 authr">
+    {% if app.user %}
+    {% else %}
+    <form action="{{ path('login_check') }}" method="post">
+    <div class="dtitle">
+        Вход в личный кабинет
+        <a onclick="$(this).fadeOut();$('.ph').fadeOut();return false;" href="#" class="dclose"></a>
+    </div>
+
+    <div class="dcontent">
+        <span>Войдите под своей почтой и паролем</span>
+
+        <label>Эл. почта</label>
+        <input type="text" id="username" name="_username" value="" />
+        
+        <label>Пароль</label>
+        <input type="text" id="password" name="_password" />
+
+        {#<div class="f136c6c6c">
+            <input type="checkbox"/> входить автоматически
+        </div>#}
+
+        <div class="dlinks">
+            {# <a href="#" class="dotted">Напомнить пароль</a> #}
+
+            <a href="{{ path("account_create") }}" class="next"><span>Регистрация</span> &rarr;</a>
+        </div>
+
+        <input type="submit" class="btn" value="Войти"/>
+    </div>
+    </form>
+    {% endif %}
+</div>
+<div style="-moz-box-shadow: 0px 0px 7px #222;-webkit-box-shadow: 0px 0px 7px #222;box-shadow: 0 0 7px #222;position:absolute;width: 500px;z-index:77777;display:none;" class="link-age dialog dw400"><div class="dcontent"><span style="width: 281px; float: left;">Постоянная ссылка на страницу:</span><a onclick="$('.link-age').toggle();return false;" style="position: relative; bottom: 4px; float: left; margin-left: 170px;" href="#">X</a><br><center><input style="width: 450px;" class="back_link" value=""></center></div></div>
+{#<div class="dcontent"><span style="width: 300px; float: left;">Постоянная ссылка на страницу:</span><a onclick="$('.link-age').toggle();return false;" style="position: relative; bottom: 4px; float: left; margin-left: 170px;" href="#">X</a><br><center><input style="width: 450px;" class="back_link" value=""></center></div>#}
+</body>
+
+    <script src="{{ asset('bundles/torgovorottorg/js/scripts.js') }}" type="text/javascript"></script>
+</html>

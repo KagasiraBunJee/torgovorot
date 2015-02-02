@@ -1,0 +1,32 @@
+{#<style>
+    .menu a{
+        margin-right: 10px;
+        font-size: 11px;
+    }
+</style>
+<center>
+<br><div class="menu">
+    <a href="{{ path('selectRealty') }}" >Добавить недвижимость</a>
+    <a href="{{ path('addAdvert', {param:3}) }}" >Добавить резюме</a>
+    <a href="{{ path('addAdvert', {param:2}) }}" >Добавить вакансию</a>
+    <a href="{{ path('addAdvert', {param:4}) }}" >Добавить товар</a>
+    <a href="{{ path('addAdvert', {param:5}) }}" >Добавить мероприятие</a>
+    <a href="{{ path('addAdvert', {param:6}) }}" >Добавить скидку</a>
+    <a href="{{ path('profile_add_addr') }}" >Добавить адресс</a>
+    <a href="{{ path('profile') }}" >Профиль</a>
+    <a href="{{ path('logout') }}" >Выйти</a>
+</div><br>#}
+{% if app.user %}
+
+    <a href="{{ path('profile_items', {item_type:1}) }}#items" >Мои недвижимости</a>
+    <a href="{{ path('profile_items', {item_type:3}) }}#items" >Мои резюме</a>
+    <a href="{{ path('profile_items', {item_type:2}) }}#items" >Мои вакансии</a>
+    <a href="{{ path('profile_items', {item_type:4}) }}#items" >Мои товары</a>
+    <a href="{{ path('profile_items', {item_type:5}) }}#items" >События</a>
+    <a href="{{ path('profile_items', {item_type:8}) }}#items" >Авто</a>
+    {#{% if app.user and app.user.accessLvl == 100 %}
+        <a href="{{ path('admin_panel') }}" >Админка</a>
+    {% endif %}#}
+
+{% endif %}
+{#</center>#}

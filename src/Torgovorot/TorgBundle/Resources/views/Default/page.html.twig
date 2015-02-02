@@ -1,0 +1,35 @@
+{% include 'TorgovorotTorgBundle:Default:header.html.twig' with {'title':item.title} %}
+
+    <div class="main">
+        <div class="content-left">
+            <div class="path">
+                <a href="#" class="home"></a>
+                <a href="#">{{ item.title }}</a> >
+            </div>
+
+            <h1>{{ item.title }}</h1>
+            <div style="clear:both;"></div>
+            
+            {{ item.content|raw }}
+
+        </div>
+        <div class="content-right">
+            <a href="#">
+                {{ getbanner(1,"new", 4 , 239, 400)|raw }}
+            </a>
+        </div>
+    </div>
+<script>
+    $('.content-left').find("ul").children("li").css({ 
+        'list-style':'outside',
+        'margin':'10px'
+    });
+    
+    //alert($('.content-left').find("ul").children("li"));
+    
+    $('.content-left').find("ol").children("li").css({ 
+        'list-style':'decimal',
+        'margin':'10px'
+    });
+</script>
+{% include 'TorgovorotTorgBundle:Default:bottom.html.twig' %}

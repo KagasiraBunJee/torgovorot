@@ -1,0 +1,282 @@
+{% include 'TorgovorotTorgBundle:Admin:admin_header.html.twig' %}
+{{ form_start(form) }}    
+{% if form_type == 1  %}
+                
+                Тип объявления
+                {{ form_widget(form.rtype)}}<br>
+
+                {{ form_row( form.title, { 'label': 'Заголовок:'} ) }}<br>
+                {{ form_row( form.description, { 'label': 'Описание:'} ) }}<br>
+                {{ form_row( form.shortDesc, { 'label': 'Краткое описание:'} ) }}<br>
+                {{ form_row( form.price, { 'label': 'Цена:'} ) }}<br>
+                Количество комнат
+                <ul>
+                {% for checkbox in form.rooms %}
+                    <li>
+                       
+                       {{ form_widget(checkbox) }}
+                       {{ form_label(checkbox) }}
+                    </li>
+                {% endfor %}
+                </ul>
+                {{ form_row( form.living_square, { 'label': 'Жилая площадь:'} ) }}<br>
+                {{ form_row( form.general_square, { 'label': 'Общая площадь:'} ) }}<br>
+                {{ form_row( form.floor, { 'label': 'Этаж:'} ) }}<br>
+                {{ form_row( form.floor_count, { 'label': 'Этажность:'} ) }}<br>
+                Что есть в квартире
+                <ul>
+                {% for checkbox in form.conv %}
+                    
+                    <li>
+                       
+                       {{ form_widget(checkbox) }}
+                       {{ form_label(checkbox) }}
+                    </li>
+                    
+                {% endfor %}    
+                </ul>
+                Тип санузла
+                {{ form_widget(form.bath_type)}}<br>
+                Материал дома
+                {{ form_widget(form.house_mat)}}<br>
+                <br>
+                <div>
+                <ul style="width:800px;list-style: none;">
+                    {% for image in getPhoto(item.photoIds, 100, 'jpg') %}
+                        <li style="margin:10px;float:left"><img src="{{ asset('uploads/photo/item_image/'~image) }}" width="300px"></li>
+                    {% endfor %}
+                </ul>
+                </div>    
+                <br>
+                <br>
+                <div style="clear:both;"></div>
+                Фото
+                {{ form_widget( form.photo, { 'attr' : { 'class' : 'upload_photo'} , 'label': 'Загрузить:', 'full_name' : 'form[photo][]'} ) }}<br>
+                
+                <input type="button" class="add_image" value="Добавить еще">
+                <br><br>
+                {#<input id="form_photo" type="file" multiple="multiple" accept="image/*" name="form[photo][]">#}
+                {{ form_row( form.video, { 'label': 'Видео:'} ) }}<br>
+                 
+                {{ form_row( form.city, { 'label': 'Город или населенный пункт :'} ) }}<br>
+                {{ form_row( form.index, { 'label': 'Почтовый индекс:'} ) }}<br>
+                {{ form_row( form.street, { 'label': 'Улица:'} ) }}<br>
+                {{ form_row( form.house, { 'label': 'Номер дома:'} ) }}<br>
+                {{ form_row( form.flat, { 'label': 'Офис:'} ) }}<br>
+                {{ form_row( form.name, { 'label': 'Название:'} ) }}<br>
+                {{ form_row( form.hints, { 'label': 'Примечание:'} ) }}<br>
+                
+                {{ form_row( form.save, { 'label': 'Добавить'} ) }}
+                
+{% elseif form_type == 2 %}    
+
+                
+                Тип объявления
+                {{ form_widget(form.rtype)}}<br>
+
+                {{ form_row( form.title, { 'label': 'Название:'} ) }}<br>
+                {{ form_row( form.description, { 'label': 'Описание:'} ) }}<br>
+                {{ form_row( form.price, { 'label': 'Цена:'} ) }}<br>
+                Количество комнат в квартире
+                <ul>
+                {% for checkbox in form.rooms %}
+                    <li>
+                       
+                       {{ form_widget(checkbox) }}
+                       {{ form_label(checkbox) }}
+                    </li>
+                {% endfor %}
+                </ul>
+                {{ form_row( form.living_square, { 'label': 'Жилая площадь квартиры:'} ) }}<br>
+                {{ form_row( form.general_square, { 'label': 'Общая площадь квартиры:'} ) }}<br>
+                {{ form_row( form.floor, { 'label': 'Этаж:'} ) }}<br>
+                {{ form_row( form.floor_count, { 'label': 'Этажность:'} ) }}<br>
+                Что есть в квартире
+                <ul>
+                {% for checkbox in form.conv %}
+                    
+                    <li>
+                       
+                       {{ form_widget(checkbox) }}
+                       {{ form_label(checkbox) }}
+                    </li>
+                    
+                {% endfor %}    
+                </ul>
+                Тип санузла
+                {{ form_widget(form.bath_type)}}<br>
+                Материал дома
+                {{ form_widget(form.house_mat)}}<br>
+                <br>
+                <img src="{{ asset('uploads/photo/'~getPhoto(item.photoIds)) }}" width="300px">
+                <br>
+                Фото
+                {{ form_widget( form.photo, { 'attr' : { 'class' : 'upload_photo'} , 'label': 'Загрузить:', 'full_name' : 'form[photo][]'} ) }}<br>
+                
+                <input type="button" class="add_image" value="Добавить еще">
+                <br><br>
+                {{ form_row( form.video, { 'label': 'Видео:'} ) }}<br>
+                 
+                {{ form_row( form.city, { 'label': 'Город или населенный пункт :'} ) }}<br>
+                {{ form_row( form.index, { 'label': 'Почтовый индекс:'} ) }}<br>
+                {{ form_row( form.street, { 'label': 'Улица:'} ) }}<br>
+                {{ form_row( form.house, { 'label': 'Номер дома:'} ) }}<br>
+                {{ form_row( form.flat, { 'label': 'Офис:'} ) }}<br>
+                {{ form_row( form.name, { 'label': 'Название:'} ) }}<br>
+                {{ form_row( form.hints, { 'label': 'Примечание:'} ) }}<br>
+                
+                {{ form_row( form.save, { 'label': 'Добавить'} ) }}                
+                
+                
+{% elseif form_type == 3 %}
+                Тип объявления
+                {{ form_widget(form.rtype)}}<br>
+
+                {{ form_row( form.title, { 'label': 'Название:'} ) }}<br>
+                {{ form_row( form.description, { 'label': 'Описание:'} ) }}<br>
+                {{ form_row( form.price, { 'label': 'Цена:'} ) }}<br>
+                
+                
+                Тип
+                {{ form_widget(form.ttype)}}<br>
+                Планировка
+                <ul>
+                {% for checkbox in form.plan %}
+                    <li>
+                       
+                       {{ form_widget(checkbox) }}
+                       {{ form_label(checkbox) }}
+                    </li>
+                {% endfor %}
+                </ul>
+                {{ form_row( form.hsquare, { 'label': 'Площадь дома:'} ) }}<br>
+                {{ form_row( form.esquare, { 'label': 'Площадь земельного участка:'} ) }}<br>
+                {{ form_row( form.distance, { 'label': 'Расстояние до ближайшего города:'} ) }}<br>
+                Что есть в доме
+                <ul>
+                {% for checkbox in form.conv %}
+                    
+                    <li>
+                       
+                       {{ form_widget(checkbox) }}
+                       {{ form_label(checkbox) }}
+                    </li>
+                    
+                {% endfor %}    
+                </ul>
+                Материал дома
+                {{ form_widget(form.house_mat)}}<br>
+                <br>
+                <img src="{{ asset('uploads/photo/'~getPhoto(item.photoIds)) }}" width="300px">
+                <br>
+                Фото
+                {{ form_widget( form.photo, { 'attr' : { 'class' : 'upload_photo'} , 'label': 'Загрузить:', 'full_name' : 'form[photo][]'} ) }}<br>
+                
+                <input type="button" class="add_image" value="Добавить еще">
+                <br><br>
+                {{ form_row( form.video, { 'label': 'Видео:'} ) }}<br>                 
+                {{ form_row( form.city, { 'label': 'Город или населенный пункт :'} ) }}<br>
+                {{ form_row( form.index, { 'label': 'Почтовый индекс:'} ) }}<br>
+                {{ form_row( form.street, { 'label': 'Улица:'} ) }}<br>
+                {{ form_row( form.house, { 'label': 'Номер дома:'} ) }}<br>
+                {{ form_row( form.flat, { 'label': 'Офис:'} ) }}<br>
+                {{ form_row( form.name, { 'label': 'Название:'} ) }}<br>
+                {{ form_row( form.hints, { 'label': 'Примечание:'} ) }}<br>
+                
+                {{ form_row( form.save, { 'label': 'Добавить'} ) }}
+{% elseif form_type == 4 %}
+                Тип объявления
+                {{ form_widget(form.rtype)}}<br>
+
+                {{ form_row( form.title, { 'label': 'Название:'} ) }}<br>
+                {{ form_row( form.description, { 'label': 'Описание:'} ) }}<br>
+                {{ form_row( form.price, { 'label': 'Цена:'} ) }}<br>
+                
+                
+                Материал дома
+                {{ form_widget(form.type)}}<br>
+                {{ form_row( form.hsquare, { 'label': 'Площадь земли:'} ) }}<br>
+                {{ form_row( form.esquare, { 'label': 'Площадь здания:'} ) }}<br>
+                <br>
+                <div>
+                <ul style="width:800px;list-style: none;">
+                    {% for image in getPhoto(item.photoIds, 100) %}
+                        <li style="margin:10px;float:left"><img src="{{ asset('uploads/photo/'~image) }}" width="300px"></li>
+                    {% endfor %}
+                </ul>
+                </div>
+                <br>
+                Фото
+                {{ form_widget( form.photo, { 'attr' : { 'class' : 'upload_photo'} , 'label': 'Загрузить:', 'full_name' : 'form[photo][]'} ) }}<br>
+                
+                <input type="button" class="add_image" value="Добавить еще">
+                <br><br>
+                {{ form_row( form.video, { 'label': 'Видео:'} ) }}<br>
+                {{ form_row( form.city, { 'label': 'Город или населенный пункт :'} ) }}<br>
+                {{ form_row( form.index, { 'label': 'Почтовый индекс:'} ) }}<br>
+                {{ form_row( form.street, { 'label': 'Улица:'} ) }}<br>
+                {{ form_row( form.house, { 'label': 'Номер дома:'} ) }}<br>
+                {{ form_row( form.flat, { 'label': 'Офис:'} ) }}<br>
+                {{ form_row( form.name, { 'label': 'Название:'} ) }}<br>
+                {{ form_row( form.hints, { 'label': 'Примечание:'} ) }}<br>
+{% elseif form_type == 5 %}
+                Тип объявления
+                {{ form_widget(form.rtype)}}<br>
+
+                {{ form_row( form.title, { 'label': 'Название:'} ) }}<br>
+                {{ form_row( form.description, { 'label': 'Описание:'} ) }}<br>
+                {{ form_row( form.price, { 'label': 'Цена:'} ) }}<br>
+                
+                
+                
+                Тип
+                {{ form_widget(form.type)}}<br>
+                Что есть в гараже
+                <ul>
+                {% for checkbox in form.conv %}
+                    
+                    <li>
+                       
+                       {{ form_widget(checkbox) }}
+                       {{ form_label(checkbox) }}
+                    </li>
+                    
+                {% endfor %}    
+                </ul>
+                <br>
+                <ul>
+                    {% for image in getPhoto(item.photoIds, 100) %}
+                        <li><img src="{{ asset('uploads/photo/'~image) }}" width="300px"></li>
+                    {% endfor %}
+                </ul>
+                <br>
+                Фото
+                {{ form_widget( form.photo, { 'attr' : { 'class' : 'upload_photo'} , 'label': 'Загрузить:', 'full_name' : 'form[photo][]'} ) }}<br>
+                
+                <input type="button" class="add_image" value="Добавить еще">
+                <br><br>
+                {{ form_row( form.video, { 'label': 'Видео:'} ) }}<br>                 
+                {{ form_row( form.city, { 'label': 'Город или населенный пункт :'} ) }}<br>
+                {{ form_row( form.index, { 'label': 'Почтовый индекс:'} ) }}<br>
+                {{ form_row( form.street, { 'label': 'Улица:'} ) }}<br>
+                {{ form_row( form.house, { 'label': 'Номер дома:'} ) }}<br>
+                {{ form_row( form.flat, { 'label': 'Офис:'} ) }}<br>
+                {{ form_row( form.name, { 'label': 'Название:'} ) }}<br>
+                {{ form_row( form.hints, { 'label': 'Примечание:'} ) }}<br>
+{% else %}                
+                <h2>Тип объекта недвижимости?</h2>
+                <ul>
+                {% for checkbox in form.rtype %}
+                    
+                    <li>
+                       
+                       {{ form_widget(checkbox) }}
+                       {{ form_label(checkbox) }}
+                    </li>
+                    
+                {% endfor %}    
+                </ul>
+{% endif %}
+{{ form_rest(form) }}
+</form>
+{% include 'TorgovorotTorgBundle:Admin:admin_bottom.html.twig' %}

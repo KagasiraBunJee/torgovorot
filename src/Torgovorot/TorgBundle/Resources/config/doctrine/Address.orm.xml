@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Torgovorot\TorgBundle\Entity\Address" table="address">
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="ownerId" type="integer" column="owner_id" nullable="true"/>
+    <field name="city" type="string" column="city" length="255" nullable="true"/>
+    <field name="indexN" type="string" column="index_n" length="255" nullable="true"/>
+    <field name="street" type="string" column="street" length="255" nullable="true"/>
+    <field name="house" type="integer" column="house" nullable="true"/>
+    <field name="office" type="integer" column="office" nullable="true"/>
+    <field name="phone" type="string" column="phone" length="255" nullable="true"/>
+    <field name="fax" type="string" column="fax" length="255" nullable="true"/>
+    <field name="name" type="string" column="name" length="255" nullable="true"/>
+    <field name="hints" type="text" column="hints" nullable="true"/>
+  </entity>
+</doctrine-mapping>

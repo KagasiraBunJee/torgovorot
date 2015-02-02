@@ -1,0 +1,85 @@
+{% include 'TorgovorotTorgBundle:Default:header.html.twig' with { "index" : "profile_one" , 'title':item.title } %}
+
+
+<div class="main">
+    {{ getbanner(1,"random",0, 960, 60,"",1)|raw }}
+    
+    <div style="margin-top: 20px;" class="path">
+            <a href="{{ path('torgovorot_torg_homepage') }}" class="home"></a>
+            <a href="{{ path('discounts_all') }}">Скидки</a> >
+            <span>{{ item.title }}</span>
+    </div>
+    
+    <h1>{{ item.title }}</h1>
+
+    <div>
+            <div class="main-half">
+                <div class="photos">
+                    <div>
+                        
+                        {% if getPhoto(item.photoIds, 0, 'jpg') != "none" %}
+                            <img src="{{ asset('uploads/photo/item_image/'~getPhoto(item.photoIds)) }}" alt=""/>
+                        {% else %}
+                            <img src="{{ asset('uploads/nophoto.png') }}" alt=""/>
+                        {% endif %}
+                        
+                    </div>
+                </div>
+            </div>
+        <div class="main-half">
+            <ul class="options">
+                    <li class="ppp">
+                        <label>
+                            Компания:
+                        </label>
+
+                        <div>
+                            {{ user.companyName }} руб.
+                        </div>
+                    </li>
+            </ul>
+            
+            <div class="soyellow">
+                    <div>
+                        <span class="bpeople">Продавец:</span> <b>{{ user.fio }}</b>
+                    </div>
+                    <div>
+                        <span class="bphone">Мобильный:</span> <b class="get_prof_number">+7 (XXX) XXX-XX-XX</b> <a onclick="getPhone('{{path('get_number')}}', {{ user.id }}, this);return false;" href="">Показать телефон</a>
+                    </div>
+                    {% if user.tel != '' %}
+                        <div>
+                            <span class="bphone">Стационарный:</span> <b>{{ user.tel }}</b>
+                        </div>
+                    {% endif %}
+                    {% if user.fax != '' %}
+                        <div>
+                            <span class="bphone">Факс:</span> <b>{{ user.fax }}</b>
+                        </div>
+                    {% endif %}
+            </div>
+            
+            <h2>
+                    Описание
+            </h2>
+            
+            <p>
+                {{ item.description|raw }}
+            </p>
+            
+            {% if item.addrId is not empty %}
+                {% for key,addr in getAddr(item.addrId, "all") %}
+                    {% if addr is not null %}
+                        <p>
+                            Адресс № {{ key+1 }}
+                        </p>
+                        <p>
+                            Город: {{ addr.city }}{% if addr.indexN is not empty %}, индекс: {{ addr.indexN }}{% endif %}<br>
+                            Улица: {{ addr.street }}, {{ addr.house }}{% if addr.office is not empty %}, офис: {{ addr.office }}{% endif %}
+                        </p>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        </div>
+</div>
+
+{% include 'TorgovorotTorgBundle:Default:bottom.html.twig' %}

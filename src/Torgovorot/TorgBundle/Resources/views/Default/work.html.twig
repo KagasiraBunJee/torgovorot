@@ -1,0 +1,46 @@
+{% include 'TorgovorotTorgBundle:Default:header.html.twig' with {'index':'vacance' , 'title':'Работа', 'menu':'work'} %}
+    <div class="main">
+    <div class="main withSearch">
+        {{ getbanner(1,"random",0, 960, 60,"",1)|raw }}
+        <div class="path">
+            <a href="{{ path("torgovorot_torg_homepage") }}" class="home"></a>
+            <a href="#">Работа</a> >
+        </div>
+
+            <h1>Работа</h1>
+       <div class="center">
+            <ul class="advert">
+                <li>
+                    <div class="tdd-img">
+                        <img src="{{ asset('uploads/photo/vakansii.jpg') }}" alt=""/>
+                    </div>
+                    <div class="tdd-text">
+                        <a href="{{ path("vacances") }}">
+                                    <span>
+                                        Вакансии
+                                    </span>
+                            <em>{{ vac_count }}</em>
+                        </a>
+                    </div>
+                </li>
+            </ul>
+            <ul class="advert">
+                <li>
+                    <div class="tdd-img">
+                        <img src="{{ asset('uploads/photo/resume.jpg') }}" alt=""/>
+                    </div>
+                    <div class="tdd-text">
+                        <a href="{{ path("resumes") }}">
+                                    <span>
+                                        Резюме
+                                    </span>
+                            <em>{{ res_count }}</em>
+                        </a>
+                    </div>
+                </li>
+            </ul>
+       </div>
+        </div>
+    </div>
+
+{% include 'TorgovorotTorgBundle:Default:bottom.html.twig' %}

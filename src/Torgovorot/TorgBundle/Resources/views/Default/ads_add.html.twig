@@ -1,0 +1,649 @@
+    {% if item.title is defined %}
+        {% set title = item.title %}
+        {% set button_name = "Сохранить" %}
+    {% else %}
+        {% set title = "Добавить" %}
+        {% set button_name = "Добавить" %}
+    {% endif %}
+{% include 'TorgovorotTorgBundle:Default:header.html.twig' with {'title':title} %}
+
+<div class="main">
+<style>
+    .form li div ul li label{
+        width: auto;
+    }
+    .form li div ul li input{
+        position:relative;
+        top: 10px;
+    }
+</style>
+{% if form_type == 2 %}
+    {% set title = "вакансию" %}
+{% elseif form_type == 3 %}
+    {% set title = "резюме" %}
+{% elseif form_type == 4 %}
+    {% set title = "товар" %}
+{% elseif form_type == 5 %}
+    {% set title = "мероприятие" %}
+{% elseif form_type == 6 %}
+    {% set title = "скидку" %}
+{% else %}
+    {% set title = "остальное" %}
+{% endif %}
+
+
+<h1>
+    {% if item.title is defined %}
+        {{ item.title }}
+    {% else %}
+        Добавить {{ title }}
+    {% endif %}
+</h1>
+
+{{ form_start(form , { 'enctype':"multipart/form-data" }) }}
+                                                
+<ul class="form">
+{% if form_type == 2  %}
+   
+    <li>
+        <label>Название:</label>
+        <div>{{ form_widget( form.title ) }}</div>
+    </li>
+    <li>
+        <label>Категории:</label>
+        <div>
+            {{ form_widget( form.vacancyIds ) }}
+        </div>
+    </li>
+    <li>
+        <label>График работы:</label>
+        <div>                
+            <ul>
+                {% for checkbox in form.timetableIds %}
+                    
+                    <li>
+                       
+                       {{ form_widget(checkbox) }}
+                       {{ form_label(checkbox) }}
+                    </li>
+                {% endfor %}    
+            </ul>
+        </div>       
+    </li>
+    <li>
+        <label>Зарплата от:</label>
+        <div>{{ form_widget( form.moneyFrom ) }}</div>       
+    </li>
+    <li>
+        <label>Зарплата до:</label>
+        <div>{{ form_widget( form.moneyTo ) }}</div>       
+    </li>
+    <li>
+        <label>Образование:</label>
+        <div>                
+            <ul>
+                {% for checkbox in form.education %}
+                    <li>
+                       
+                       {{ form_widget(checkbox) }}
+                       {{ form_label(checkbox) }}
+                    </li>
+                {% endfor %}    
+            </ul>
+        </div>       
+    </li>
+    <li>
+        <label>Опыт работы:</label>
+        <div>{{ form_widget( form.experience ) }}</div>       
+    </li>
+    <li>
+        <label>Пол:</label>
+        <div>{{ form_widget( form.sex ) }}</div>       
+    </li>
+    <li>
+        <label>Семейное положение:</label>
+        <div>{{ form_widget( form.family ) }}</div>       
+    </li>
+    <li>
+        <label>Требования:</label>
+        <div>{{ form_widget( form.requirement ) }}</div>       
+    </li>
+{% elseif form_type == 3 %}
+    <li>
+        <label>Имя:</label>
+        <div>{{ form_widget( form.fio ) }}</div>       
+    </li>
+    <li>
+        <label>Желаемая должность:</label>
+        <div>{{ form_widget( form.position ) }}</div>       
+    </li>
+    <li>
+        <label>Дата рождения:</label>
+        <div>{{ form_widget( form.birthDate ) }}</div>       
+    </li>
+    <li>
+        <label>Пол:</label>
+        <div>{{ form_widget( form.sex ) }}</div>
+    </li>
+    <li>
+        <label>Семейное положение:</label>
+        <div>{{ form_widget( form.family ) }}</div>
+    </li>
+    <li>
+        <label>Водительские права:</label>
+        <div>
+            <ul>
+                {% for checkbox in form.driver %}
+                    <li>
+                       
+                       {{ form_widget(checkbox) }}
+                       {{ form_label(checkbox) }}
+                    </li>
+                {% endfor %}    
+            </ul>
+        </div>       
+    </li>
+    <li>
+        <label>Дети:</label>
+        <div>
+            <ul>
+                {% for checkbox in form.children %}
+                    
+                    <li>
+                       
+                       {{ form_widget(checkbox) }}
+                       {{ form_label(checkbox) }}
+                    </li>
+                    
+                {% endfor %}    
+            </ul>
+        </div>       
+    </li>
+    <li>
+        <label>Категории работы:</label>
+        <div>
+            {{ form_widget( form.jobsIds ) }}
+        </div>       
+    </li>
+    <li>
+        <label>График работы:</label>
+        <div>
+            <ul>
+                {% for checkbox in form.timetable %}
+                    
+                    <li>
+                       
+                       {{ form_widget(checkbox) }}
+                       {{ form_label(checkbox) }}
+                    </li>
+                    
+                {% endfor %}    
+            </ul> 
+        </div>       
+    </li>
+    <li>
+        <label>Тип образования:</label>
+        <div>
+            <ul>
+                {% for checkbox in form.education %}
+                    
+                    <li>
+                       
+                       {{ form_widget(checkbox) }}
+                       {{ form_label(checkbox) }}
+                    </li>
+                    
+                {% endfor %}    
+            </ul>
+        </div>       
+    </li>
+    <li>
+        <label>Дата поступления:</label>
+        <div>{{ form_widget( form.startStudy ) }}</div>       
+    </li>
+    <li>
+        <label>Дата окончания:</label>
+        <div>{{ form_widget( form.endStudy ) }}</div>       
+    </li>
+    <li>
+        <label>Дата окончания:</label>
+        <div><input type="checkbox" name="is_study" value="1"> Еще учусь</div>       
+    </li>
+    <li>
+        <label>Опыт работы:</label>
+        <div>
+            <ul>
+                {% for checkbox in form.experience %}
+                    
+                    <li>
+                       
+                       {{ form_widget(checkbox) }}
+                       {{ form_label(checkbox) }}
+                    </li>
+                    
+                {% endfor %}    
+            </ul>
+        </div>       
+    </li>
+    <li>
+        <label>Профессиональные навыки:</label>
+        <div>{{ form_widget( form.skills) }}</div>       
+    </li>
+    <li>
+        <label>О себе:</label>
+        <div>{{ form_widget( form.aboutMe) }}</div>       
+    </li>
+    <li>
+        <label>Контактная информация:</label>
+        <div>{{ form_widget( form.contacts) }}</div>       
+    </li>
+{% elseif form_type == 4 %}                
+    <li>
+        <label>Заголовок:</label>
+        <div>{{ form_widget( form.title) }}</div>       
+    </li>
+    <li>
+        <label>Короткий текст:</label>
+        <div>{{ form_widget( form.shortDesc) }}</div>       
+    </li>
+    <li>
+        <label>Текст:</label>
+        <div>{{ form_widget( form.text) }}</div>       
+    </li>
+    <li>
+        <label>Категория:</label>
+        <div>{{ form_widget( form.catId) }}</div>       
+    </li>
+    {#<li>
+        <label>Тип:</label>
+        <div>
+            <ul>
+                {% for checkbox in form.type %}
+                    
+                    <li>
+                       
+                       {{ form_widget(checkbox) }}
+                       {{ form_label(checkbox) }}
+                    </li>
+                    
+                {% endfor %}    
+            </ul>
+        </div>       
+    </li>#}
+    <li>
+        <label>Срок публикации:</label>
+        <div>{{ form_widget( form.days) }}</div>       
+    </li>
+    <li>
+        <label>Цена:</label>
+        <div>{{ form_widget( form.price) }}</div>       
+    </li>
+    <li>
+        <label>Фото:</label>
+        <div>{{ form_widget( form.photo) }}</div>       
+    </li>                
+{% elseif form_type == 5 %}
+    <li>
+        <label>Заголовок:</label>
+        <div>{{ form_widget( form.title) }}</div>       
+    </li>
+    <li>
+        <label>Короткое описание:</label>
+        <div>{{ form_widget( form.shortDescr) }}</div>       
+    </li>
+    <li>
+        <label>Полное описание:</label>
+        <div>{{ form_widget( form.description) }}</div>       
+    </li>
+    <li>
+        <label>Возростной цензор:</label>
+        <div>{{ form_widget( form.ageRestrict) }}</div>       
+    </li>
+    <li>
+        <label>Фото:</label>
+        <div>
+            {% if item is defined %}
+                {% if getPhoto(item.photoIds) != "none" %}
+                    <img src="{{ asset('uploads/photo/'~getPhoto(item.photoIds)) }}" width="300px">
+                {% else %}
+                    <img src="{{ asset('uploads/nophoto.png') }}"/>
+                {% endif %}
+            {% endif %}
+        </div>       
+    </li>
+    <li>
+        <label>Загрузить фото:</label>
+        <div>{{ form_widget(form.photo) }}</div>       
+    </li>
+    <li>
+        <label>Дата начала:</label>
+        <div>{{ form_row(form.eventTime) }}</div>       
+    </li>
+    <li>
+        <label>Дата окончания:</label>
+        <div>{{ form_row(form.endEvent) }}</div>       
+    </li>
+    <li>
+        <label>Прочья информация:</label>
+        <div>{{ form_row(form.else) }}</div>       
+    </li>
+    <li>
+        <label>Длительность:</label>
+        <div>{{ form_row(form.length) }}</div>       
+    </li>
+    <li>
+        <label>Режиссер:</label>
+        <div>{{ form_row(form.director) }}</div>       
+    </li>
+    <li>
+        <label>Жанр:</label>
+        <div>{{ form_row(form.genre) }}</div>       
+    </li>
+{% elseif form_type == 6 %}
+    <li>
+        <label>Заголовок:</label>
+        <div>{{ form_widget( form.title) }}</div>       
+    </li>
+    <li>
+        <label>Короткое описание:</label>
+        <div>{{ form_widget( form.shortDescr) }}</div>       
+    </li>
+    <li>
+        <label>Полное описание:</label>
+        <div>{{ form_widget( form.description) }}</div>       
+    </li>
+    <li>
+        <label>Скидка (%):</label>
+        <div>{{ form_widget( form.discount) }}</div>       
+    </li>
+{% elseif form_type == 8 %}
+                    <li>
+                        <label>
+                            Заголовок <i>*</i>
+                        </label>
+
+                        <div>
+                            {{ form_widget(form.title) }}
+                            <em>не более 70 знаков</em>
+                        </div>
+                    </li>
+                    <li>
+                        <label class="title">
+                            Основное
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            Марка <i>*</i>
+                        </label>
+                        {{ form_widget(form.markId) }}
+                    </li>
+                    <li>
+                        <label>
+                            Модель <i>*</i>
+                        </label>
+
+                        <div>
+                            {{ form_widget(form.model) }}
+                        </div>
+                    </li>
+                    <li>
+                        <label>
+                            Год выпуска <i>*</i>
+                        </label>
+
+                        <div>
+                            {{ form_widget(form.yearProd) }}
+                        </div>
+                    </li>
+                    <li>
+                        <label>
+                            Тип кузова <i>*</i>
+                        </label>
+                        {{ form_widget(form.bodyId) }}
+                    </li>
+                    <li>
+                        <label>
+                            Пробег <i>*</i>
+                        </label>
+
+                        <div>
+                            {{ form_widget(form.runDistance) }}
+                        </div>
+                    </li>
+                    <li>
+                        <label>
+                            Срок владения <i>*</i>
+                        </label>
+
+                        <div class="radios">
+                            
+                            {% for radio in form.yearsOld %}
+                                {{ form_widget(radio) }}
+                                <i>{{ form_label(radio) }}</i>
+                            {% endfor %}
+                                <script>
+                                    $(function(){
+                                        $(".radios").find("label").each(function(){
+                                           var text = $(this).text();
+                                           $(this).parent().html(text);
+                                        });
+                                    });
+                                </script>
+                        </div>
+                    </li>
+                    <li>
+                        <label>
+                            Винкод <i>*</i>
+                        </label>
+
+                        <div>
+                            {{ form_widget(form.wincode) }}
+                        </div>
+                    </li>
+
+                    <li>
+                        <label class="title">
+                            Двигатель
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            Объем <i>*</i>
+                        </label>
+
+                        <div>
+                            {{ form_widget(form.volume) }}
+                        </div>
+                    </li>
+                    <li>
+                        <label>
+                            Мощность <i>*</i>
+                        </label>
+
+                        <div>
+                            {{ form_widget(form.power) }}
+                        </div>
+                    </li>
+                    <li>
+                        <label>
+                            Тип двигателя <i>*</i>
+                        </label>
+
+                        <div>
+
+                            {{ form_widget(form.engineId) }}
+                        </div>
+                    </li>
+                    <li>
+                        <label class="title">
+                            Оснащение
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            Состояние <i>*</i>
+                        </label>
+
+                        <div>
+                            {{ form_widget(form.conditionId) }}
+                        </div>
+                    </li>
+                    <li>
+                        <label>
+                            Цвет <i>*</i>
+                        </label>
+
+                        <div>
+                            {{ form_widget(form.color) }}
+                        </div>
+                    </li>
+                    <li>
+                        <label>Фотографии<i>*</i></label>
+
+                        <div>
+                            <a onclick="upload('load_1');return false;" id="load_1" href="#" class="btn btn-clear load-photo">Загрузить фото</a>
+                            <em>(JPG, PNG)</em>
+
+                            <div class="photos-file">
+                                {{ form_widget( form.photo, { 'full_name' : 'form[photo][]', 'attr' : { 'number' : 'load_1' } } ) }}
+                                <span></span>
+                                
+                            </div>
+
+                            <a href="#" class="add add_image"><span>добавить еще фотографию</span></a>
+                        </div>
+                    </li>
+                    <li>
+                        <label class="title">
+                            Комплектация
+                        </label>
+                    </li>
+                    <li>
+                        <label>&nbsp;
+                        </label>
+                        <div>
+                            {% set i = 0 %}
+                            {% for key,value in chs %}
+                            {% set i = i + 1 %}
+                            {% if i == 1 %}    
+                            <div class="ch-div">
+                            {% endif %}
+                                <div>{{ key }}</div>
+                                {% for item in value %}
+                                    <input name="chid[]" {% if item.id in checked %} checked="" {% endif %} type="checkbox" value="{{ item.getId() }}">{{ item.getName() }}<br/>
+                                {% endfor %}
+                                    <br>
+                                
+                            {% if i == 3 %}
+                            {% set i = 0 %}
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                        
+                    </li>
+                    <li>
+                        <label class="title">
+                            Условия продажи и контактная информация
+                        </label>
+                    </li>
+
+                    <li>
+                        <label>
+                            Цена<i>*</i>
+                        </label>
+
+                        <div style="font-weight: normal">
+                            {{ form_widget(form.price, { 'attr' : { 'class' : 'small' } }) }}<br/>
+                            
+
+                            {{ form_widget(form.torg) }} торг<br/>
+                            
+                        </div>
+                    </li>
+                    <li>
+                        <label>
+                            Наличие в городе продажи <i>*</i>
+                        </label>
+
+                        <div>
+                            {{ form_widget(form.isYourTown) }}
+                        </div>
+                    </li>
+                    <li>
+                        <label>Город продажи <i>*</i></label>
+
+                        <div>
+
+                            {{ form_widget(form.town) }}
+                        </div>
+                    </li>
+
+                    <li>
+                        <label>Текст объявления </label>
+                        <div>
+                        {{ form_widget(form.description) }}
+                        </div>
+                    </li>
+                    <li>
+                        <label>Короткое описание </label>
+                        <div>
+                        {{ form_widget(form.shortDesc) }}
+                        </div>
+                    </li>
+                    
+    
+{% endif %}
+    <li>
+        <label>Почтовый индекс:</label>
+        <div>{{ form_widget( form.index ) }}</div>       
+    </li>
+    <li>
+        <label>Улица:</label>
+        <div>{{ form_widget( form.street ) }}</div>       
+    </li>
+    <li>
+        <label>Номер дома:</label>
+        <div>{{ form_widget( form.house ) }}</div>       
+    </li>
+    <li>
+        <label>Офис:</label>
+        <div>{{ form_widget( form.flat ) }}</div>       
+    </li>
+{% if app.user == null %}
+                    <li>
+                        <label class="title">
+                            Мгновенная регистраци:
+                        </label>
+
+                    </li>
+                    <li>
+                        <label>
+                            Email-адрес<i>*</i>
+                        </label>
+
+                        <div>
+                            {{ form_widget(form.email) }}
+                            <em><input type="checkbox"/> не получать ответы на e-mail</em>
+                        </div>
+                    </li>
+                    <li>
+                        <label>Номер телефона</label>
+
+                        <div>
+                            {{ form_widget(form.phone) }}
+
+                            {#<a href="#" class="add add-input"><span>добавить дополнительный номер</span></a>#}
+                        </div>
+                    </li>
+{% endif %}
+    <li>
+        <label></label>
+        {{ form_row( form.save, { 'label': button_name, 'attr' : { 'class' : 'btn' } } ) }}       
+    </li>
+{{ form_rest(form) }}
+</ul>
+</form>
+
+{% include 'TorgovorotTorgBundle:Default:bottom.html.twig' %}

@@ -1,0 +1,439 @@
+{% include 'TorgovorotTorgBundle:Default:header.html.twig' with { 'title':'Личный кабинет' } %}
+
+<div class="main">
+        <div class="content-left content-full">
+            
+            <div class="path">
+                <a href="{{ path('torgovorot_torg_homepage') }}" class="home"></a>
+                <a href="{{ path('profile') }}#profile">Личный кабинет</a> >
+                {{ app.user.fio }}
+                {% if app.user and app.user.accessLvl == 100 %}
+                    <span style="font-size:10px;">[ </span><a style="font-size:10px;" href="{{ path('admin_panel') }}" >Админка</a><span style="font-size:10px;">]</span>
+                {% endif %}
+                <span style="font-size:10px;">[ </span><a style="font-size:10px;" href="{{ path('logout') }}">Выход</a><span style="font-size:10px;">]</span>
+                
+            </div>
+
+            <h1>Личный кабинет</h1>
+
+            <div class="ttabs">
+                <a href="#" class="active">Мои объявления</a>
+                <a href="#" class="ttab2">Профиль</a>
+                <a href="#" class="ttab2">Платежи</a>
+            </div>
+            <div class="ttabs-content">
+                <div class="active">
+                    <div class="yellow-link">
+                        {{ profmenu()|raw }}
+                    </div>
+                    <div class="yellow-link">
+                        <a {% if state == 1 %} class="active" {% endif %} href="{{ path('profile_items', {'item_type':item_type}) }}?state=1#items">Активные <span>({{ active_items|length }})</span></a>
+                        <a {% if state == 0 %} class="active" {% endif %} href="{{ path('profile_items', {'item_type':item_type}) }}?state=0#items">Обрабатываются модератором <span>({{ operating_items|length }})</span></a>
+                        <a {% if state == 2 %} class="active" {% endif %} href="{{ path('profile_items', {'item_type':item_type}) }}?state=2#items">Снятые с размещения <span>({{ canceled_items|length }})</span></a>
+                    </div>
+                    
+               {#
+               {%  if items is not empty and item_type == 0 %}
+                  {% for addr in items %}  
+                  <div class="tdd">
+                        <div class="tdd-tool">
+                            <a href="{{ path('profile_addr_view', {'id1' : addr.id}) }}">Редактировать</a>
+                            <a href="#">Продлить</a>
+                            <a href="#">Снять с размещения</a>
+                            <a href="{{ path("profile_item_delete", { 'id':addr.id, 'type': 8 }) }}">Удалить</a>
+                        </div>
+                        <div class="tdd-cont">
+                            <img src="{{ asset('images/photo-home.png')  }}" alt=""/>
+
+                            <div class="acenter">
+                                <a href="#">4-комн. квартира, Сретенский тупик, 12, 3/12, площадь: общая 320 кв. м.,
+                                    жилая 150 кв. м., кухня 80 кв. м., с/у 2 и более, балкон/лоджия, городской телефон,
+                                    приватизированная</a>
+                                <b>1 420 000 руб.</b>
+                            </div>
+
+                            <div class="aright">
+                                <b>
+                                    {% if state == 0 %}
+                                        Обрабатывается
+                                    {% elseif state == 1 %}
+                                        Размещено
+                                    {% elseif state == 2 %}
+                                        Снятое
+                                    {% endif %}
+                                </b><br/>
+                                Уникальный номер: {{ item.id }}<br/>
+                                Подано: {{ item.time|date('Y.m.d в H:i') }}<br/>
+                                Истекает: 18.07 в 11:09<br/>
+
+                                <p>131 просмотр</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                {% endif %}#}
+
+                {%  if items is not empty and item_type == 3 %}
+                    {% for item in items %}  
+                  <div class="tdd">
+                        <div class="tdd-tool">
+                            <a href="{{ path('profile_res_view', {'id1' : item.id}) }}">Редактировать</a>
+                            {% if state == 1 %}
+                                <a href="{{ path("profile_item_update", { 'id':item.id, 'type': 3, 'action' : 2 }) }}#items">Снять с размещения</a>
+                            {% elseif state == 2 %}
+                                <a href="{{ path("profile_item_update", { 'id':item.id, 'type': 3, 'action' : 0 }) }}#items">Разместить</a>
+                            {% endif %}
+                            <a href="{{ path("profile_item_delete", { 'id':item.id, 'type': 3 }) }}#items">Удалить</a>
+                        </div>
+                        <div class="tdd-cont">
+                            
+                            {% if getPhoto(item.ownerId, 0, 'jpg') != "none" %}
+                                    <img src="{{ asset('uploads/photo/item_image/'~getPhoto(item.ownerId, 0, 'jpg')) }}" alt=""/>
+                            {% else %}
+                                    <img src="{{ asset('uploads/nophoto.png') }}" alt=""/>
+                            {% endif %}
+                            <div class="acenter">
+                                <a href="{{ path("resume", {'id':item.id}) }}">{{ item.fio }}</a>
+                                <b>1 420 000 руб.</b>
+                            </div>
+
+                            <div class="aright">
+                                <b>
+                                    {% if state == 0 %}
+                                        Обрабатывается
+                                    {% elseif state == 1 %}
+                                        Размещено
+                                    {% elseif state == 2 %}
+                                        Снятое
+                                    {% endif %}
+                                </b><br/>
+                                Уникальный номер: {{ item.id }}<br/>
+                                Подано: {{ item.time|date('Y.m.d в H:i') }}<br/>
+                                Истекает: 18.07 в 11:09<br/>
+
+                                <p>{{ item.views }} просмотр</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                {% endif %}
+
+{%  if items is not empty and item_type == 2 %}
+        {% for item in items %}
+                    <div class="tdd">
+                        <div class="tdd-tool">
+                            <a href="{{ path('profile_vac_view', {'id1' : item.id}) }}">Редактировать</a>
+                            
+                            {% if state == 1 %}
+                                <a href="{{ path("profile_item_update", { 'id':item.id, 'type': 2, 'action' : 2 }) }}#items">Снять с размещения</a>
+                            {% elseif state == 2 %}
+                                <a href="{{ path("profile_item_update", { 'id':item.id, 'type': 2, 'action' : 0 }) }}#items">Разместить</a>
+                            {% endif %}
+                            <a href="{{ path("profile_item_delete", { 'id':item.id, 'type': 2 }) }}#items">Удалить</a>
+                        </div>
+                        <div class="tdd-cont">
+                            
+                            {% if getPhoto(item.ownerId, 0, 'jpg') != "none" %}
+                                    <img src="{{ asset('uploads/photo/item_image/'~getPhoto(item.ownerId, 0, 'jpg')) }}" alt=""/>
+                            {% else %}
+                                    <img src="{{ asset('uploads/nophoto.png') }}" alt=""/>
+                            {% endif %}
+                            <div class="acenter">
+                                <a href="{{ path("vacance", {'id':item.id}) }}">{{ item.title }}</a>
+                                <b>1 420 000 руб.</b>
+                            </div>
+
+                            <div class="aright">
+                                <b>
+                                    {% if state == 0 %}
+                                        Обрабатывается
+                                    {% elseif state == 1 %}
+                                        Размещено
+                                    {% elseif state == 2 %}
+                                        Снятое
+                                    {% endif %}
+                                </b><br/>
+                                Уникальный номер: {{ item.id }}<br/>
+                                Подано: {{ item.time|date('Y.m.d в H:i') }}<br/>
+                                Истекает: 18.07 в 11:09<br/>
+
+                                <p>{{ item.views }} просмотр</p>
+                            </div>
+                        </div>
+                    </div>
+        {% endfor %}       
+{% endif %}
+
+{%  if items is not empty and item_type == 4 %}
+        {% for item in items %}
+                    <div class="tdd">
+                        <div class="tdd-tool">
+                            <a href="{{ path('profile_good_view', {'id1' : item.id}) }}">Редактировать</a>
+                            
+                            {% if state == 1 %}
+                                <a href="{{ path("profile_item_update", { 'id':item.id, 'type': 4, 'action' : 2 }) }}#items">Снять с размещения</a>
+                            {% elseif state == 2 %}
+                                <a href="{{ path("profile_item_update", { 'id':item.id, 'type': 4, 'action' : 0 }) }}#items">Разместить</a>
+                            {% endif %}
+                            <a href="{{ path("profile_item_delete", { 'id':item.id, 'type': 4 }) }}#items">Удалить</a>
+                        </div>
+                        <div class="tdd-cont">
+                            
+                            {% if getPhoto(item.photoIds, 0, 'jpg') != "none" %}
+                                    <img src="{{ asset('uploads/photo/item_image/'~getPhoto(item.photoIds, 0, 'jpg')) }}" alt=""/>
+                            {% else %}
+                                    <img src="{{ asset('uploads/nophoto.png') }}" alt=""/>
+                            {% endif %}
+                            <div class="acenter">
+                                <a href="{{ path("good", {'id':item.id}) }}">{{ item.title }}</a>
+                                <b>{{ item.price }} руб.</b>
+                            </div>
+
+                            <div class="aright">
+                                <b>
+                                    {% if state == 0 %}
+                                        Обрабатывается
+                                    {% elseif state == 1 %}
+                                        Размещено
+                                    {% elseif state == 2 %}
+                                        Снятое
+                                    {% endif %}
+                                </b><br/>
+                                Уникальный номер: {{ item.id }}<br/>
+                                Подано: {{ item.time|date('Y.m.d в H:i') }}<br/>
+                                Истекает: 18.07 в 11:09<br/>
+
+                                <p>{{ item.views }} просмотр</p>
+                            </div>
+                        </div>
+                    </div>
+        {% endfor %}
+{% endif %}
+
+{%  if items is not empty and item_type == 1 %}
+        {% set titl = "" %}
+        {% for item in items %}
+                {#{% if titl != rtype[item.adsType] %}
+                    {% set titl = rtype[item.adsType] %}
+                    <tr><td><h2>{{ titl }}</h2></td></tr>
+                {% endif %}#}
+                    <div class="tdd">
+                        <div class="tdd-tool">
+                            <a href="{{ path('profile_realty_view', {'param':item.adsType ,'id1' : item.id}) }}">Редактировать</a>
+                            
+                            {% if state == 1 %}
+                                <a href="{{ path("profile_item_update", { 'id':item.id, 'type': 1, 'action' : 2 }) }}#items">Снять с размещения</a>
+                            {% elseif state == 2 %}
+                                <a href="{{ path("profile_item_update", { 'id':item.id, 'type': 1, 'action' : 0 }) }}#items">Разместить</a>
+                            {% endif %}
+                            <a href="{{ path("profile_item_delete", { 'id':item.id, 'type': 1 }) }}#items">Удалить</a>
+                        </div>
+                        <div class="tdd-cont">
+                            {#<img src="{{ asset('bundles/torgovorottorg/images/photo-home.png')  }}" alt=""/>#}
+                            {% if getPhoto(item.photoIds, 0, 'jpg') != "none" %}
+                                    <img src="{{ asset('uploads/photo/item_image/'~getPhoto(item.photoIds, 0, 'jpg')) }}" alt=""/>
+                            {% else %}
+                                    <img src="{{ asset('uploads/nophoto.png') }}" alt=""/>
+                            {% endif %}
+                            <div class="acenter">
+                                <a href="{{ path("object", {'id':item.id}) }}">{{ item.title }}</a>
+                                <b>{{ price_temp(item.price) }} руб.</b>
+                            </div>
+
+                            <div class="aright">
+                                <b>
+                                    {% if state == 0 %}
+                                        Обрабатывается
+                                    {% elseif state == 1 %}
+                                        Размещено
+                                    {% elseif state == 2 %}
+                                        Снятое
+                                    {% endif %}
+                                </b><br/>
+                                Уникальный номер: {{ item.id }}<br/>
+                                Подано: {{ item.time|date('Y.m.d в H:i') }}<br/>
+                                Истекает: 18.07 в 11:09<br/>
+
+                                <p>{{ item.views|default(0) }} просмотр</p>
+                            </div>
+                        </div>
+                    </div>
+        {% endfor %}
+{% endif %}
+                    
+{%  if items is not empty and item_type == 5 %}
+        {% for item in items %}
+                    <div class="tdd">
+                        <div class="tdd-tool">
+                            <a href="{{ path('profile_event_view', {'id' : item.id}) }}">Редактировать</a>
+                            
+                            {% if state == 1 %}
+                                <a href="{{ path("profile_item_update", { 'id':item.id, 'type': 5, 'action' : 2 }) }}#items">Снять с размещения</a>
+                            {% elseif state == 2 %}
+                                <a href="{{ path("profile_item_update", { 'id':item.id, 'type': 5, 'action' : 0 }) }}#items">Разместить</a>
+                            {% endif %}
+                            <a href="{{ path("profile_item_delete", { 'id':item.id, 'type': 5 }) }}#items">Удалить</a>
+                        </div>
+                        <div class="tdd-cont">
+                            
+                            {% if getPhoto(item.photoIds, 0, 'jpg') != "none" %}
+                                    <img src="{{ asset('uploads/photo/item_image/'~getPhoto(item.photoIds, 0, 'jpg')) }}" alt=""/>
+                            {% else %}
+                                    <img src="{{ asset('uploads/nophoto.png') }}" alt=""/>
+                            {% endif %}
+                            <div class="acenter">
+                                <a href="{{ path("event", {'id':item.id}) }}">{{ item.title }}</a>
+                                <b>&nbsp;</b>
+                            </div>
+
+                            <div class="aright">
+                                <b>
+                                    {% if state == 0 %}
+                                        Обрабатывается
+                                    {% elseif state == 1 %}
+                                        Размещено
+                                    {% elseif state == 2 %}
+                                        Снятое
+                                    {% endif %}
+                                </b><br/>
+                                Уникальный номер: {{ item.id }}<br/>
+                                Подано: {{ item.time|date('Y.m.d в H:i') }}<br/>
+                                Истекает: 18.07 в 11:09<br/>
+
+                                <p>{{ item.views }} просмотр</p>
+                            </div>
+                        </div>
+                    </div>
+        {% endfor %}
+{% endif %}
+                    
+{%  if items is not empty and item_type == 8 %}
+        {% for item in items %}
+                    <div class="tdd">
+                        <div class="tdd-tool">
+                            <a href="{{ path('profile_car_view', {'id' : item.id}) }}">Редактировать</a>
+                            
+                            {% if state == 1 %}
+                                <a href="{{ path("profile_item_update", { 'id':item.id, 'type': 8, 'action' : 2 }) }}#items">Снять с размещения</a>
+                            {% elseif state == 2 %}
+                                <a href="{{ path("profile_item_update", { 'id':item.id, 'type': 8, 'action' : 0 }) }}#items">Разместить</a>
+                            {% endif %}
+                            <a href="{{ path("profile_item_delete", { 'id':item.id, 'type': 8 }) }}#items">Удалить</a>
+                        </div>
+                        <div class="tdd-cont">
+                            
+                            {% if getPhoto(item.photoIds, 0, 'jpg') != "none"  %}
+                                    <img src="{{ asset('uploads/photo/item_image/'~getPhoto(item.photoIds, 0, 'jpg')) }}" alt=""/>
+                            {% else %}
+                                    <img src="{{ asset('uploads/nophoto.png') }}" alt=""/>
+                            {% endif %}
+                            <div class="acenter">
+                                <a href="{{ path("car", {'id':item.id}) }}">{{ item.title }}</a>
+                                <b>{{ item.price }} руб.</b>
+                            </div>
+
+                            <div class="aright">
+                                <b>
+                                    {% if state == 0 %}
+                                        Обрабатывается
+                                    {% elseif state == 1 %}
+                                        Размещено
+                                    {% elseif state == 2 %}
+                                        Снятое
+                                    {% endif %}
+                                </b><br/>
+                                Уникальный номер: {{ item.id }}<br/>
+                                Подано: {{ item.time|date('Y.m.d в H:i') }}<br/>
+                                Истекает: 18.07 в 11:09<br/>
+
+                                <p>{{ item.views }} просмотр</p>
+                            </div>
+                        </div>
+                    </div>
+        {% endfor %}
+{% endif %}                    
+                    
+                </div>
+                <div>
+                    {{ form_start(form) }}
+                        <ul class="form">
+                            <li>
+                                <label>
+                                    ФИО
+                                </label>
+
+                                <div>
+                                    {{ form_widget(form.fio) }}
+                                    <em>Введите ваше ФИО</em>
+                                </div>
+                            </li>
+                            <li>
+                                <label>Номер телефона<i>*</i></label>
+
+                                <div>
+                                    {{ form_widget(form.mobile) }}
+
+                                    {#<a href="#" class="add add-input"><span>добавить дополнительный номер</span></a>#}
+                                </div>
+                            </li>
+                            <li>
+                                <label>
+                                    Email-адреc
+                                </label>
+
+                                <div>
+                                    {{ form_widget(form.email) }}
+                                </div>
+                            </li>
+                            <li>
+                                <label>
+                                    Пароль
+                                </label>
+
+                                <div>
+                                    {{ form_widget(form.pass, { 'value' : app.user.passNorm }) }}
+                                    <em><a href="#" class="dotted">изменить пароль</a></em>
+
+                                    <a href="#" class="eye"></a>
+                                </div>
+                            </li>
+                            <li>
+                                <label>
+                                    Название компании
+                                </label>
+
+                                <div>
+                                    {{ form_widget(form.companyName) }}
+                                </div>
+                            </li>
+                            <li>
+                                <label>
+                                    Описание
+                                </label>
+
+                                <div>
+                                    {{ form_widget(form.about) }}
+                                </div>
+                            </li>
+                            <li>
+                                <label>
+                                    Фото
+                                </label>
+
+                                <div>
+                                    {{ form_widget(form.photo) }}
+                                </div>
+                            </li>
+                            <li>
+                                <label></label>
+                                <div>{{ form_widget(form.save , {'attr': {'class': 'btn'}, "label" : "Сохранить"}) }}</div>
+                            </li>
+                        </ul>
+                    {{ form_end(form) }}
+                </div>
+                <div>
+                    Баланс: {{ app.user.credits|default(0) }}
+                </div>
+            </div>
+        </div>
+    {% include 'TorgovorotTorgBundle:Default:bottom.html.twig' %}

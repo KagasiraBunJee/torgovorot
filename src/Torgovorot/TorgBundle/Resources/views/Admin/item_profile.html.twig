@@ -1,0 +1,119 @@
+{% include 'TorgovorotTorgBundle:Admin:admin_header.html.twig' %}
+{{ form_start(form) }}<br>
+
+{{ form_row(form.fio , { 'attr' : { 'style': 'width:300px;' } }) }}<br>
+
+{{ form_row(form.mobile , { 'attr' : { 'style': 'width:300px;' } }) }}<br>
+
+{{ form_row(form.companyName , { 'attr' : { 'style': 'width:300px;' } }) }}<br>
+
+{{ form_row(form.userName , { 'attr' : { 'style': 'width:300px;' } }) }}<br>
+
+{{ form_row(form.email , { 'attr' : { 'style': 'width:300px;' } }) }}<br>
+
+{{ form_row(form.credits , { 'attr' : { 'style': 'width:300px;' } }) }}<br>
+
+{{ form_row(form.about) }}<br>
+
+{{ form_row(form.contacts) }}<br>
+
+Изображение:<br>
+{% if getPhoto(user.photo) != "none" %}
+    <img src="{{ asset('uploads/photo/'~getPhoto(user.photo)) }}" width="300px">
+{% else %}
+    <img src="{{ asset('uploads/nophoto.png') }}"/>
+{% endif %}
+<br>
+
+{{ form_row(form.photo) }}
+<br>
+{{ form_row(form.save) }}
+
+{{ form_rest(form) }}
+
+{{ form_end(form) }}
+
+{%  if addrs is not empty %}
+<h3>Адресса</h3>
+<div>
+        {% for addr in addrs %}
+            <ul>
+                <a href="{{ path('admin_profile_addr_view', {'id':user.id , 'id1' : addr.id}) }}" >
+                {% if addr.city is not empty %} {{ addr.city }}, {% endif %} 
+                
+                {% if addr.street is not empty %} {{ addr.street }}, {% endif %} 
+                
+                {% if addr.house is not empty %}дом. {{ addr.house }}, {% endif %}
+                
+                {% if addr.office is not empty %}оф. {{ addr.office }} {% endif %} 
+                
+                </a>
+            </ul>
+           
+        {% endfor %}
+    
+</div>
+{% endif %}
+
+{%  if res is not empty %}
+<h3>Резюме</h3>
+<div>
+        {% for item in res %}
+            <ul>
+                <a href="{{ path('admin_res_view', {'id':user.id , 'id1' : item.id}) }}" > {{item.fio}} </a>
+            </ul>
+           
+        {% endfor %}
+    
+</div>
+{% endif %}
+
+{%  if vac is not empty %}
+<h3>Вакансии</h3>
+<div>
+        {% for item in vac %}
+            <ul>
+                <a href="{{ path('admin_vac_view', {'id':user.id , 'id1' : item.id}) }}" > {{item.title}} </a>
+            </ul>
+           
+        {% endfor %}
+    
+</div>
+{% endif %}
+
+{%  if goods is not empty %}
+<h3>Товары</h3>
+<div>
+        {% for item in goods %}
+            <ul>
+                <a href="{{ path('admin_good_view', {'id':user.id , 'id1' : item.id}) }}" > {{item.title}} </a>
+            </ul>
+           
+        {% endfor %}
+    
+</div>
+{% endif %}
+
+{%  if realty is not empty %}
+<h3>Недвижимость</h3>
+<div style="margin-left:50px;">
+        {% set titl = "" %}
+        {% for item in realty %}
+               
+    
+                {% if titl != rtype[item.adsType] %}
+                    {% set titl = rtype[item.adsType] %}
+                    <b>{{ titl }}</b>
+                {% endif %}
+                    
+                
+                    
+                <ul>
+                    <a href="{{ path('admin_realty_view', {'id':user.id , 'param':item.adsType ,'id1' : item.id}) }}">{{ item.title }}</a><br>
+                    
+                </ul>
+        {% endfor %}
+    
+</div>
+{% endif %}
+{% include 'TorgovorotTorgBundle:Admin:admin_bottom.html.twig' %}

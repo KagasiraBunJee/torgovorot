@@ -1,0 +1,48 @@
+{% include 'TorgovorotTorgBundle:Admin:admin_header.html.twig' %}
+<h1>Список страниц</h1>
+<div>
+    <table width="1000">
+        <tr>
+            <td>id</td>
+            <td>Категория</td>
+            <td>Наименование</td>
+            <td>ip</td>
+        </tr>
+        
+        {% for item in items_new %}
+        
+        <tr>
+            <td>{{ item['id'] }}</td>
+            <td>{{ item.category }}</td>
+            <td>{{ item.item_title }}</td>
+            <td>{{ item.ip }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    
+</div>
+<div class="paginator">
+
+        {% if paginator.currentpage != 1 %}
+            <a class="previous" href="{{ path('admin_complaints', { 'page': paginator.currentpage-1 }) }}"><</a>
+        {% endif %}
+        {% for i in 1..paginator.numpages%}
+            {% if paginator.range.0 > 2 and i == paginator.range.0 %}
+                  ...
+            {% endif %}
+
+            {% if(i==1 or i==paginator.numpages or i in paginator.range) %}
+                
+                <a {% if i==paginator.currentpage %}class="active"{% endif %} href="{{ path('admin_complaints', { 'page': i }) }}"> {{i}}</a>
+
+            {% endif %}
+
+            {% if paginator.range[paginator.midrange -1] < paginator.numpages -1 and i == paginator.range[paginator.midrange-1] %}
+                ...
+            {% endif %}
+        {% endfor %}
+        {% if paginator.numpages > 1 and paginator.currentpage != paginator.numpages %}
+         <a class="next" href="{{ path('admin_complaints', { 'page': paginator.currentpage+1}) }}">></a>
+        {% endif %}
+</div>
+{% include 'TorgovorotTorgBundle:Admin:admin_bottom.html.twig' %}

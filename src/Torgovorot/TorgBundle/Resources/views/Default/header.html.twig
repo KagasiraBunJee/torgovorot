@@ -1,0 +1,226 @@
+{% if menu is not defined %}
+    {% set menu = "none" %}
+{% endif %}
+{% if index is not defined %}
+    {% set index = "none" %}
+{% endif %}
+{% if title is not defined %}
+    {% set title = "Главная страница" %}
+{% endif %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ title }}</title>
+
+    <meta charset="utf-8"/>
+   
+    
+        {#{% stylesheets 'bundles/torgovorottorg/css/main.css' filter='cssrewrite' %}
+            <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}#}
+    <link rel="stylesheet" href="{{ asset('bundles/torgovorottorg/css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/torgovorottorg/css/lightbox.css') }}">
+    {#{% javascripts
+        'bundles/torgovorottorg/js/jquery-1.11.0.min.js'
+        'bundles/torgovorottorg/js/modernizr.js'
+        'bundles/torgovorottorg/js/jquery.elevateZoom-3.0.8.min.js'
+        'bundles/torgovorottorg/js/main.js'
+    %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}#}
+    <script src="{{ asset('bundles/torgovorottorg/js/jquery-1.11.0.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/torgovorottorg/js/modernizr.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/torgovorottorg/js/lightbox.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/torgovorottorg/js/nicEdit.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/torgovorottorg/js/jquery.elevateZoom-3.0.8.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/torgovorottorg/js/main.js') }}" type="text/javascript"></script>
+    
+    <script type="text/javascript" src="http://api-maps.yandex.ru/1.1/index.xml?key=ACfnyFMBAAAAIzmPTwIAsnteKY9dXTzxIJi6pFyt2sDM0boAAAAAAAAAAAA5ntYBOBw_Fw_2FNwP7H4kAZLkiA=="></script>
+    <link href="http://api-maps.yandex.ru/1.1.21/_YMaps.css?v=1.1.21-20" rel="stylesheet">
+    <script src="http://api-maps.yandex.ru/1.1.21/_YMaps.js?v=1.1.21-20" charset="utf-8" type="text/javascript"></script>
+    <script src="http://api-maps.yandex.ru/1.1.21/xml/data.xml?v=3.177.04.18.1" charset="utf-8" type="text/javascript"></script>
+    
+    {#<script src="http://api-maps.yandex.ru/2.0-stable/?load=package.standard&lang=ru-RU" type="text/javascript"></script>#}
+    {#<script src="http://js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>#}
+    <script type="text/javascript">
+        
+        //bkLib.onDomLoaded(nicEditors.allTextAreas);
+        bkLib.onDomLoaded(function() {
+            $("textarea").each(function(){
+                var attr_id = $(this).attr("id");
+                //new nicEditor({buttonList : ['fontSize','bold','italic','underline','strikeThrough','subscript','superscript','html','image']}).panelInstance(attr_id);
+                new nicEditor({buttonList : ['justify', 'left', 'center', 'right', 'underline', 'italic', 'bold']}).panelInstance(attr_id);
+            });
+        });
+    </script>
+    <style>
+        textarea{
+            width:600px!important;
+            height:100px;
+        }
+        .inline-select .menu-select{
+            max-height: 250px;
+            overflow: auto;
+        }
+        
+    </style>
+</head>
+<body>
+
+    <div class="wrapper {% if index == "register" or index == "profile_one" or index == "none" %} without-search {% endif %}">
+    <div class="top-menu">
+        <div class="city">
+            Ваш город:
+            <select class="white">
+                <option value="1">Рыбинск</option>
+            </select>
+        </div>
+
+        <ul>
+            {% for link in generateTopMenu() %}
+                <li><a href="{{ path('page', { 'name':link.chpu }) }}">{{ link.title }}</a></li>
+            {% endfor %}
+        </ul>
+        {% if app.user %}
+            <a class="lich"  href="{{ path('profile') }}">Личный кабинет</a>
+        {% else %}
+            <a class="lich" onclick="$('.ph').toggle();$('.authr').toggle();return false;"  href="#">Личный кабинет</a>
+        {% endif %}
+
+    </div>
+    <div class="top-gray">
+        <a href="{{ path('torgovorot_torg_homepage') }}" class="logo"></a>
+        <div class="gray-menu">
+            <a {% if menu == "katalog" %} class="active" {% endif %}href="{{ path('katalog_page') }}">Объявления</a>
+            <a {% if menu == "realty" %} class="active" {% endif %}href="{{ path('map_url') }}">Карта недвижимости</a>
+            <a {% if menu == "work" %} class="active" {% endif %}href="{{ path('work_page') }}">Работа</a>
+            <a {% if menu == "events" %} class="active" {% endif %}href="{{ path('events_all') }}">Афиша</a>
+            <a {% if menu == "discounts" %} class="active" {% endif %}href="{{ path('discounts_all') }}">Скидки</a>
+            
+            <a {% if menu == "goods" %} class="active" {% endif %}href="{{ path('goods_all') }}">Товары</a>
+        </div>
+        {#{% if app.user %}
+            <a href="{{ path('selectAdvert') }}" class="add-ad">+ Добавить объявление</a>
+        {% else %}
+            <a href="#" onclick="$('.ph').toggle();$('.authr').toggle();return false;" class="add-ad">+ Добавить объявление</a>
+        {% endif %}#}
+        <a href="{{ path('selectAdvert') }}" class="add-ad">+ Добавить объявление</a>
+        {% if index == 'main' or index == 'good' or index == 'discount' %}
+            <div class="search">
+                <form action="" class="torg_search" method="GET">
+                    <div>
+                        <input name="search_str" value="{{ app.request.get('search_str') }}" type="text"/>
+                        <select class="select_rub">
+                            <option {% if index == 'object' %} selected {% endif %}value="{{ path("realty_list_all") }}">Недвижимость</option>
+                            <option {% if index == 'resume' %} selected {% endif %}value="{{ path("resumes") }}">Резюме</option>
+                            <option {% if index == 'vacance' %} selected {% endif %}value="{{ path("vacances") }}">Вакансии</option>
+                            <option {% if index == 'discount' %} selected {% endif %}value="{{ path("discounts_all") }}">Скидки</option>
+                            
+                            <option {% if index == 'good' %} selected {% endif %}value="{{ path("goods_all") }}">Товары</option>
+                            <option {% if index == 'car' %} selected {% endif %}value="{{ path("cars_all") }}">Авто</option>
+                        </select>
+                    </div>
+                    <input type="submit" value="Найти"/>
+                </form>
+
+                <div>
+                    Например: <em><a class="seo-link" href="#">{{ randomUrl() }}</a></em>
+                </div>
+            </div>
+        {% elseif index == 'object' %}
+                    <div class="search">
+                        <form action="{{ path("realty_list_all") }}" method="GET">
+                            <span class="sss">
+                                <label>Я хочу</label>
+                                <select name="trade_type">
+                                    <option value="0">все</option>
+                                    <option {% if app.request.get('trade_type') == 1 %} selected {% endif %} value="1">продать</option>
+                                    <option {% if app.request.get('trade_type') == 2 %} selected {% endif %} value="2">купить</option>
+                                </select>
+
+                                <label>Тип недвижимости</label>
+                                <select name="search_type">
+                                    <option value="0">Все</option>
+                                    <option {% if app.request.get('search_type') == 1 %} selected {% endif %} value="1">Комната</option>
+                                    <option {% if app.request.get('search_type') == 2 %} selected {% endif %} value="2">Квартира</option>
+                                    <option {% if app.request.get('search_type') == 3 %} selected {% endif %} value="3">Дом</option>
+                                    <option {% if app.request.get('search_type') == 4 %} selected {% endif %} value="4">Коммерческая недвижимость</option>
+                                    <option {% if app.request.get('search_type') == 5 %} selected {% endif %} value="5">Гараж</option>
+                                </select>
+
+                                <label>
+                                    Цена
+                                </label>
+                                <input name="price_from" value="{{ app.request.get('price_from') }}" type="text"/>
+                                <label>до</label>
+                                <input name="price_to" value="{{ app.request.get('price_to') }}" type="text"/>
+                                <label>рублей</label>
+                                <input type="hidden" name="list" value="{{ app.request.get('list') }}">
+                            </span>
+                            <input type="submit" value="Поиск" class="floatright"/>
+                        </form>
+
+                    </div>
+            
+        {% elseif index == "vacance" or index == "resume" %}
+                    <div class="search green">
+                        <form class="work_search" action="{{ path(index~'s') }}">
+                            <input style="width:740px" name="search_str" type="text" placeholder="должность, компания или ключевое слово"/>
+                            {#<input type="text" placeholder="во всех рубриках"/>#}
+                            <input type="submit" value="Поиск" class="floatright"/>
+                            <input type="hidden" value="{{ index~'s' }}" class="work_type">
+                        </form>
+            <div class="search-tabs">
+                <a value="{{ path('vacances') }}" href="#" class="active">Вакансии</a>
+                <a value="{{ path('resumes') }}" href="#">Резюме</a>
+            </div>
+
+            {#<a href="#" class="add-search">Подробный поиск</a>#}
+                    </div>
+        {% elseif index == "event" %}
+            <div class="search">
+                <form action="" class="torg_search" method="GET">
+                    <div>
+                        <input name="search_str" type="text"/>
+                        <select class="select_rub">
+                            <option {% if index == 'object' %} selected {% endif %}value="{{ path("realty_list_all") }}">Недвижимость</option>
+                            <option {% if index == 'resume' %} selected {% endif %}value="{{ path("resumes") }}">Резюме</option>
+                            <option {% if index == 'vacance' %} selected {% endif %}value="{{ path("vacances") }}">Вакансии</option>
+                            <option {% if index == 'discount' %} selected {% endif %}value="{{ path("discounts_all") }}">Скидки</option>
+                            
+                            <option {% if index == 'good' %} selected {% endif %}value="{{ path("goods_all") }}">Товары</option>
+                            <option {% if index == 'car' %} selected {% endif %}value="{{ path("cars_all") }}">Авто</option>
+                        </select>
+                    </div>
+                    <input type="submit" value="Найти"/>
+                </form>
+
+                <div>
+                    Например: <em><a class="seo-link" href="#">{{ randomUrl() }}</a></em>
+                </div>
+            </div>
+        {% elseif index == "car" %}
+            <div class="search">
+                <form action="" class="torg_search" method="GET">
+                    <div>
+                        <input name="search_str" type="text"/>
+                        <select class="select_rub">
+                            <option {% if index == 'object' %} selected {% endif %}value="{{ path("realty_list_all") }}">Недвижимость</option>
+                            <option {% if index == 'resume' %} selected {% endif %}value="{{ path("resumes") }}">Резюме</option>
+                            <option {% if index == 'vacance' %} selected {% endif %}value="{{ path("vacances") }}">Вакансии</option>
+                            <option {% if index == 'discount' %} selected {% endif %}value="{{ path("discounts_all") }}">Скидки</option>
+                            
+                            <option {% if index == 'good' %} selected {% endif %}value="{{ path("goods_all") }}">Товары</option>
+                            <option {% if index == 'car' %} selected {% endif %}value="{{ path("cars_all") }}">Авто</option>
+                        </select>
+                    </div>
+                    <input type="submit" value="Найти"/>
+                </form>
+
+                <div>
+                    Например: <em><a class="seo-link" href="#">{{ randomUrl() }}</a></em>
+                </div>
+            </div>
+        {% endif %}
+            
+    </div>

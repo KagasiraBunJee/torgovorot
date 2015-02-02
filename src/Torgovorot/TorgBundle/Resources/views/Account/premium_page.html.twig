@@ -1,0 +1,31 @@
+{% include 'TorgovorotTorgBundle:Default:header.html.twig' %}
+    <div class="main">
+
+    <h1>Подтверждение</h1>
+        {% if price < user.credits and ((action == "emergency" and item.emergency != 1) or (action == "vip" and item.vip != 1) or action == "lift") %}
+            <div class="center">
+                Вы действительно хотите {{ message }} ? Стоимость услуги <span style="color:red;">{{ price }}</span> кредитов. На вашем счету сейчас <span style="color:green;">{{ user.credits }}</span> кредитов.
+                {{ form_start(form) }}
+                <ul class="form">
+                    <li>
+                        <label></label>
+                        {{ form_row(form.id, { 'value':'10' }) }}
+                        {{ form_row( form.save, { 'label': 'Подтвердить', 'attr' : { 'class' : 'btn' } } ) }}
+                    </li>
+                </ul>
+                {{ form_rest(form) }}
+                {{ form_end(form) }}
+            </div>
+        
+        {% elseif price > user.credits %}
+            <div class="center">
+                Недостаточно кредитов для совершения операции.
+            </div>
+        {% else %}
+            <div class="center">
+                Неизвестная ошибка.
+            </div>
+        {% endif %}
+    </div>
+
+{% include 'TorgovorotTorgBundle:Default:bottom.html.twig' %}

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Torgovorot\TorgBundle\Entity\ChGarage" table="ch_garage">
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="garageType" type="integer" column="garage_type" nullable="true"/>
+    <field name="convinient" type="integer" column="convinient" nullable="true"/>
+    <field name="water" type="integer" column="water" nullable="true"/>
+    <field name="electricity" type="integer" column="electricity" nullable="true"/>
+    <field name="kesson" type="integer" column="kesson" nullable="true"/>
+    <field name="observationPit" type="integer" column="observation_pit" nullable="true"/>
+    <field name="videoId" type="integer" column="video_id" nullable="true"/>
+    <field name="photoId" type="integer" column="photo_id" nullable="true"/>
+  </entity>
+</doctrine-mapping>
